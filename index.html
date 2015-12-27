@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<script src="semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/JavaScript" src="js/sha512.js"></script> 
+	<script type="text/JavaScript" src="js/forms.js"></script>
+	<script type='text/javascript'>
+			$(document).ready(function() {
+				
+				if (typeof localStorage.user !== "undefined" && localStorage.user !== "") {
+					user_session("init", JSON.parse(localStorage.user));
+				} else {
+				$('#login_form').submit(function() {
+				    var username = $("#login_form").find("#username_input").val();
+					login(username, p.value);
+
+					return false;
+				});
+				$('#registration_form').submit(function(){
+					register(p.value);
+					return false;
+
+				});
+				
+			});
+			
+			function login(username, password) {
+				$data = {
+					'username': username,
+					'password': password,
+				};
+
+				$.ajax({
+					url: "includes/process_login.php",
+					data: $data,
+					dataType: 'JSON',
+					type: 'POST',
+					success: function(data) {
+						if (data.username) {
+							alert("Successfully logged in as "+data.username);
+							$('#login').closeModal();
+							$("#username_input").val('');
+							password = "";
+							user_session('init', data);
+						} else {
+						    $("#username_input").focus();
+							alert("Invalid Credentials");
+						}
+					}
+				});
+			}
+
+			function register(password) {
+				$register_data = {
+					'username': $('#registration_form').find('#register_username').val(),
+					'password': password,
+					'email': $('#registration_form').find('#register_email').val(),
+				};				
+				
+				$.ajax({
+					url: "includes/register.php",
+					data: $register_data,
+					dataType: 'JSON',
+					type: 'POST',
+					success: function(data){
+						if(data.username){
+							alert("Successfully Registered!");
+							$('#register').closeModal();
+							$("#register_username").val('');
+							$("#register_email").val('');
+							password = "";
+							user_session('init', data);
+						}
+						else{
+							$("#register_username").focus();
+							alert(data);
+						}
+					}
+				});
+			}
+	</script>
+</head>
+<body>
+<!--Header-->    
+<header>
+    <nav class="grey darken-3" role="navigation">
+    	<div class="nav-wrapper container">
+    		<!--Top Nav-->
+    		<ul id="top-nav" class="navlinks right hide-on-small-only">
+    		    <li id='login_top_nav'><a href="#login" class="modal-trigger">Login</a></li>
+    		    <li id='register_top_nav'><a href="#register" class="modal-trigger">Register</a></li>
+    		    <li id="download"><a href="#">Download</a></li>
+    		</ul>
+    		<!--End Top Nav-->
+    	</div>
+    </nav>
+</header>
+<!--End Header-->
+<!--Main-->
+<main>
+    <!--Login Modal-->
+	<div id="login" class="modal">
+	    <form id="login_form" class="card-panel">
+            <div class="input-field">
+                <input id="username_input" type="text" class="validate"><label for="username_input">Username</label>
+            </div>
+            <div class="input-field">
+                <input id="password_input" type="password" class="validate"><label for="password_input">Password</label>
+            </div>
+            <button class="btn modal-action" type="submit" value="Login" onclick="formhash(this.form, this.form.password_input);">Login</button>
+            <br>
+            <p  class="center-align">Don't have an account? <a href="#register" class= "modal-trigger" onclick="$('#login').hide();">Sign up</a></p>
+        </form>
+    </div>
+    <!--End login modal-->
+    <!--Register Modal-->
+    <div id="register" class="modal">
+	    <form id="registration_form" class="card-panel">
+            <div class="input-field">
+                <input id="register_username" type="text" class="validate"><label for="register_username">Username</label>
+            </div>
+            <div class="input-field">
+                <input id="register_password" type="password" class="validate"><label for="register_password">Password</label>
+            </div>
+            <div class="input-field">
+                <input id="register_confirmpwd" type="password" class="validate"><label for="register_confirmpwd">Confirm Password</label>
+            </div>
+            <div class="input-field">
+                <input id="register_email" type="email" class="validate"><label for="register_email">Email</label>
+            </div>
+            <button class="btn modal-action" type="submit" value="Register" onclick="return regformhash(this.form, this.form.register_username, this.form.register_email, this.form.register_password, this.form.register_confirmpwd);">Register</button>
+            <p class="center-align">Already have an account? <a href="#login" class= "modal-trigger" onclick="$('#register').hide();">Sign in</a></p>
+        </form>
+    </div>
+    <!--End Register Modal-->
+    <!--Page Content--> 
+    <div id="content">
+    </div>
+	<!--End page content-->
+</main>
+<!--End Main-->
+<!--Footer-->
+<footer class="page-footer grey darken-3">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2015 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+<!--End Footer-->
+</body>
+</html>
