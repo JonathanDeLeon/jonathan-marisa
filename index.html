@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-	<script src="semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="foundation-6/css/foundation.min.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="foundation-6/js/foundation.min.js"></script>
+	<script src="foundation-6/js/app.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/JavaScript" src="js/sha512.js"></script> 
-	<script type="text/JavaScript" src="js/forms.js"></script>
+	<!--
 	<script type='text/javascript'>
 			$(document).ready(function() {
 				
@@ -29,130 +30,83 @@
 				
 			});
 			
-			function login(username, password) {
-				$data = {
-					'username': username,
-					'password': password,
-				};
+			
+	</script>-->
+	<script type="text/javascript">
 
-				$.ajax({
-					url: "includes/process_login.php",
-					data: $data,
-					dataType: 'JSON',
-					type: 'POST',
-					success: function(data) {
-						if (data.username) {
-							alert("Successfully logged in as "+data.username);
-							$('#login').closeModal();
-							$("#username_input").val('');
-							password = "";
-							user_session('init', data);
-						} else {
-						    $("#username_input").focus();
-							alert("Invalid Credentials");
-						}
-					}
-				});
-			}
-
-			function register(password) {
-				$register_data = {
-					'username': $('#registration_form').find('#register_username').val(),
-					'password': password,
-					'email': $('#registration_form').find('#register_email').val(),
-				};				
-				
-				$.ajax({
-					url: "includes/register.php",
-					data: $register_data,
-					dataType: 'JSON',
-					type: 'POST',
-					success: function(data){
-						if(data.username){
-							alert("Successfully Registered!");
-							$('#register').closeModal();
-							$("#register_username").val('');
-							$("#register_email").val('');
-							password = "";
-							user_session('init', data);
-						}
-						else{
-							$("#register_username").focus();
-							alert(data);
-						}
-					}
-				});
-			}
 	</script>
+	
+	<style type="text/css">
+
+	</style>
+	<title>Delion Web</title>
 </head>
 <body>
-<!--Header-->    
-<header>
-    <nav class="grey darken-3" role="navigation">
-    	<div class="nav-wrapper container">
-    		<!--Top Nav-->
-    		<ul id="top-nav" class="navlinks right hide-on-small-only">
-    		    <li id='login_top_nav'><a href="#login" class="modal-trigger">Login</a></li>
-    		    <li id='register_top_nav'><a href="#register" class="modal-trigger">Register</a></li>
-    		    <li id="download"><a href="#">Download</a></li>
-    		</ul>
-    		<!--End Top Nav-->
-    	</div>
-    </nav>
-</header>
-<!--End Header-->
+<!--Top Nav-->
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Delion Web</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#pictures">Pictures</a></li>
+      <li><a href="#login">Login</a></li>
+    </ul>
+  </div>
+</div>
+<!--End Top Nav-->
 <!--Main-->
-<main>
-    <!--Login Modal-->
-	<div id="login" class="modal">
-	    <form id="login_form" class="card-panel">
-            <div class="input-field">
-                <input id="username_input" type="text" class="validate"><label for="username_input">Username</label>
-            </div>
-            <div class="input-field">
-                <input id="password_input" type="password" class="validate"><label for="password_input">Password</label>
-            </div>
-            <button class="btn modal-action" type="submit" value="Login" onclick="formhash(this.form, this.form.password_input);">Login</button>
-            <br>
-            <p  class="center-align">Don't have an account? <a href="#register" class= "modal-trigger" onclick="$('#login').hide();">Sign up</a></p>
-        </form>
-    </div>
-    <!--End login modal-->
-    <!--Register Modal-->
-    <div id="register" class="modal">
-	    <form id="registration_form" class="card-panel">
-            <div class="input-field">
-                <input id="register_username" type="text" class="validate"><label for="register_username">Username</label>
-            </div>
-            <div class="input-field">
-                <input id="register_password" type="password" class="validate"><label for="register_password">Password</label>
-            </div>
-            <div class="input-field">
-                <input id="register_confirmpwd" type="password" class="validate"><label for="register_confirmpwd">Confirm Password</label>
-            </div>
-            <div class="input-field">
-                <input id="register_email" type="email" class="validate"><label for="register_email">Email</label>
-            </div>
-            <button class="btn modal-action" type="submit" value="Register" onclick="return regformhash(this.form, this.form.register_username, this.form.register_email, this.form.register_password, this.form.register_confirmpwd);">Register</button>
-            <p class="center-align">Already have an account? <a href="#login" class= "modal-trigger" onclick="$('#register').hide();">Sign in</a></p>
-        </form>
-    </div>
-    <!--End Register Modal-->
+<main id="main-content">
     <!--Page Content--> 
-    <div id="content">
+    <div class="row medium-8 large-7 columns" id="page-content">
+    	<div class="callout" id="callout_header">
+	    	<div class="thumbnail">
+			    <img src="img/IMG_2039.JPG">
+	    	</div>
+	    	<div class="section">
+	    		<h1 class="title">Marisa and Jonathan</h1>
+	    		<h5>December 8, 2012</h5>
+		   		<div id="countdown"> 
+		    		<div>
+					    <span class="years"></span>
+					    <div class="smalltext">Years</div>
+					</div>
+		    		<div>
+					    <span class="months"></span>
+					    <div class="smalltext">Months</div>
+					</div>
+		    		<div>
+					    <span class="days"></span>
+					    <div class="smalltext">Days</div>
+					</div>
+					<div>
+						<span class="hours"></span>
+					    <div class="smalltext">Hours</div>
+					</div>
+					<div>
+					    <span class="minutes"></span>
+					    <div class="smalltext">Minutes</div>
+					</div>
+					<div>
+					    <span class="seconds"></span>
+					    <div class="smalltext">Seconds</div>
+					</div>	
+				</div>
+	    	</div>
+    	</div>
+    	<div class="section">
+    		<h2 class="title">Our Story</h1>
+    	</div>
     </div>
 	<!--End page content-->
 </main>
 <!--End Main-->
-<!--Footer-->
-<footer class="page-footer grey darken-3">
-    <div class="footer-copyright">
-        <div class="container">
-            © 2015 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-    </div>
-</footer>
-<!--End Footer-->
 </body>
 </html>

@@ -89,3 +89,57 @@ function regformhash(form, uid, email, password, conf) {
     //form.submit();
     return true;
 }
+function login(username, password) {
+    $data = {
+        'username': username,
+        'password': password,
+    };
+
+    $.ajax({
+        url: "includes/process_login.php",
+        data: $data,
+        dataType: 'JSON',
+        type: 'POST',
+        success: function(data) {
+            if (data.username) {
+                alert("Successfully logged in as "+data.username);
+                $('#login').closeModal();
+                $("#username_input").val('');
+                password = "";
+                user_session('init', data);
+            } else {
+                $("#username_input").focus();
+                alert("Invalid Credentials");
+            }
+        }
+    });
+}
+
+function register(password) {
+    $register_data = {
+        'username': $('#registration_form').find('#register_username').val(),
+        'password': password,
+        'email': $('#registration_form').find('#register_email').val(),
+    };              
+    
+    $.ajax({
+        url: "includes/register.php",
+        data: $register_data,
+        dataType: 'JSON',
+        type: 'POST',
+        success: function(data){
+            if(data.username){
+                alert("Successfully Registered!");
+                $('#register').closeModal();
+                $("#register_username").val('');
+                $("#register_email").val('');
+                password = "";
+                user_session('init', data);
+            }
+            else{
+                $("#register_username").focus();
+                alert(data);
+            }
+        }
+    });
+}

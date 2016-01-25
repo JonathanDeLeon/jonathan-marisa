@@ -1,30 +1,73 @@
-.side-nav{
-	    line-height: 50px;
-	    padding-top: 20px;
-	}
-.side-nav li{
-	font-weight: bold;
-	}
-
-
-.input-field{
-	    line-height: 25px;
-	}
-.modal form{
-	    
-	    text-align: center;
-	    margin: auto;
-	}
-
-#login{
-	    width: 300px;
-	}
-#register{
-		width: 500px;
+@font-face{
+	font-family: "Alex Brush";
+	src: url(font/AlexBrush-Regular.ttf);
 }
 
-.modal form input[type=text], 
-.modal form input[type=password],
-.modal form input[type=email] {
-text-indent: 0.5em;
+.title-bar {
+	background: #cceaff;
+	padding: 0.9rem; 
+}
+.title-bar .menu-icon {
+	color: #808080; 
+}
+.title-bar-title {
+	color: #808080; 
+}
+
+.top-bar {
+	background: #cceaff; 
+}
+.top-bar ul {
+	background: #cceaff; 
+}
+.top-bar ul li {
+	background: #cceaff; 
+	text-transform: uppercase;
+}
+.top-bar ul li a {
+}
+
+.menu-text {
+	color: #2199e8; 
+}
+
+#main-content{
+	font-family: "Open Sans";
+	text-align: center;
+}
+#callout_header{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.section .title{
+	font-family: "Alex Brush";
+}
+@media only screen and (max-width: 40em) {
+.menu-text {
+  display: none !important; 
+	} 
+}
+
+#countdown{
+    font-family: sans-serif;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+}
+
+#countdown > div{
+    padding: 10px;
+    display: inline-block;
+}
+
+#countdown div > span{
+    padding: 10px;
+    border-radius: 3px;
+    background: #cceaff;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 12px;
 }
