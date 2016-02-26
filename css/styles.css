@@ -1,17 +1,17 @@
 @font-face{
 	font-family: "Alex Brush";
-	src: url(font/AlexBrush-Regular.ttf);
+	src: url(../font/AlexBrush-Regular.ttf);
 }
 
 .title-bar {
 	background: #cceaff;
 	padding: 0.9rem; 
 }
-.title-bar .menu-icon {
-	color: #808080; 
-}
 .title-bar-title {
-	color: #808080; 
+	color: #2199e8; 
+}
+.menu-icon {
+	color: #2199e8; 
 }
 
 .top-bar {
@@ -24,6 +24,9 @@
 	background: #cceaff; 
 	text-transform: uppercase;
 }
+.top-bar ul li a:hover {
+	background: #fff;
+}
 .top-bar ul li a {
 }
 
@@ -35,8 +38,10 @@
 	font-family: "Open Sans";
 	text-align: center;
 }
-#callout_header{
+#page-content{
 	margin-top: 50px;
+}
+.callout{
 	margin-bottom: 50px;
 }
 .section .title{

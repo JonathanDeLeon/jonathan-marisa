@@ -1,6 +1,7 @@
-var user;
 $(document).ready(function(){
 });
+
+var user;
 
 function user_session(cmd, data) {
 	
