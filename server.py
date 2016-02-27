@@ -29,7 +29,7 @@ class Application(tornado.web.Application):
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("Hello, world")
+        self.write("Hello, world! How are you today?")
 
 if __name__ == "__main__":
     io_loop = tornado.ioloop.IOLoop.instance()
