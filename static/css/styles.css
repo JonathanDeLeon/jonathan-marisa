@@ -1,27 +1,27 @@
 @font-face{
 	font-family: "Alex Brush";
-	src: url(../font/AlexBrush-Regular.ttf);
+	src: url(font/AlexBrush-Regular.ttf);
 }
 
 .title-bar {
 	background: #cceaff;
-	padding: 0.9rem; 
+	padding: 0.9rem;
 }
 .title-bar-title {
-	color: #2199e8; 
+	color: #2199e8;
 }
 .menu-icon {
-	color: #2199e8; 
+	color: #2199e8;
 }
 
 .top-bar {
-	background: #cceaff; 
+	background: #cceaff;
 }
 .top-bar ul {
-	background: #cceaff; 
+	background: #cceaff;
 }
 .top-bar ul li {
-	background: #cceaff; 
+	background: #cceaff;
 	text-transform: uppercase;
 }
 .top-bar ul li a:hover {
@@ -31,7 +31,7 @@
 }
 
 .menu-text {
-	color: #2199e8; 
+	color: #2199e8;
 }
 
 #main-content{
@@ -49,8 +49,8 @@
 }
 @media only screen and (max-width: 40em) {
 .menu-text {
-  display: none !important; 
-	} 
+  display: none !important;
+	}
 }
 
 #countdown{
