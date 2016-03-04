@@ -1,16 +1,13 @@
-$(document).ready(function(){
-});
-
 var user;
 
 function user_session(cmd, data) {
-	
+
 	if (cmd == 'init' && data) {
 		$nav_links = $(".navlinks li");
 		$links = $(".navlinks");
 		user = data;
         localStorage.user = JSON.stringify(user);
-        $download = $('#download'); 
+        $download = $('#download');
         $nav_links.remove();
         $links.append("<li><a href='#' class='waves-effect waves-light'>"+user.username+"</a></li>")
         $links.append("<li><a href='includes/logout.php' class='waves-effect waves-light' onclick='user_session("+'"destroy"'+");'>Logout</a></li>");
@@ -28,13 +25,13 @@ function countdown(){
 	//take out milliseconds
 	difference_ms = difference_ms/1000;
 	var seconds = Math.floor(difference_ms % 60);
-	difference_ms = difference_ms/60; 
+	difference_ms = difference_ms/60;
 	var minutes = Math.floor(difference_ms % 60);
-	difference_ms = difference_ms/60; 
-	var hours = Math.floor(difference_ms % 24);  
-	difference_ms = difference_ms/24; 
+	difference_ms = difference_ms/60;
+	var hours = Math.floor(difference_ms % 24);
+	difference_ms = difference_ms/24;
 	var years = Math.floor(difference_ms/365);
-	difference_ms = difference_ms%365; 
+	difference_ms = difference_ms%365;
 	var months = Math.floor(difference_ms/30);
 	var days = Math.floor(difference_ms%30);
 	return {
@@ -74,4 +71,3 @@ function initializeCountdown(){
 	updateClock();
 	var timeinterval = setInterval(updateClock, 1000);
 }
-		

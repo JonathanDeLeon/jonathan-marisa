@@ -1,5 +1,17 @@
 var main;
 
+String.prototype.capitalize = function() {
+	if (this.length <= 1) return this;
+    var words = this.replace("/"," s/s ");
+	words = words.split(" ");
+	for (var i in words)
+		if (words[i][0] && words[i][0].match(/[A-Za-z]/))
+			words[i] = words[i].replace(new RegExp(words[i][0]),words[i][0].toUpperCase());
+	words = words.join(" ");
+    words = words.replace(" S/s ","/");
+    return words;
+}
+
 $(document).ready(function() {
     main = $("main");
 
@@ -14,6 +26,7 @@ $(document).ready(function() {
 });
 
 function initialize(){
+    window.onhashchange = hasher;
     $("head").append('<meta name="description" content="'+config.title+': '+config.description+'" />');
 	//$("head").append('<link rel="icon" href="'+config.favicon+'"  type="image/x-icon">');
 	//$("head").append('<link rel="shortcut-icon" href="'+config.favicon+'"  type="image/x-icon">');
