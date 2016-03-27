@@ -1,4 +1,6 @@
 var handlers = [
+    ["/pictures/*", imageHandler],
+    ["/pictures", imageHandler],
     ["/.*", pageHandler],
     [".*", indexHandler]
 ];
@@ -13,6 +15,7 @@ function hasher() {
 		var r = new RegExp(path); //sets path to Regexp form
 		var m = hash.match(path); //checks if the hash matches the path; if it does it returns the hash else null
 		if (m && m[0] === hash) {
+			console.log("here");
 			m = path.split("\\\/"); //splits path where '\/' into array of strings separated by ','
 			hash = hash.split("/").filter(function(i) { return m.indexOf(i) < 0; }); //filters out the first ',' due to split and sets them to an array
 			handlers[h][1].apply(this, hash); //applies the handler function with an array variable 'hash'
@@ -35,4 +38,8 @@ function pageHandler(path1, path2) {
         if (xhr.status > 400) //If there is an error finding the page, it will reload homepage
             window.location.href = "#";
     });
+}
+
+function imageHandler() {
+    loader(main, "static/html/pictures.html");
 }
