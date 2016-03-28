@@ -1,5 +1,5 @@
 var handlers = [
-    ["/pictures/*", imageHandler],
+    ["/pictures/.*", imageHandler],
     ["/pictures", imageHandler],
     ["/.*", pageHandler],
     [".*", indexHandler]
@@ -19,7 +19,7 @@ function hasher() {
 			m = path.split("\\\/"); //splits path where '\/' into array of strings separated by ','
 			hash = hash.split("/").filter(function(i) { return m.indexOf(i) < 0; }); //filters out the first ',' due to split and sets them to an array
 			handlers[h][1].apply(this, hash); //applies the handler function with an array variable 'hash'
-			return true;
+			return true;  //to exit out of the loop
 		}
 	}
 }
