@@ -10,12 +10,12 @@ function hasher() {
 	document.title = config.title + title;
 
 	var hash = window.location.hash.substr(1);
+	console.log("Hash = " +hash);
 	for (var h in handlers) {
 		var path = handlers[h][0].replace(/\//g,"\\\/"); //replaces '/' in the handler url with '\/'
 		var r = new RegExp(path); //sets path to Regexp form
 		var m = hash.match(path); //checks if the hash matches the path; if it does it returns the hash else null
 		if (m && m[0] === hash) {
-			console.log("here");
 			m = path.split("\\\/"); //splits path where '\/' into array of strings separated by ','
 			hash = hash.split("/").filter(function(i) { return m.indexOf(i) < 0; }); //filters out the first ',' due to split and sets them to an array
 			handlers[h][1].apply(this, hash); //applies the handler function with an array variable 'hash'

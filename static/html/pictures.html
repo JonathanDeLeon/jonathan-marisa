@@ -1,11 +1,15 @@
 <!--Page Content--> 
 <div class="row medium-8 large-7 columns" id="page-content">
 	<div class="section">
-		<h2 class="title">Photo Album</h1>
+		<h2 class="title">Photo Album</h2>
+		<div id="photo-buttons">
+			<input type="button" placeholder="Upload">
+			<input type="button" placeholder="Edit">
+		</div>
 		<br>
 		<br>
 		<div class="row">
-			<div class="square">
+			<div class="squares columns">
 			</div>
 		</div>
 		<div class="callout">
@@ -13,11 +17,14 @@
 </div>
 <!--End page content-->
 <style type="text/css">
-	.square{
-		height: 1rem;
-		width: 1rem;
+	.squares > div{
+		height: 15rem;
+		width: 15rem;
 		margin: 0 0 1rem;
 		border: 1px solid rgba(10,10,10,.25);
+	}
+	#photo-buttons{
+		float: right;
 	}
 
 </style>

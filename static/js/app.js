@@ -26,6 +26,7 @@ $(document).ready(function() {
 });
 
 function initialize(){
+	hasher();
     window.onhashchange = hasher;
     $("head").append('<meta name="description" content="'+config.title+': '+config.description+'" />');
 	//$("head").append('<link rel="icon" href="'+config.favicon+'"  type="image/x-icon">');
