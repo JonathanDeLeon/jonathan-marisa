@@ -3,8 +3,12 @@
 	src: url(font/AlexBrush-Regular.ttf);
 }
 
+body{
+	background-color: #f6f6f6;
+}
+
 .title-bar {
-	background: #cceaff;
+	background-color: #f6f6f6;
 	padding: 0.9rem;
 }
 .title-bar-title {
@@ -15,13 +19,13 @@
 }
 
 .top-bar {
-	background: #cceaff;
+	background-color: #f6f6f6;
 }
 .top-bar ul {
-	background: #cceaff;
+	background-color: #f6f6f6;
 }
 .top-bar ul li {
-	background: #cceaff;
+	background-color: #f6f6f6;
 	text-transform: uppercase;
 }
 .top-bar ul li a:hover {
@@ -41,6 +45,23 @@
 #page-content{
 	margin-top: 50px;
 }
+.top{
+	height: auto;
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+}
+.top > img{
+	width: 100%;
+	max-width: 100%;
+	z-index: -9999;
+}
+#top_title{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 5rem;
+}
 .callout{
 	margin-bottom: 50px;
 }
@@ -48,8 +69,14 @@
 	font-family: "Alex Brush";
 }
 @media only screen and (max-width: 40em) {
-.menu-text {
-  display: none !important;
+	.menu-text {
+	  display: none !important;
+		}
+	.top > img{
+		height: auto !important;
+	}
+	#top_title{
+		margin-right: 2rem;
 	}
 }
 
@@ -61,7 +88,7 @@
 }
 
 #countdown > div{
-    padding: 10px;
+    padding: 4px;
     display: inline-block;
 }
 
