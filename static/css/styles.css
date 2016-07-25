@@ -38,6 +38,38 @@ body{
 	color: #2199e8;
 }
 
+#background {
+    -webkit-transition: -webkit-filter 300ms;
+    -moz-transition: -moz-filter 300ms;
+    -o-transition: -o-filter 300ms;
+    transition: -webkit-filter 300ms ,filter 300ms;
+}
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #222;
+    z-index: -2;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../media/094.JPG);
+}
+
+#background_overlay{
+    background-color: rgba(33, 39, 57, 0.5);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat;
+    z-index: -1;
+	background-image: url('http://multia.in/theme/wordpress/mievent/comingsoon/wp-content/themes/mievent/site/img/backgrounds/bg_pattern.png');
+}
+
 #main-content{
 	font-family: "Open Sans";
 	text-align: center;
@@ -68,6 +100,19 @@ body{
 .section .title{
 	font-family: "Alex Brush";
 }
+
+.coming-soon {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
+
+.coming-soon h1{
+	padding: 0 10%;
+}
+
 @media only screen and (max-width: 40em) {
 	.menu-text {
 	  display: none !important;
@@ -88,11 +133,15 @@ body{
 }
 
 #countdown > div{
-    padding: 4px;
+    padding: 20px;
     display: inline-block;
 }
 
-#countdown div > span{
+.anniversary > div{
+    padding: 4px !important;
+}
+
+.anniversary div > span{
     padding: 10px;
     border-radius: 3px;
     background: #cceaff;
@@ -102,4 +151,8 @@ body{
 .smalltext{
     padding-top: 5px;
     font-size: 12px;
+}
+
+.largetext{
+	font-size: 3em;
 }

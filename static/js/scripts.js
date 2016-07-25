@@ -1,4 +1,5 @@
 var user;
+var countdownDate;
 
 function user_session(cmd, data) {
 
@@ -18,9 +19,10 @@ function user_session(cmd, data) {
 	}
 }
 function countdown(){
-	var anniversary = new Date(2012, 11, 08);
+	//var anniversary = new Date(2012, 11, 08);
+	var date = countdownDate;
 	var today = new Date();
-	var difference_ms = today.getTime() - anniversary.getTime();
+	var difference_ms = Math.abs(today.getTime() - date.getTime());
 
 	//take out milliseconds
 	difference_ms = difference_ms/1000;
@@ -48,7 +50,9 @@ function countdown(){
 	//var text = years + ' years, '+ months + ' months, ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds';
 	//document.getElementById("countdown").innerHTML = text;
 }
-function initializeCountdown(){
+function initializeCountdown(date){
+	countdownDate = date;
+
 	var clock = document.getElementById("countdown");
 //	var yearsSpan = clock.querySelector('.years');
 //	var monthsSpan = clock.querySelector('.months');
