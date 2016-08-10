@@ -1,5 +1,6 @@
 var user;
 var countdownDate;
+var timeinterval;
 
 function user_session(cmd, data) {
 
@@ -76,5 +77,5 @@ function initializeCountdown(date){
 	}
 
 	updateClock();
-	var timeinterval = setInterval(updateClock, 1000);
+	timeinterval = setInterval(updateClock, 1000);
 }
