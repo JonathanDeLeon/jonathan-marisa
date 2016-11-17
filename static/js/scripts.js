@@ -1,4 +1,6 @@
 var user;
+var countdownDate;
+var timeinterval;
 
 function user_session(cmd, data) {
 
@@ -18,9 +20,10 @@ function user_session(cmd, data) {
 	}
 }
 function countdown(){
-	var anniversary = new Date(2012, 12, 08);
+	//var anniversary = new Date(2012, 11, 08);
+	var date = countdownDate;
 	var today = new Date();
-	var difference_ms = today.getTime() - anniversary.getTime();
+	var difference_ms = Math.abs(today.getTime() - date.getTime());
 
 	//take out milliseconds
 	difference_ms = difference_ms/1000;
@@ -30,13 +33,16 @@ function countdown(){
 	difference_ms = difference_ms/60;
 	var hours = Math.floor(difference_ms % 24);
 	difference_ms = difference_ms/24;
+	var days = Math.floor(difference_ms);
+/* This is to get years, months, and leftover days
 	var years = Math.floor(difference_ms/365);
 	difference_ms = difference_ms%365;
 	var months = Math.floor(difference_ms/30);
 	var days = Math.floor(difference_ms%30);
+*/
 	return {
-		'years': years,
-		'months': months,
+//		'years': years,
+//		'months': months,
 		'days': days,
 		'hours': hours,
 		'minutes': minutes,
@@ -45,10 +51,12 @@ function countdown(){
 	//var text = years + ' years, '+ months + ' months, ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds';
 	//document.getElementById("countdown").innerHTML = text;
 }
-function initializeCountdown(){
+function initializeCountdown(date){
+	countdownDate = date;
+
 	var clock = document.getElementById("countdown");
-	var yearsSpan = clock.querySelector('.years');
-	var monthsSpan = clock.querySelector('.months');
+//	var yearsSpan = clock.querySelector('.years');
+//	var monthsSpan = clock.querySelector('.months');
 	var daysSpan = clock.querySelector('.days');
 	var hoursSpan = clock.querySelector('.hours');
 	var minutesSpan = clock.querySelector('.minutes');
@@ -56,8 +64,8 @@ function initializeCountdown(){
 
 	function updateClock() {
     	var t = countdown();
-	    yearsSpan.innerHTML = t.years;
-	    monthsSpan.innerHTML = t.months;
+//	    yearsSpan.innerHTML = t.years;
+//	    monthsSpan.innerHTML = t.months;
 	    daysSpan.innerHTML = t.days;
 	    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
 	    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
@@ -69,5 +77,5 @@ function initializeCountdown(){
 	}
 
 	updateClock();
-	var timeinterval = setInterval(updateClock, 1000);
+	timeinterval = setInterval(updateClock, 1000);
 }
