@@ -14,11 +14,17 @@
 body{
 	background-color: #f6f6f6;
 }
+header{
+    position: relative;
+    height: 400px;
+}
 nav{
+    position: absolute;
+    width: 100%;
     background-color: transparent;
     color: #fff;
     font-family: normal;
-    font-family: normal;
+    z-index: 999;
 }
 
 /*Background Overlay Styling*/
@@ -28,15 +34,14 @@ nav{
     -o-transition: -o-filter 300ms;
     transition: -webkit-filter 300ms ,filter 300ms;
 }
-#background-overlay{
-    background-color: rgba(33, 39, 57, 0.1);
+#frontpage-header::before {
+    content: "";
+    display: block;
     height: 100%;
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    background-repeat: repeat;
-    z-index: -1;
 	background-image: url('http://multia.in/theme/wordpress/mievent/comingsoon/wp-content/themes/mievent/site/img/backgrounds/bg_pattern.png');
 }
 /*Navbar styling*/
@@ -59,21 +64,22 @@ nav{
 }
 .top-bar ul li a {
 	color: rgba(255,255,255,.8);
+    border: 1px solid rgba(0,0,0,0);
 }
 .top-bar ul li a:hover {
 	color: #fff;
+    border: 1px solid white;
 }
 /*Frontpage Header*/
 #frontpage-header {
     max-height: 500px;
     text-align: center;
     color: #fff;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
     background-color: #222;
     overflow: hidden;
     background-position: center;
@@ -81,8 +87,12 @@ nav{
     background-image: url(media/macbook.jpg);
 }
 #frontpage-name {
-    position: relative;
-    top: 35%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 40%;
+    width: 65%;
+    margin: -5% 0 0 -32%;
 }
 #frontpage-name h1  {
     font-family: Papyrus;
