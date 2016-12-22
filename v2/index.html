@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="stylesheet" type="text/css" href="../foundation-6/css/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="media-styles.css">
+
+	<script type="text/javascript" src="../foundation-6/js/vendor/jquery.min.js"></script>
+	<script src="../foundation-6/js/foundation.min.js"></script>
+
+	<script src="../config.js"></script>
+	<script src="../static/js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).foundation();
+        });
+    </script>
+</head>
+<body>
+<!--Header-->
+<header>
+    <nav>
+        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle></button>
+            <div class="title-bar-title">Menu</div>
+        </div>
+        <div class="top-bar" id="main-menu">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text">Delion Web</li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#/pictures">Pictures</a></li>
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="frontpage-header">
+        <div id="frontpage-name">
+            <h1>Jonathan De Leon</h1>
+            <hr/>
+            <h3>Front-end Developer</h3>
+            <hr/>
+        </div>
+        <div id="background-overlay"></div>
+    </div>
+</header>
+<!--End Header-->
+<!--Main-->
+<main id="main-content" data-html="static/html/home.html"></main>
+<!--End Main-->
+</body>
+</html>

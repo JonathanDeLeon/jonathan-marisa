@@ -1,0 +1,93 @@
+
+/*{{{ Fonts*/
+@font-face{
+	font-family: "Alex Brush";
+	src: url(fonts/AlexBrush-Regular.ttf);
+}
+@font-face{
+	font-family: "King Basil";
+    src: url("fonts/King-Basil-Lite.otf") format("opentype");
+}
+/*}}}*/
+
+/*Global Styling*/
+body{
+	background-color: #f6f6f6;
+}
+nav{
+    background-color: transparent;
+    color: #fff;
+    font-family: normal;
+    font-family: normal;
+}
+
+/*Background Overlay Styling*/
+#background, #frontpage-header {
+    -webkit-transition: -webkit-filter 300ms;
+    -moz-transition: -moz-filter 300ms;
+    -o-transition: -o-filter 300ms;
+    transition: -webkit-filter 300ms ,filter 300ms;
+}
+#background-overlay{
+    background-color: rgba(33, 39, 57, 0.1);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat;
+    z-index: -1;
+	background-image: url('http://multia.in/theme/wordpress/mievent/comingsoon/wp-content/themes/mievent/site/img/backgrounds/bg_pattern.png');
+}
+/*Navbar styling*/
+.title-bar {
+	background-color: transparent;
+	padding: 0.9rem;
+	color: rgba(255,255,255,.8);
+}
+.title-bar:hover {
+	color: #fff;
+}
+.top-bar {
+	background-color: transparent;
+}
+.top-bar ul {
+	background-color: transparent;
+}
+.top-bar ul li {
+	text-transform: uppercase;
+}
+.top-bar ul li a {
+	color: rgba(255,255,255,.8);
+}
+.top-bar ul li a:hover {
+	color: #fff;
+}
+/*Frontpage Header*/
+#frontpage-header {
+    max-height: 500px;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #222;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-image: url(media/macbook.jpg);
+}
+#frontpage-name {
+    position: relative;
+    top: 35%;
+}
+#frontpage-name h1  {
+    font-family: Papyrus;
+}
+#frontpage-name hr {
+    max-width: 300px;
+    margin: 0 auto;
+}
