@@ -9,24 +9,17 @@
 }
 /* Medium and up */
 @media screen and (min-width: 40em) {
-    .container{
-        width: 750px;
-    }
+
 }
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    .container{
-        width: 970px;
-    }
 
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-    .container{
-        width: 1170px;
-    }
+
 }
 
 /* Large only */
