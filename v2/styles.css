@@ -10,10 +10,12 @@
 }
 /*}}}*/
 
-/*Global Styling*/
+/*{{{Global Styling*/
 body{
 	background-color: #f6f6f6;
 }
+main,header,nav,section,footer{display:block;} 
+
 header{
     position: relative;
     height: 400px;
@@ -27,7 +29,15 @@ nav{
     z-index: 999;
 }
 
-/*Background Overlay Styling*/
+.container{
+    max-width: 1280px;
+    padding: 40px 180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*}}}*/
+
+/*{{{Background Overlay Styling*/
 #background, #frontpage-header {
     -webkit-transition: -webkit-filter 300ms;
     -moz-transition: -moz-filter 300ms;
@@ -44,7 +54,10 @@ nav{
     left: 0;
 	background-image: url('media/bg_pattern.png');
 }
-/*Navbar styling*/
+/*}}}*/
+
+/*{{{Navbar styling*/
+/*Title bar is nav bar in smaller media*/
 .title-bar {
 	background-color: transparent;
 	padding: 0.9rem;
@@ -53,15 +66,19 @@ nav{
 .title-bar:hover {
 	color: #fff;
 }
+/*Top bar is nav bar in larger media*/
 .top-bar {
 	background-color: transparent;
 }
 .top-bar ul {
 	background-color: transparent;
 }
+/*Nav bar lists including logo*/
 .top-bar ul li {
 	text-transform: uppercase;
+    letter-spacing: 2px;
 }
+/*Nav bar links*/
 .top-bar ul li a {
 	color: rgba(255,255,255,.8);
     border: 1px solid rgba(0,0,0,0);
@@ -70,7 +87,9 @@ nav{
 	color: #fff;
     border: 1px solid white;
 }
-/*Frontpage Header*/
+/*}}}*/
+
+/*{{{Frontpage Header*/
 #frontpage-header {
     max-height: 500px;
     text-align: center;
@@ -101,3 +120,5 @@ nav{
     max-width: 300px;
     margin: 0 auto;
 }
+/*}}}*/
+

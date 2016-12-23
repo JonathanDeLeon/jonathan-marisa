@@ -4,10 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>De Leon Web Design</title>
 
     <link rel="stylesheet" type="text/css" href="../foundation-6/css/foundation.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="media-styles.css">
+    <link rel="stylesheet" type="text/css" href="styles-media.css">
 
 	<script type="text/javascript" src="../foundation-6/js/vendor/jquery.min.js"></script>
 	<script src="../foundation-6/js/foundation.min.js"></script>
@@ -30,14 +31,14 @@
     <div class="top-bar" id="main-menu">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li class="menu-text">Delion Web</li>
+                <li class="menu-text">DeLion Web</li>
             </ul>
         </div>
         <div class="top-bar-right">
             <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
                 <li><a href="#">Home</a></li>
-                <li><a href="#/pictures">Pictures</a></li>
-                <li><a href="#/login">Login</a></li>
+                <li><a href="portfolio">Portfolio</a></li>
+                <li><a href="resume">Resume</a></li>
             </ul>
         </div>
     </div>
@@ -48,16 +49,25 @@
     <div id="frontpage-header">
         <div id="frontpage-name">
             <h1>Jonathan De Leon</h1>
-            <hr/>
+            <hr>
             <h3>Front-end Developer</h3>
-            <hr/>
+            <hr>
         </div>
-        <div id="background-overlay"></div>
     </div>
 </header>
 <!--End Header-->
 <!--Main-->
-<main id="main-content" data-html="static/html/home.html"></main>
+<main id="main-content" class="container">
+    <section id="profile">
+        <h2>Profile</h2>
+        <hr>
+        <div class="row">
+            <div class="small-4 columns">About Me</div>
+            <div class="small-4 small-centered columns"></div>
+            <div class="small-4 columns">Details</div>
+        </div>
+    </section>
+</main>
 <!--End Main-->
 </body>
 </html>
