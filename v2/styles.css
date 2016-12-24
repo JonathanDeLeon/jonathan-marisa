@@ -70,12 +70,13 @@ nav{
 /*Nav bar links*/
 .top-bar ul li a {
 	color: rgba(255,255,255,.8);
-    border: 1px solid rgba(0,0,0,0);
+    margin: 0 0.1rem;
 }
 .top-bar ul li a:hover {
-	color: #fff;
-    border: 1px solid white;
+	color: black;
+    background-color: #fff;
 }
+
 /*}}}*/
 
 /*{{{Frontpage Header*/
@@ -111,16 +112,23 @@ header {
     margin: 0 auto;
 }
 /*}}}*/
+
 main hr{
 	margin: 2.5rem auto;
-
 }
 /*Sections*/
-#main-content section:first-child{
-	margin: 2.5rem 0;
+#main-content section:nth-child(2n+2){
+    background-color: #edeeef;
+}
+section{
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 section h2{
 	text-align: center;
+}
+section h2, section h4{
+    color: rgba(26,26,26,.9);
 }
 
 #profile .row div:nth-child(2){
@@ -131,3 +139,4 @@ section h2{
 	width: 11.25rem;
 	border-radius: 50%;
 }
+

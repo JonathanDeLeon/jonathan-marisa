@@ -6,6 +6,9 @@
     #frontpage-name hr {
         max-width: 175px;
     }
+    nav{
+        background-color: black;
+    }
 }
 /* Medium and up */
 @media screen and (min-width: 40em) {

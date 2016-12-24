@@ -18,6 +18,15 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $(document).foundation();
+            $("a").on('click',function(e) {
+                var url = e.target.href;
+                var hash = url.substring(url.indexOf("#")+1);
+                $('html, body').animate({
+                    scrollTop: $('#'+hash).offset().top
+                }, 500);
+                return false;
+            });
+
         });
     </script>
 </head>
@@ -30,15 +39,15 @@
     </div>
     <div class="top-bar" id="main-menu">
         <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
+            <ul class="menu">
                 <li class="menu-text">DeLion Web</li>
             </ul>
         </div>
         <div class="top-bar-right">
-            <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+            <ul class="dropdown menu" data-dropdown-menu>
                 <li><a href="#">Home</a></li>
-                <li><a href="portfolio">Portfolio</a></li>
-                <li><a href="resume">Resume</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
             </ul>
         </div>
     </div>
@@ -55,17 +64,30 @@
 </header>
 <!--End Header-->
 <!--Main-->
-<main id="main-content" class="small-8 large-centered column row">
-    <section id="profile">
-        <h2>Profile</h2>
-        <hr>
-    <div class="row">
-            <div class="small-12 medium-6 columns">
-                <h4>About Me</h4>
-                <p></p>
+<main id="main-content">
+    <section id="profile"> 
+        <div class="small-12 medium-8 large-centered column row">
+            <h2>Profile</h2>
+            <hr>
+            <div class="row">
+                <div class="small-12 medium-6 medium-offset-1 columns">
+                    <h4>About Me</h4>
+                    <p>I am an allround web developer. I am a software developer with good knowledge of front-end and back-end techniques. 
+                    I love structure and order and I also stand for quality. I love spending time on fixing little details 
+                    and optimizing web apps. Also I like working in a team, you'll learn faster and more. 
+                    I'm passionate about my job and not to mention, friendly...most of the time.</p>
+                </div>
+                <div class="small-12 medium-5 columns">
+                    <img class="thumbnail" src="media/me2.JPG" alt="Profile Picture">
+                </div>
             </div>
-            <div class="small-12 medium-6 columns">
-                <img class="thumbnail" src="media/me2.JPG" alt="Profile Picture">
+        </div>
+    </section>
+    <section id="resume">
+        <div class="small-12 medium-8 large-centered column row">
+            <h2>Experiences</h2>
+            <hr>
+            <div class="row">
             </div>
         </div>
     </section>
