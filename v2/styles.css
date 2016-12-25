@@ -135,8 +135,9 @@ section h2, section h4{
 	text-align: center;
 }
 #profile .thumbnail{
-	text-align: center;
 	width: 11.25rem;
 	border-radius: 50%;
 }
-
+#resume .thumbnail{
+	max-width: 10rem;
+}

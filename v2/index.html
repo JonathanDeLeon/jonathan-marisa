@@ -20,7 +20,9 @@
             $(document).foundation();
             $("a").on('click',function(e) {
                 var url = e.target.href;
+				console.log(url);
                 var hash = url.substring(url.indexOf("#")+1);
+				console.log(hash);
                 $('html, body').animate({
                     scrollTop: $('#'+hash).offset().top
                 }, 500);
@@ -46,6 +48,7 @@
         <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
                 <li><a href="#">Home</a></li>
+                <li><a href="#profile">About</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
             </ul>
@@ -65,16 +68,16 @@
 <!--End Header-->
 <!--Main-->
 <main id="main-content">
-    <section id="profile"> 
+    <section id="profile">
         <div class="small-12 medium-8 large-centered column row">
             <h2>Profile</h2>
             <hr>
             <div class="row">
                 <div class="small-12 medium-6 medium-offset-1 columns">
                     <h4>About Me</h4>
-                    <p>I am an allround web developer. I am a software developer with good knowledge of front-end and back-end techniques. 
-                    I love structure and order and I also stand for quality. I love spending time on fixing little details 
-                    and optimizing web apps. Also I like working in a team, you'll learn faster and more. 
+                    <p>I am an allround web developer. I am a software developer with good knowledge of front-end and back-end techniques.
+                    I love structure and order and I also stand for quality. I love spending time fixing little details
+                    and optimizing web apps. Also I like working in a team, you'll learn faster and more.
                     I'm passionate about my job and not to mention, friendly...most of the time.</p>
                 </div>
                 <div class="small-12 medium-5 columns">
@@ -88,6 +91,37 @@
             <h2>Experiences</h2>
             <hr>
             <div class="row">
+                <div class="small-4 columns">
+                    <img class="thumbnail" src="media/cas-icon.png" alt="Campground Automation Systems">
+                </div>
+                <div class="small-8 columns">
+					<h4>Computer Developer</h4>
+					<h6>2015 - Present</h6>
+					<p>
+					</p>
+	            </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <img class="thumbnail" src="media/aswwu-icon.jpg" alt="Associated Students of Walla Walla University">
+                </div>
+                <div class="small-8 columns">
+					<h4>Webmaster</h4>
+					<h6>2015</h6>
+					<p>
+					</p>
+	            </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <img class="thumbnail" src="media/wwu-icon.png" alt="Walla Walla University">
+                </div>
+                <div class="small-8 columns">
+					<h4>Academic Computer Technician</h4>
+					<h6>2014-2015</h6>
+					<p>
+					</p>
+	            </div>
             </div>
         </div>
     </section>
