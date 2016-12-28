@@ -14,8 +14,19 @@
 /* root font-size=16px*/
 body{
 	background-color: #f6f6f6;
+    font-weight: 400;
 }
 main,header,nav,section,footer{display:block;}
+
+main hr{
+	margin: 2.5rem auto;
+}
+p{
+    color: rgba(26,26,26,0.8);
+}
+.right{
+    float:right;
+}
 /*}}}*/
 
 /*{{{Background Overlay Styling*/
@@ -113,10 +124,7 @@ header {
 }
 /*}}}*/
 
-main hr{
-	margin: 2.5rem auto;
-}
-/*Sections*/
+/*{{{Sections*/
 #main-content section:nth-child(2n+2){
     background-color: #edeeef;
 }
@@ -138,6 +146,16 @@ section h2, section h4{
 	width: 11.25rem;
 	border-radius: 50%;
 }
-#resume .thumbnail{
-	max-width: 10rem;
+#experiences > div > .row{
+    margin-bottom: 20px;
 }
+.title{
+    overflow:hidden;
+}
+.title > :first-child{
+    margin: 0;
+}
+.subtitle{
+    color: #859bb1;
+}
+/*}}}*/

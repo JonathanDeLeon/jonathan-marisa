@@ -9,6 +9,11 @@
     nav{
         background-color: black;
     }
+
+    #profile > div .row{
+       padding-left: 2rem; 
+       padding-right: 2rem; 
+    }
 }
 /* Medium and up */
 @media screen and (min-width: 40em) {
