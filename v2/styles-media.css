@@ -9,6 +9,12 @@
     nav{
         background-color: black;
     }
+    .top-bar ul li{
+        font-size: 12px;
+    }
+    .top-bar ul li a{
+        padding: 0.7rem 0.5rem !important;
+    }
     #profile > div .row{
        padding-left: 2rem; 
        padding-right: 2rem; 

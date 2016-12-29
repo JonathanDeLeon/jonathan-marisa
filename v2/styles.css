@@ -90,6 +90,9 @@ nav{
 .top-bar {
 	background-color: transparent;
 }
+.top-bar .top-bar-right{
+    overflow:scroll;
+}
 .top-bar ul {
 	background-color: transparent;
 }
