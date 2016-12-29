@@ -9,10 +9,12 @@
     nav{
         background-color: black;
     }
-
     #profile > div .row{
        padding-left: 2rem; 
        padding-right: 2rem; 
+    }
+    #projects .row > div:not(:last-child){
+        margin-bottom: 1rem; 
     }
 }
 /* Medium and up */
