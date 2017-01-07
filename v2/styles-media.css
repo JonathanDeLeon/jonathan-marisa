@@ -19,6 +19,9 @@
        padding-left: 2rem; 
        padding-right: 2rem; 
     }
+}
+/* Medium and down */
+@media screen and (max-width: 63.9375em) {
     #projects .row > div:not(:last-child){
         margin-bottom: 1rem; 
     }
