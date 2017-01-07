@@ -297,13 +297,19 @@ figure.effect:hover p, figure.effect:focus p {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
-#projects figure a {
+figure.effect a {
     position: absolute;
     top: 0px;
     left: 0px;
     height: 100%;
-    width: 100%;
+    width: 0%;
     opacity: 0;
+    -moz-transition: width 0.35s;
+    -webkit-transition: width 0.35s;
+    transition: width 0.35s;
+}
+figure.effect:hover a, figure.effect:focus a {
+    width: 100%;
 }
 /*}}}2*/
 /*}}}1*/
