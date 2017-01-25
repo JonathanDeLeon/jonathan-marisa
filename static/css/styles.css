@@ -5,47 +5,24 @@
 
 body{
 	background-color: #f6f6f6;
+    font-family: sans-serif;
 }
 
-.title-bar {
-	background-color: #f6f6f6;
-	padding: 0.9rem;
+/*{{{Background/Header/Navbar styling*/
+header{
+    position:relative;
+    height: 100vh;
+    overflow: hidden;
 }
-.title-bar-title {
-	color: #2199e8;
-}
-.menu-icon {
-	color: #2199e8;
-}
-
-.top-bar {
-	background-color: #f6f6f6;
-}
-.top-bar ul {
-	background-color: #f6f6f6;
-}
-.top-bar ul li {
-	background-color: #f6f6f6;
-	text-transform: uppercase;
-}
-.top-bar ul li a:hover {
-	background: #fff;
-}
-.top-bar ul li a {
-}
-
-.menu-text {
-	color: #2199e8;
-}
-
-#background {
+/*Fixed Background with an image covering the page*/
+.background {
     -webkit-transition: -webkit-filter 300ms;
     -moz-transition: -moz-filter 300ms;
     -o-transition: -o-filter 300ms;
     transition: -webkit-filter 300ms ,filter 300ms;
 }
-#background {
-    position: fixed;
+.background {
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -55,9 +32,15 @@ body{
     overflow: hidden;
     background-position: center;
     background-size: cover;
+}
+/*Different background images for other projects*/
+#background-home{
+    background-image: url(../../media/ChihulyGardenAndGlass_Seattle-1957208-5148989-104-H.jpg);
+}
+#background-countdown{
     background-image: url(../../media/094.JPG);
 }
-
+/*Background overlay*/
 #background_overlay{
     background-color: rgba(33, 39, 57, 0.5);
     height: 100%;
@@ -69,6 +52,35 @@ body{
     z-index: -1;
 	background-image: url('http://multia.in/theme/wordpress/mievent/comingsoon/wp-content/themes/mievent/site/img/backgrounds/bg_pattern.png');
 }
+
+/*Top bar is nav bar in larger media*/
+.top-bar {
+	background-color: #434242;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 11px 5%
+}
+.top-bar ul {
+	background-color: transparent;
+}
+/*Nav bar lists including logo*/
+.top-bar ul li {
+	text-transform: uppercase;
+    letter-spacing: 2px;
+}
+/*Nav bar links*/
+.top-bar ul li a {
+	color: rgba(255,255,255,.8);
+    margin: 0 0.1rem;
+}
+.top-bar ul li a:hover {
+	color: black;
+    background-color: #fff;
+}
+
+/*}}}*/
 
 #main-content{
 	font-family: "Open Sans";
@@ -98,7 +110,6 @@ body{
 	margin-bottom: 50px;
 }
 .section .title{
-	font-family: "Alex Brush";
 }
 
 .coming-soon {

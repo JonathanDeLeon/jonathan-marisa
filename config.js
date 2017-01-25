@@ -1,6 +1,6 @@
 var config = {
     title: "Delion Web",
-    description: "Jonathan De Leon's personal webserver that hosts a variety of projects",
+    description: "Jonathan De Leon's personal webserver.",
     favicon: "",
     server: "/python_server/",
     files:{

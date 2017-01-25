@@ -13,11 +13,11 @@ function hasher() {
 	console.log("Hash = " +hash);
 	for (var h in handlers) {
 		var path = handlers[h][0].replace(/\//g,"\\\/"); //replaces '/' in the handler url with '\/'
-		var r = new RegExp(path); //sets path to Regexp form
 		var m = hash.match(path); //checks if the hash matches the path; if it does it returns the hash else null
-		if (m && m[0] === hash) {
-			m = path.split("\\\/"); //splits path where '\/' into array of strings separated by ','
-			hash = hash.split("/").filter(function(i) { return m.indexOf(i) < 0; }); //filters out the first ',' due to split and sets them to an array
+		if (m && m[0] === hash) { //m is not null and equals hash
+			m = path.split("\\\/"); //Creates an array by splitting path where '\/'
+            /*Splits hash and only returns the strings not found in m*/
+			hash = hash.split("/").filter(function(i) {return m.indexOf(i) < 0; }); 
 			handlers[h][1].apply(this, hash); //applies the handler function with an array variable 'hash'
 			return true;  //to exit out of the loop
 		}
@@ -32,8 +32,18 @@ function indexHandler() {
     }
 }
 
-function pageHandler(path1, path2) {
-    var path = path1+(path2 ? "/"+path2 : "")+".html";
+function pageHandler(path1, path2=null, path3=null) {
+    var paths = [path1, path2, path3];
+    var path = "";
+    for(var p in paths){
+        if(paths[p]){
+            path += paths[p] + "/"; 
+            if(p != paths.length-1)
+                continue;
+        }
+        path = path.substring(0, path.length-1) +".html";
+        break;
+    }
     loader(main, "static/html/"+path, function(xhr) {
         if (xhr.status > 400) //If there is an error finding the page, it will reload homepage
             window.location.href = "#";
@@ -42,4 +52,16 @@ function pageHandler(path1, path2) {
 
 function imageHandler() {
     loader(main, "static/html/pictures.html");
+    /*
+    $.ajax({
+        type: "GET",
+        url: "php/load_images.php",
+        data: 'imgTag=all',
+        dataType: "",
+        success: function(msg){
+            if(){
+            }
+        }
+    });
+    */
 }
