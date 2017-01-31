@@ -9,7 +9,7 @@ from tornado.options import define, options
 
 # import handlers as needed - here we import all of them
 from delion.base_handlers import *
-from delion.route_handlers import *
+#from delion.route_handlers import *
 
 define("port", default=8888, help="run on the given port", type=int)
 define("log_name", default="jd_log", help="name of the logfile")

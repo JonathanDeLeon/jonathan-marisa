@@ -102,8 +102,9 @@ class BaseHandler(tornado.web.RequestHandler):
 class BaseIndexHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        user = self.current_user
-        self.write(user.to_json())
+#        user = self.current_user
+        self.write("Hello, world! How are you today?")
+#        self.write(user.to_json())
 
 # login and/or register users as needed
 class BaseLoginHandler(BaseHandler):
