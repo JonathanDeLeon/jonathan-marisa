@@ -50,7 +50,7 @@ header{
     width: 100%;
     background-repeat: repeat;
     z-index: -1;
-	background-image: url('http://multia.in/theme/wordpress/mievent/comingsoon/wp-content/themes/mievent/site/img/backgrounds/bg_pattern.png');
+	background-image: url('../../media/bg_pattern.png');
 }
 
 /*Top bar is nav bar in larger media*/
