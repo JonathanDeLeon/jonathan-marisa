@@ -63,8 +63,6 @@ function imageHandler() {
             if(!msg.error){
                 $.each(msg, function(key, value){
                     $('.squares').append("<img src='media/"+value+"'>");
-                    console.log(key);
-                    console.log(value);
                 });
             }else{
                 console.log(msg);

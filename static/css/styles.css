@@ -1,7 +1,21 @@
+/*{{{ Fonts*/
 @font-face{
 	font-family: "Alex Brush";
-	src: url(font/AlexBrush-Regular.ttf);
+	src: url("../../fonts/AlexBrush-Regular.ttf") format("truetype");
 }
+@font-face{
+	font-family: "neuton";
+    font-style: normal;
+    font-weight: normal;
+	src: url("../../fonts/Neuton-Regular.ttf") format("truetype");
+}
+@font-face{
+	font-family: "brandon";
+    font-style: normal;
+    font-weight: normal;
+	src: url("../../fonts/Brandon-Grotesque-Medium.ttf") format("truetype");
+}
+/*}}}*/
 
 body{
 	background-color: #f6f6f6;
@@ -35,7 +49,9 @@ header{
 }
 /*Different background images for other projects*/
 #background-home{
-    background-image: url(../../media/ChihulyGardenAndGlass_Seattle-1957208-5148989-104-H.jpg);
+    background-image: url(../../media/094.JPG);
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 #background-countdown{
     background-image: url(../../media/094.JPG);
@@ -55,12 +71,15 @@ header{
 
 /*Top bar is nav bar in larger media*/
 .top-bar {
-	background-color: #434242;
+    font-family: "brandon", sans-serif;
+	background: rgba(0, 0, 0, 0.5);
     color: #fff;
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding: 11px 5%
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 51px;
 }
 .top-bar ul {
 	background-color: transparent;
@@ -68,7 +87,7 @@ header{
 /*Nav bar lists including logo*/
 .top-bar ul li {
 	text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 /*Nav bar links*/
 .top-bar ul li a {
@@ -79,7 +98,6 @@ header{
 	color: black;
     background-color: #fff;
 }
-
 /*}}}*/
 
 #main-content{
