@@ -19,7 +19,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         # list out the routes as regex and their corresponding handlers
         handlers = [
-            (r"/pictures", ImageHandler),
+            (r"/images", ImageHandler),
             (r"/", BaseIndexHandler),
         ]
 
@@ -34,10 +34,6 @@ class Application(tornado.web.Application):
         logger.addHandler(fh)
         tornado.web.Application.__init__(self, handlers)
         logger.info("Application started on port " + str(options.port))
-
-class IndexHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world! How are you today?")
 
 if __name__ == "__main__":
     #initiate the IO loop for Tornado
