@@ -2,7 +2,7 @@ var config = {
     title: "Delion Web",
     description: "Jonathan De Leon's personal webserver.",
     favicon: "",
-    server: "/python_server/",
+    server: "https://www.johndelion.com/server/",
     files:{
         js: [
             ""

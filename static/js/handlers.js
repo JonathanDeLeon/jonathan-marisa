@@ -51,17 +51,24 @@ function pageHandler(path1, path2=null, path3=null) {
 }
 
 function imageHandler() {
-    loader(main, "static/html/pictures.html");
-    /*
+    loader(main, "static/html/pictures.html", function(){
+    
+    });
     $.ajax({
         type: "GET",
-        url: "php/load_images.php",
+        url: config.server+"images",
         data: 'imgTag=all',
-        dataType: "",
+        dataType: "json",
         success: function(msg){
-            if(){
+            if(!msg.error){
+                $.each(msg, function(key, value){
+                    $('.squares').append("<img src='media/"+value+"'>");
+                    console.log(key);
+                    console.log(value);
+                });
+            }else{
+                console.log(msg);
             }
         }
     });
-    */
 }
