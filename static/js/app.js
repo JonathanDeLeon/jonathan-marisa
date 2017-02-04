@@ -27,7 +27,6 @@ $(document).ready(function() {
         var pageOffsetY = window.pageYOffset;
         var vh = $(window).height();
         if((vh-50) <= pageOffsetY){
-            console.log("here");
             $('#main-menu').css({"position":"fixed", "top":"0","left":"0", "bottom":"0"});
         }else{
             $('#main-menu').css({"position":"absolute", "top":"","left":"","bottom":"0"});
