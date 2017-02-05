@@ -17,10 +17,12 @@
 }
 /*}}}*/
 
+/*{{{ Defaults*/
 body{
 	background-color: #f6f6f6;
-    font-family: sans-serif;
+    font-family: "neuton",sans-serif !important;
 }
+/*}}}*/
 
 /*{{{Background/Header/Navbar styling*/
 header{
@@ -80,6 +82,7 @@ header{
     padding-left: 5%;
     padding-right: 5%;
     height: 51px;
+    z-index: 999;
 }
 .top-bar ul {
 	background-color: transparent;
@@ -100,13 +103,53 @@ header{
 }
 /*}}}*/
 
+/*{{{ Sections*/
 #main-content{
-	font-family: "Open Sans";
-	text-align: center;
+    display: block;
+    height: auto;
+    width: 100%;
+    position: relative;
 }
-#page-content{
+section{
 	margin-top: 50px;
+    text-align: center;
 }
+.callout{
+	margin-bottom: 50px;
+}
+/*{{{ Picture Section*/
+.squares i{
+    height: 206px;
+    width: 206px;
+    margin: 2px 3px;
+}
+.squares i{
+    background-size: cover;
+    background-position: 50%, 25%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: relative;
+}
+.squares i:after{
+    border: 1px solid rgba(0,0,0,0.1);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left:0;
+    bottom:0;
+}
+/*}}}*/
+/*}}}*/
+
+@media only screen and (max-width: 40em) {
+	.menu-text {
+	  display: none !important;
+		}
+}
+
+/*{{{ CSS for OLD HTML/
 .top{
 	height: auto;
 	width: 100%;
@@ -124,36 +167,6 @@ header{
 	right: 0;
 	margin-right: 5rem;
 }
-.callout{
-	margin-bottom: 50px;
-}
-.section .title{
-}
-
-.coming-soon {
-	position: absolute;
-	top: 50%;
-	width: 100%;
-	text-align: center;
-	color: white;
-}
-
-.coming-soon h1{
-	padding: 0 10%;
-}
-
-@media only screen and (max-width: 40em) {
-	.menu-text {
-	  display: none !important;
-		}
-	.top > img{
-		height: auto !important;
-	}
-	#top_title{
-		margin-right: 2rem;
-	}
-}
-
 #countdown{
     font-family: sans-serif;
     display: inline-block;
@@ -181,7 +194,7 @@ header{
     padding-top: 5px;
     font-size: 12px;
 }
-
 .largetext{
 	font-size: 3em;
 }
+/*}}}*/
