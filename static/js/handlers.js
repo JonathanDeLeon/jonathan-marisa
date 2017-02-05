@@ -62,7 +62,7 @@ function imageHandler() {
         success: function(msg){
             if(!msg.error){
                 $.each(msg, function(key, value){
-                    $('.squares').append("<img src='media/"+value+"'>");
+                    $('.squares').append("<img src='"+config.media+value+"'>");
                 });
             }else{
                 console.log(msg);

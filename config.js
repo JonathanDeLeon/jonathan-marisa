@@ -3,6 +3,7 @@ var config = {
     description: "Jonathan De Leon's personal webserver.",
     favicon: "",
     server: "https://www.johndelion.com/server/",
+    media: "https://www.johndelion.com/media/",
     files:{
         js: [
             ""
