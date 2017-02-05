@@ -49,12 +49,12 @@ header{
 }
 /*Different background images for other projects*/
 #background-home{
-    background-image: url("https://johndelion.com/media/094.JPG);
+    background-image: url("https://johndelion.com/media/094.JPG");
     background-attachment: fixed;
     overflow-x: hidden;
 }
 #background-countdown{
-    background-image: url("https://johndelion.com/media/094.JPG);
+    background-image: url("https://johndelion.com/media/094.JPG");
 }
 /*Background overlay*/
 #background_overlay{
