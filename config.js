@@ -6,7 +6,7 @@ var config = {
     media: "https://www.johndelion.com/media/",
     files:{
         js: [
-            ""
+            "foundation-6.3/js/app.js"
         ],
         css: [
             "static/css/styles.css"

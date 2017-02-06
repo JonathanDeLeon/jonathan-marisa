@@ -1,6 +1,6 @@
 var handlers = [
-    ["/pictures/.*", imageHandler],
-    ["/pictures", imageHandler],
+    ["/photos/.*", imageHandler],
+    ["/photos", imageHandler],
     ["/.*", pageHandler],
     [".*", indexHandler]
 ];
@@ -49,10 +49,25 @@ function pageHandler(path1, path2=null, path3=null) {
             window.location.href = "#";
     });
 }
-
 function imageHandler() {
-    loader(main, "static/html/pictures.html", function(){
-    
+    loader(main, "static/html/photos.html", function(){
+        $('#upload').on('submit', function(e){
+            console.log($(this));
+            var formData = new FormData($(this)[0]);        //Encrypts data
+            $.ajax({
+                type: "POST",
+                url: config.server+"upload",
+                data: formData,
+                dataType: 'JSON',
+                success: function(msg){
+                    if(!msg.error){
+                    }else{
+                        console.log(msg);
+                    }
+                }
+            });
+            return false;
+        });
     });
     $.ajax({
         type: "GET",
@@ -62,7 +77,19 @@ function imageHandler() {
         success: function(msg){
             if(!msg.error){
                 $.each(msg, function(key, value){
-                    $('.squares').append("<i style='background-image: url("+config.media+value+"')>");
+                    var i = document.createElement("i");
+                    $(i).css("background-image", "url("+config.media+value+")");
+                    $(i).on('click', function(){
+                        //var popup = new Foundation.Reveal($('#showImage'));
+                        $('#showImage').prepend("<img src='"+config.media+value+"'>");
+                        $('#showImage').foundation('open');
+                        $('#showImage').on('closed.zf.reveal', function(){
+                            $(this).children("img").remove();
+                        });
+                        //popup.open();
+                    });
+                    $('.squares').append(i);
+                    //$('.squares').append("<i style='background-image: url("+config.media+value+"')>");
                 });
             }else{
                 console.log(msg);

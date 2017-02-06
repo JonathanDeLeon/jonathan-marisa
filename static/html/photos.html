@@ -1,0 +1,32 @@
+<!--Page Content--> 
+<section>
+    <div class="small-12 medium-8 large-centered column row">
+        <h2 class="title">Photos</h2>
+        <div class="button-group clearfix">
+            <button type="button" class="button float-right">Edit</button>
+            <button type="button" class="button float-right" data-open="uploadImage">Upload</button>
+        </div>
+        <div class="callout row">
+            <div class="squares columns">
+            </div>
+        </div>
+    </div>
+</section>
+<!--End page content-->
+
+<div class="large reveal" id="showImage" data-reveal>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="small reveal" id="uploadImage" data-reveal>
+    <form id="upload" enctype="multipart/form-data" method="post"> 
+        <label for="file">File to upload:</label> 
+        <input id="file" type="file" name="images" multiple> 
+        <label for="submit">Press to...</label> 
+        <input type="submit" name="submit" value="Upload" class="success button"/>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

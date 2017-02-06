@@ -11,7 +11,6 @@ String.prototype.capitalize = function() {
     words = words.replace(" S/s ","/");
     return words;
 }
-
 $(document).ready(function() {
     main = $("main");
 
@@ -22,6 +21,9 @@ $(document).ready(function() {
 
     $.each(config.files.css, function(i, cssUrl){
         $("head").append("<link href='"+cssUrl+"' rel='stylesheet'>");
+    });
+    $.each(config.files.js, function(i, jsUrl){
+      //  $("body").append("<script src='"+jsUrl+"'></script>");
     });
     $(window).scroll(function(){
         var pageOffsetY = window.pageYOffset;
@@ -42,8 +44,10 @@ function initialize(){
 	//$("head").append('<link rel="shortcut-icon" href="'+config.favicon+'"  type="image/x-icon">');
 	//$("head").append('<link rel="apple-touch-icon" href="'+config.favicon+'">');
 	document.title = config.title;
+    $(window).load(function() {
+        $(document).foundation();
+    });
 
-	$(document).foundation();
 }
 
 function loader(div,url,cb) {
