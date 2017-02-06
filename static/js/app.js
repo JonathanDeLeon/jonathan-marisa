@@ -44,16 +44,15 @@ function initialize(){
 	//$("head").append('<link rel="shortcut-icon" href="'+config.favicon+'"  type="image/x-icon">');
 	//$("head").append('<link rel="apple-touch-icon" href="'+config.favicon+'">');
 	document.title = config.title;
-    $(window).load(function() {
-        $(document).foundation();
-    });
-
+    //$(window).on('load', function(){
+   // });
 }
 
 function loader(div,url,cb) {
 	div.empty();
     div.load(url, function(response, status, xhr) {
 		if (cb && typeof cb === "function") cb(xhr);
+        $(document).foundation();
 	});
 }
     //ajax request to load home page

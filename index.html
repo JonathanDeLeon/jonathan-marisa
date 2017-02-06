@@ -61,5 +61,23 @@
 <!--Main-->
 <main id="main-content" data-html="static/html/home.html"></main>
 <!--End Main-->
+<!--Modals-->
+<div class="large reveal" id="showImage" data-reveal>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="small reveal" id="uploadImage" data-reveal>
+    <form id="upload" enctype="multipart/form-data" method="post"> 
+        <label for="file">File to upload:</label> 
+        <input id="file" type="file" name="images" multiple> 
+        <label for="submit">Press to...</label> 
+        <input type="submit" name="submit" value="Upload" class="success button"/>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!--End Modals-->
 </body>
 </html>
