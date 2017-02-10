@@ -52,21 +52,23 @@ function pageHandler(path1, path2=null, path3=null) {
 function imageHandler() {
     loader(main, "static/html/photos.html", function(){
         $('#upload').on('submit', function(e){
-            console.log($(this));
+            e.preventDefault();
             var formData = new FormData($(this)[0]);        //Encrypts data
             $.ajax({
                 type: "POST",
                 url: config.server+"upload",
                 data: formData,
+                processData: false,
+                contentType: false,
                 dataType: 'JSON',
                 success: function(msg){
                     if(!msg.error){
+                        console.log(msg);
                     }else{
                         console.log(msg);
                     }
                 }
             });
-            return false;
         });
     });
     $.ajax({
