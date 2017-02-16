@@ -60,7 +60,7 @@ function imageHandler() {
                 data: formData,
                 processData: false,
                 contentType: false,
-                dataType: 'JSON',
+                dataType: 'json',
                 success: function(msg){
                     if(!msg.error){
                         console.log(msg);
@@ -69,6 +69,7 @@ function imageHandler() {
                     }
                 }
             });
+            return false;
         });
     });
     $.ajax({
