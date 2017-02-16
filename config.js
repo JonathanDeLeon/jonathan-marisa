@@ -13,3 +13,10 @@ var config = {
         ],
     },
 };
+config.imageSize = {
+        xs: config.media+"img-xs/",
+        sm: config.media+"img-sm/",
+        md: config.media+"img-md/",
+        lg: config.media+"img-lg/",
+        de: config.media
+    }

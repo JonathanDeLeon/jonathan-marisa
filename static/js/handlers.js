@@ -80,10 +80,10 @@ function imageHandler() {
             if(!msg.error){
                 $.each(msg, function(key, value){
                     var i = document.createElement("i");
-                    $(i).css("background-image", "url("+config.media+value+")");
+                    $(i).css("background-image", "url("+config.imageSize.sm+value+")");
                     $(i).on('click', function(){
                         //var popup = new Foundation.Reveal($('#showImage'));
-                        $('#showImage').prepend("<img src='"+config.media+value+"'>");
+                        $('#showImage').prepend("<img src='"+config.imageSize.lg+value+"'>");
                         $('#showImage').foundation('open');
                         $('#showImage').on('closed.zf.reveal', function(){
                             $(this).children("img").remove();
@@ -91,7 +91,6 @@ function imageHandler() {
                         //popup.open();
                     });
                     $('.squares').append(i);
-                    //$('.squares').append("<i style='background-image: url("+config.media+value+"')>");
                 });
             }else{
                 console.log(msg);

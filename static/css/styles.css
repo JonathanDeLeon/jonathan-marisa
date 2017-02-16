@@ -51,12 +51,12 @@ header{
 }
 /*Different background images for other projects*/
 #background-home{
-    background-image: url("https://johndelion.com/media/094.JPG");
+    background-image: url("https://johndelion.com/media/094.jpg");
     background-attachment: fixed;
     overflow-x: hidden;
 }
 #background-countdown{
-    background-image: url("https://johndelion.com/media/094.JPG");
+    background-image: url("https://johndelion.com/media/094.jpg");
 }
 /*Background overlay*/
 #background_overlay{
@@ -100,6 +100,12 @@ header{
 .top-bar ul li a:hover {
 	color: black;
     background-color: #fff;
+}
+/*}}}*/
+
+/*{{{ Modals*/
+#showImage {
+    text-align: center;
 }
 /*}}}*/
 
