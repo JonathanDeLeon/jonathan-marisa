@@ -19,6 +19,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         # list out the routes as regex and their corresponding handlers
         handlers = [
+            (r"/upload", UploadHandler),
             (r"/images", ImageHandler),
             (r"/", BaseIndexHandler),
         ]
