@@ -18,6 +18,13 @@
 /*}}}*/
 
 /*{{{ Defaults*/
+* {
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
 body{
 	background-color: #f6f6f6;
     font-family: "neuton",sans-serif !important;
@@ -53,6 +60,7 @@ header{
 #background-home{
     background-image: url("https://johndelion.com/media/094.jpg");
     background-attachment: fixed;
+    background-repeat: no-repeat;
     overflow-x: hidden;
 }
 #background-countdown{
@@ -151,8 +159,11 @@ section{
 
 @media only screen and (max-width: 40em) {
 	.menu-text {
-	  display: none !important;
-		}
+        display: none !important;
+    }
+    #background-home{
+        background-attachment: scroll;
+    }
 }
 
 /*{{{ CSS for OLD HTML/
