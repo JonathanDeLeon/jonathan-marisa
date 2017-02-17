@@ -49,11 +49,15 @@ function pageHandler(path1, path2=null, path3=null) {
             window.location.href = "#";
     });
 }
+var test;
 function imageHandler() {
     loader(main, "static/html/photos.html", function(){
         $('#upload').on('submit', function(e){
             e.preventDefault();
             var formData = new FormData($(this)[0]);        //Encrypts data
+            var t = $(this);
+            $('#loader').show();
+            $(this)[0][1].className += " disabled";
             $.ajax({
                 type: "POST",
                 url: config.server+"upload",
@@ -63,10 +67,36 @@ function imageHandler() {
                 dataType: 'json',
                 success: function(msg){
                     if(!msg.error){
-                        console.log(msg);
+                        $("#alertContainer")
+                            .removeClass("alert")
+                            .addClass("success")
+                            .html(msg.success)
+                            .show()
+                            .delay(5000)
+                            .fadeOut()
                     }else{
-                        console.log(msg);
+                        $("#alertContainer")
+                            .removeClass("success")
+                            .addClass("alert")
+                            .html(msg.error)
+                            .show()
+                            .delay(5000)
+                            .fadeOut()
                     }
+                },
+                error: function(jqXHR, error){
+                    $("#alertContainer")
+                        .removeClass("success")
+                        .addClass("alert")
+                        .html("Upload request was too large.")
+                        .show()
+                        .delay(5000)
+                        .fadeOut()
+                },
+                complete: function(){
+                    t[0].reset();
+                    t[0][1].classList.remove("disabled");
+                    $('#loader').hide();
                 }
             });
             return false;
