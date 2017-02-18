@@ -109,6 +109,9 @@ header{
 	color: black;
     background-color: #fff;
 }
+.menu-text {
+    color: #fff;
+}
 /*}}}*/
 
 /*{{{ Modals*/
@@ -131,6 +134,7 @@ section{
 .callout{
 	margin-bottom: 50px;
 }
+
 /*{{{ Picture Section*/
 .squares i{
     height: 206px;
