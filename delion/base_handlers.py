@@ -2,7 +2,6 @@
 
 import tornado.web
 import logging
-import requests
 import json
 import time
 import datetime
@@ -10,8 +9,12 @@ import hmac
 import base64
 import hashlib
 import os
+import sqlite3
 import StringIO
 from PIL import Image
+from delion.sqlite import *
+
+logger = logging.getLogger("jd_log")
 
 # this is the root/base handler for all other handlers
 class BaseHandler(tornado.web.RequestHandler):
@@ -64,7 +67,7 @@ class UploadHandler(BaseHandler):
         # print self.request.files['images'][0]
         files = []
         msgType = "None"
-        msg = "Nothing happened"
+        msg = "Nothing happened "
         try:
             files = self.request.files['images']
         except Exception as e:
@@ -79,13 +82,18 @@ class UploadHandler(BaseHandler):
             filename = filename.replace("/", "")
             if any([filename.lower().endswith(e) for e in VALID_IMAGE_EXTENSIONS]):
                 # compress and resize image
-                path = handle_uploaded_image_with_dimensions(filename, tempFile['body'])
-                print path
-                msgType = "success"
-                msg = "The file(s) were successfully uploaded" 
+                try:
+                    path = handle_uploaded_image_with_dimensions(filename, tempFile['body'])
+                    print path
+                    msgType = "success"
+                    msg = "The file(s) were successfully uploaded" 
+                except Exception as e:
+                    msgType = "error"
+                    msg = repr(e) 
+                    break
             else:
                 msgType = "error"
-                msg += "The file "+str(filename)+" is not an image " 
+                msg = "The file "+str(filename)+" is not an image " 
                 break
         self.write({msgType: msg})
         pass
@@ -116,7 +124,7 @@ def handle_uploaded_image(save_to, image_name, image_file, width=None, height=No
 
     # if file already exists
     if os.path.exists(os.path.join(save_to, filename)):
-        return False
+        raise OSError("The following image already exists: "+str(filename))
 
     # create PIL Image instance
     imagefile = StringIO.StringIO(image_file)
@@ -165,7 +173,8 @@ def handle_uploaded_image(save_to, image_name, image_file, width=None, height=No
     '''
 
     # resize (doing a thumb)
-    image.thumbnail([width, height], Image.ANTIALIAS)
+    # image.thumbnail([width, height], Image.ANTIALIAS)
+    image = image.resize((width, height), Image.ANTIALIAS)
 
     # save to disk
     imagefile = open(os.path.join(save_to, filename), 'w')
