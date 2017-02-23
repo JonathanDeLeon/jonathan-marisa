@@ -110,8 +110,11 @@ function imageHandler() {
         success: function(msg){
             if(!msg.error){
                 $.each(msg, function(key, value){
-                    var i = document.createElement("i");
-                    $(i).css("background-image", "url("+config.imageSize.sm+value+")");
+                    var div = document.createElement("div");
+                    div.className = "clip";
+                    var i = document.createElement("img");
+                    //$(i).css("background-image", "url("+config.imageSize.sm+value+")");
+                    $(i).attr("src", ""+config.imageSize.sm+value+"");
                     $(i).on('click', function(){
                         //var popup = new Foundation.Reveal($('#showImage'));
                         $('#showImage').prepend("<img src='"+config.imageSize.lg+value+"'>");
@@ -121,7 +124,8 @@ function imageHandler() {
                         });
                         //popup.open();
                     });
-                    $('.squares').append(i);
+                    div.appendChild(i);
+                    $('.squares').append(div);
                 });
             }else{
                 console.log(msg);

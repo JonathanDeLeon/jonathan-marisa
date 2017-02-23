@@ -135,6 +135,12 @@ section{
 }
 
 /*{{{ Picture Section*/
+.squares{
+    height: 100%;
+}
+.squares img{
+    border: 1px solid rgba(0,0,0,0.1);
+}
 .squares i{
     height: 206px;
     width: 206px;
@@ -159,6 +165,25 @@ section{
 }
 /*}}}*/
 /*}}}*/
+@media only screen and (min-width: 40em) {
+    .squares .clip {
+        display: inline-block;
+        position: relative;
+        height: 206px;
+        width: 206px;
+        overflow: hidden;
+    }
+    .squares .clip img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: none;
+        transform: translate(-50%, -45%);
+        -webkit-transform: translate(-50%, -45%);
+        -moz-transform: translate(-50%, -45%);
+        -o-transform: translate(-50%, -45%);
+    }
+}
 
 @media only screen and (max-width: 40em) {
 	.menu-text {
