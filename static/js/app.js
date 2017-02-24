@@ -34,6 +34,9 @@ $(document).ready(function() {
             $('#main-menu').css({"position":"absolute","top":"","left":"","bottom":"0"});
         }
     });
+    if($(window).width() < 640){
+        $('header').css({"height": $(window).height()});
+    }
 });
 
 function initialize(){

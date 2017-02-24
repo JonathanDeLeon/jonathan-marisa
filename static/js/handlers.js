@@ -68,13 +68,13 @@ function imageHandler() {
                     div2.className = "img-overlay";
                     a.className = "view-details";
                     a.innerHTML= "<p>"+value.description+"Hello</p>";
-                    a.setAttribute("href", "&id="+key);
                     if(vw < 640){
                         img.className = "list-image";
                         img.setAttribute("src", config.imageSize.md+value.name);
                     }else{ 
                         img.className = "block-image";
                         img.setAttribute("src", config.imageSize.sq+value.name);
+                        a.setAttribute("href", "&id="+key);
                         $(a).on('click', function(e){
                             e.preventDefault();
                             var a = $(this)[0];
