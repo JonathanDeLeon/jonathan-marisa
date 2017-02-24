@@ -74,16 +74,14 @@ function imageHandler() {
                     }else{ 
                         img.className = "block-image";
                         img.setAttribute("src", config.imageSize.sq+value.name);
-                        a.setAttribute("href", "&id="+key);
                         $(a).on('click', function(e){
                             e.preventDefault();
-                            var a = $(this)[0];
-                            var href = a.getAttribute('href');
-                            $('#editImage')[0].addEventListener('click', function(){editImageHandler(href);});
+                            $('#editImage').on('click', function(){getImageInfoById(key);});
                             $('#showImage div').prepend("<img src='"+config.imageSize.md+value.name+"'>");
                             $('#showImage').foundation('open');
                             $('#showImage').on('closed.zf.reveal', function(){
                                 $(this).find("img").remove();
+                                $('#editImage').unbind('click');
                             });
                         });
                     }
@@ -101,6 +99,7 @@ function imageHandler() {
     $('#upload').on('submit', function(e){
         e.preventDefault();
         var formData = new FormData($(this)[0]);        //Encrypts data
+        var t = $(this);
         $('#loader').show();
         $(this)[0][1].className += " disabled";
         $.ajax({
@@ -148,7 +147,48 @@ function imageHandler() {
     });
 }
 
-function editImageHandler(id){
-    id = id.replace('&id=','');
-    console.log(id);
+function editImageHandler(imgList){
+    $('#editImageModal').foundation('open');
+    $('#editImageModal').on('closed.zf.reveal', function(){
+        $(this).find("img").remove();
+        $('#edit')[0].reset();
+    });
+    $('#editImageModal #edit').prepend("<img src='"+config.imageSize.xs+imgList.name+"'>");
+    $('#edit textarea').val(imgList.description);
+    $.each(imgList.tags, function(key, value){
+       $('#'+value).prop('checked', true); 
+    });
+    $('#edit').on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: config.server+"updateImage",
+            data: "id="+id,
+            dataType: 'json',
+            success: function(msg){
+                console.log(msg);
+            }
+        });
+        return false;
+    });
 }
+
+function getImageInfoById(id){
+    var list = {};
+    id = id.replace('&id=','');
+    $.ajax({
+        type: "GET",
+        url: config.server+"images",
+        data: 'imgTag=specific&id='+id,
+        dataType: "json",
+        success: function(msg){
+            if(!msg.error){
+                editImageHandler(msg);
+            }else{
+                console.log(msg);
+            }
+        }
+    });
+    return list;
+}
+

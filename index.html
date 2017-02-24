@@ -84,6 +84,25 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+<div class="small reveal" id="editImageModal" data-reveal>
+    <form id="edit" method="post"> 
+        <label>
+            Image description
+            <textarea placeholder="None" name="description"></textarea>
+        </label>
+        <fieldset class="fieldset">
+            <legend>Tags</legend>
+            <input type="checkbox" id="albumcover" name="tags[]" value="0"><label for="albumcover">Album Cover</label>
+            <input type="checkbox" id="timeline" name="tags[]" value="1"><label for="timeline">Timeline</label>
+        </fieldset>
+        <label for="submit">Press to...</label> 
+        <input type="submit" name="submit" value="Update" class="success button"/>
+    </form>
+    <div id="alertContainer" class="callout" style="display: none;"></div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <!--End Modals-->
 </body>
 </html>
