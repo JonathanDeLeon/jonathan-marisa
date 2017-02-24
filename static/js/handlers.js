@@ -112,19 +112,29 @@ function imageHandler() {
                 $.each(msg, function(key, value){
                     var div = document.createElement("div");
                     div.className = "clip";
-                    var i = document.createElement("img");
-                    //$(i).css("background-image", "url("+config.imageSize.sm+value+")");
-                    $(i).attr("src", ""+config.imageSize.sm+value+"");
-                    $(i).on('click', function(){
-                        //var popup = new Foundation.Reveal($('#showImage'));
-                        $('#showImage').prepend("<img src='"+config.imageSize.lg+value+"'>");
-                        $('#showImage').foundation('open');
-                        $('#showImage').on('closed.zf.reveal', function(){
-                            $(this).children("img").remove();
+                    var a = document.createElement("a");
+                    a.className = "view-details";
+                    if($(window).width() < 640){
+                        var i2 = document.createElement("img");
+                        i2.className = "list-image";
+                        $(i2).attr("src", ""+config.imageSize.md+value+"");
+                        a.appendChild(i2);
+                    }else{ 
+                        var i = document.createElement("img");
+                        i.className = "block-image";
+                        $(i).attr("src", ""+config.imageSize.sq+value+"");
+                        $(i).on('click', function(){
+                            //var popup = new Foundation.Reveal($('#showImage'));
+                            $('#showImage').prepend("<img src='"+config.imageSize.md+value+"'>");
+                            $('#showImage').foundation('open');
+                            $('#showImage').on('closed.zf.reveal', function(){
+                                $(this).children("img").remove();
+                            });
+                            //popup.open();
                         });
-                        //popup.open();
-                    });
-                    div.appendChild(i);
+                        a.appendChild(i);
+                    }
+                    div.appendChild(a);
                     $('.squares').append(div);
                 });
             }else{

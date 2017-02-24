@@ -26,7 +26,7 @@
 }
 
 body{
-	background-color: #f6f6f6;
+	background-color: rgb(250,250,250);
     font-family: "neuton",sans-serif !important;
 }
 /*}}}*/
@@ -135,11 +135,26 @@ section{
 }
 
 /*{{{ Picture Section*/
+#displayPhotos{
+    max-width:100%;
+}
 .squares{
-    height: 100%;
+    position: relative;
+    max-width: 100%;
+    padding: 0;
+}
+.squares div.clip {
+    margin: 5px 0;
 }
 .squares img{
-    border: 1px solid rgba(0,0,0,0.1);
+}
+.squares .clip a{
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height:0;
+    width: 100%;
+    height: 100%;
 }
 .squares i{
     height: 206px;
@@ -169,20 +184,24 @@ section{
     .squares .clip {
         display: inline-block;
         position: relative;
-        height: 206px;
-        width: 206px;
         overflow: hidden;
+        width: 300px;
     }
+    .squares div.clip {
+        margin: 10px;
+    }
+    /* Not used since we have cropped images
     .squares .clip img{
         position: absolute;
         top: 50%;
         left: 50%;
         max-width: none;
-        transform: translate(-50%, -45%);
-        -webkit-transform: translate(-50%, -45%);
-        -moz-transform: translate(-50%, -45%);
-        -o-transform: translate(-50%, -45%);
+        transform: translate(-50%, -45%) scale(0.85);
+        -webkit-transform: translate(-50%, -45%) scale(0.85);
+        -moz-transform: translate(-50%, -45%) scale(0.85);
+        -o-transform: translate(-50%, -45%) scale(0.85);
     }
+    */
 }
 
 @media only screen and (max-width: 40em) {
