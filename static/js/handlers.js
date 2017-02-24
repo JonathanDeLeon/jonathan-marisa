@@ -49,59 +49,8 @@ function pageHandler(path1, path2=null, path3=null) {
             window.location.href = "#";
     });
 }
-var test;
 function imageHandler() {
-    loader(main, "static/html/photos.html", function(){
-        $('#upload').on('submit', function(e){
-            e.preventDefault();
-            var formData = new FormData($(this)[0]);        //Encrypts data
-            var t = $(this);
-            $('#loader').show();
-            $(this)[0][1].className += " disabled";
-            $.ajax({
-                type: "POST",
-                url: config.server+"upload",
-                data: formData,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                success: function(msg){
-                    if(!msg.error){
-                        $("#alertContainer")
-                            .removeClass("alert")
-                            .addClass("success")
-                            .html(msg.success)
-                            .show()
-                            .delay(5000)
-                            .fadeOut()
-                    }else{
-                        $("#alertContainer")
-                            .removeClass("success")
-                            .addClass("alert")
-                            .html(msg.error)
-                            .show()
-                            .delay(5000)
-                            .fadeOut()
-                    }
-                },
-                error: function(jqXHR, error){
-                    $("#alertContainer")
-                        .removeClass("success")
-                        .addClass("alert")
-                        .html("Upload request was too large.")
-                        .show()
-                        .delay(5000)
-                        .fadeOut()
-                },
-                complete: function(){
-                    t[0].reset();
-                    t[0][1].classList.remove("disabled");
-                    $('#loader').hide();
-                }
-            });
-            return false;
-        });
-    });
+    loader(main, "static/html/photos.html", function(){});
     $.ajax({
         type: "GET",
         url: config.server+"images",
@@ -109,32 +58,38 @@ function imageHandler() {
         dataType: "json",
         success: function(msg){
             if(!msg.error){
+                var vw = $(window).width();
                 $.each(msg, function(key, value){
                     var div = document.createElement("div");
-                    div.className = "clip";
+                    var div2 = document.createElement("div");
                     var a = document.createElement("a");
+                    var img = document.createElement("img");
+                    div.className = "clip";
+                    div2.className = "img-overlay";
                     a.className = "view-details";
-                    if($(window).width() < 640){
-                        var i2 = document.createElement("img");
-                        i2.className = "list-image";
-                        $(i2).attr("src", ""+config.imageSize.md+value+"");
-                        a.appendChild(i2);
+                    a.innerHTML= "<p>"+value.description+"Hello</p>";
+                    if(vw < 640){
+                        img.className = "list-image";
+                        img.setAttribute("src", config.imageSize.md+value.name);
                     }else{ 
-                        var i = document.createElement("img");
-                        i.className = "block-image";
-                        $(i).attr("src", ""+config.imageSize.sq+value+"");
-                        $(i).on('click', function(){
-                            //var popup = new Foundation.Reveal($('#showImage'));
-                            $('#showImage').prepend("<img src='"+config.imageSize.md+value+"'>");
-                            $('#showImage').foundation('open');
-                            $('#showImage').on('closed.zf.reveal', function(){
-                                $(this).children("img").remove();
-                            });
-                            //popup.open();
-                        });
-                        a.appendChild(i);
+                        img.className = "block-image";
+                        img.setAttribute("src", config.imageSize.sq+value.name);
                     }
-                    div.appendChild(a);
+                    a.setAttribute("href", "&id="+key);
+                    $(a).on('click', function(e){
+                        e.preventDefault();
+                        var a = $(this)[0];
+                        var href = a.getAttribute('href');
+                        $('#editImage')[0].addEventListener('click', function(){editImageHandler(href);});
+                        $('#showImage div').prepend("<img src='"+config.imageSize.md+value.name+"'>");
+                        $('#showImage').foundation('open');
+                        $('#showImage').on('closed.zf.reveal', function(){
+                            $(this).find("img").remove();
+                        });
+                    });
+                    div2.appendChild(a);
+                    div2.appendChild(img);
+                    div.appendChild(div2);
                     $('.squares').append(div);
                 });
             }else{
@@ -142,4 +97,58 @@ function imageHandler() {
             }
         }
     });
+    $('.img-overlay').attr('onclick', "return true");      //mobile fix to trigger :hover, :focus animation
+    $('#upload').on('submit', function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);        //Encrypts data
+        $('#loader').show();
+        $(this)[0][1].className += " disabled";
+        $.ajax({
+            type: "POST",
+            url: config.server+"upload",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(msg){
+                if(!msg.error){
+                    $("#alertContainer")
+                        .removeClass("alert")
+                        .addClass("success")
+                        .html(msg.success)
+                        .show()
+                        .delay(5000)
+                        .fadeOut()
+                }else{
+                    $("#alertContainer")
+                        .removeClass("success")
+                        .addClass("alert")
+                        .html(msg.error)
+                        .show()
+                        .delay(5000)
+                        .fadeOut()
+                }
+            },
+            error: function(jqXHR, error){
+                $("#alertContainer")
+                    .removeClass("success")
+                    .addClass("alert")
+                    .html("Upload request was too large.")
+                    .show()
+                    .delay(5000)
+                    .fadeOut()
+            },
+            complete: function(){
+                t[0].reset();
+                t[0][1].classList.remove("disabled");
+                $('#loader').hide();
+            }
+        });
+        return false;
+    });
+}
+
+function editImageHandler(id){
+    id = id.replace('&id=','');
+    console.log(id);
 }

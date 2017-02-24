@@ -58,7 +58,7 @@ header{
 }
 /*Different background images for other projects*/
 #background-home{
-    background-image: url("https://johndelion.com/media/095.jpg");
+    background-image: url("https://johndelion.com/media/img-lg/095.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
@@ -116,6 +116,55 @@ header{
 /*{{{ Modals*/
 #showImage {
     text-align: center;
+    -moz-transition: all 0.35s;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.img-overlay{
+    position: relative;
+    margin-top: 1.4em;
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+}
+.img-overlay img{
+    -moz-transform: translate(0,0) scale(1,1);
+    -webkit-transform: translate(0,0) scale(1,1);
+    transform: translate(0,0) scale(1,1);
+}
+.img-overlay:hover img, .image-overlay:focus img{
+    -moz-transform: translate(0,1rem) scale(1.1,1.1);
+    -webkit-transform: translate(0,1rem) scale(1.1,1.1);
+    transform: translate(0,1rem) scale(1.1,1.1);
+}
+.img-overlay a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    opacity: 0;
+    background: rgba(0,0,0,0.2);
+    -moz-transition:none;
+    -webkit-transition: none;
+    transition: none;
+}
+.img-overlay:hover a, .img-overlay:focus a{
+    width: 100%;
+    opacity: 1;
+}
+.img-overlay a i{
+    font-size: 3rem;
+    position: absolute;
+    bottom: 0;
+    right:5%;
+    color: white;
+}
+.img-overlay a i:hover{
+    color: black;
+}
+.close-button{
+    color: black;
 }
 /*}}}*/
 
@@ -146,7 +195,8 @@ section{
 .squares div.clip {
     margin: 5px 0;
 }
-.squares img{
+.squares .clip div{
+    margin: 0;
 }
 .squares .clip a{
     display: block;
@@ -155,6 +205,26 @@ section{
     line-height:0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+}
+.view-details p{
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    opacity: 0;
+    -moz-transform: translate3d(0,100%,0);
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+}
+.img-overlay:hover .view-details p, .img-overlay:focus .view-details p{
+    opacity: 1;
+    -moz-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
 }
 .squares i{
     height: 206px;
@@ -179,7 +249,8 @@ section{
     bottom:0;
 }
 /*}}}*/
-/*}}}*/
+
+/*{{{Section media queries */
 @media only screen and (min-width: 40em) {
     .squares .clip {
         display: inline-block;
@@ -203,7 +274,10 @@ section{
     }
     */
 }
+/*}}}*/
+/*}}}*/
 
+/*{{{Extra Media Queries*/
 @media only screen and (max-width: 40em) {
 	.menu-text {
         display: none !important;
@@ -212,6 +286,7 @@ section{
         background-attachment: scroll;
     }
 }
+/*}}}*/
 
 /*{{{ CSS for OLD HTML/
 .top{
