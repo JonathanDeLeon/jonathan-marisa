@@ -68,25 +68,25 @@ function imageHandler() {
                     div2.className = "img-overlay";
                     a.className = "view-details";
                     a.innerHTML= "<p>"+value.description+"Hello</p>";
+                    a.setAttribute("href", "&id="+key);
                     if(vw < 640){
                         img.className = "list-image";
                         img.setAttribute("src", config.imageSize.md+value.name);
                     }else{ 
                         img.className = "block-image";
                         img.setAttribute("src", config.imageSize.sq+value.name);
-                    }
-                    a.setAttribute("href", "&id="+key);
-                    $(a).on('click', function(e){
-                        e.preventDefault();
-                        var a = $(this)[0];
-                        var href = a.getAttribute('href');
-                        $('#editImage')[0].addEventListener('click', function(){editImageHandler(href);});
-                        $('#showImage div').prepend("<img src='"+config.imageSize.md+value.name+"'>");
-                        $('#showImage').foundation('open');
-                        $('#showImage').on('closed.zf.reveal', function(){
-                            $(this).find("img").remove();
+                        $(a).on('click', function(e){
+                            e.preventDefault();
+                            var a = $(this)[0];
+                            var href = a.getAttribute('href');
+                            $('#editImage')[0].addEventListener('click', function(){editImageHandler(href);});
+                            $('#showImage div').prepend("<img src='"+config.imageSize.md+value.name+"'>");
+                            $('#showImage').foundation('open');
+                            $('#showImage').on('closed.zf.reveal', function(){
+                                $(this).find("img").remove();
+                            });
                         });
-                    });
+                    }
                     div2.appendChild(a);
                     div2.appendChild(img);
                     div.appendChild(div2);

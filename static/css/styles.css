@@ -139,18 +139,18 @@ header{
 }
 .img-overlay a{
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    height: 100%;
-    width: 0%;
+    height: 0%;
+    width: 100%;
     opacity: 0;
     background: rgba(0,0,0,0.2);
-    -moz-transition:none;
     -webkit-transition: none;
+    -moz-transition: none;
     transition: none;
 }
 .img-overlay:hover a, .img-overlay:focus a{
-    width: 100%;
+    height: 100%;
     opacity: 1;
 }
 .img-overlay a i{
@@ -203,7 +203,7 @@ section{
     margin: 0;
     padding: 0;
     line-height:0;
-    height: 100%;
+    width: 100%;
     z-index: 1;
 }
 .view-details p{
