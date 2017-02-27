@@ -19,10 +19,10 @@
 
 /*{{{ Defaults*/
 * {
-    -webkit-transition: all 0.8s;
-    -moz-transition: all 0.8s;
-    -o-transition: all 0.8s;
-    transition: all 0.8s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 body{
@@ -36,6 +36,11 @@ header{
     position:relative;
     overflow: hidden;
     height: 100vh;
+}
+nav{
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
 }
 /*Fixed Background with an image covering the page*/
 .background {
@@ -110,6 +115,7 @@ header{
 }
 .menu-text {
     color: #fff;
+    letter-spacing: 6px;
 }
 /*}}}*/
 
