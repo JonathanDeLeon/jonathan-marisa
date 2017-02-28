@@ -2,8 +2,8 @@ var config = {
     title: "Delion Web",
     description: "Jonathan De Leon's personal webserver.",
     favicon: "",
-    server: "https://www.johndelion.com/server/",
-    media: "https://www.johndelion.com/media/",
+    server: "https://jonathan-marisa.com/server/",
+    media: "https://jonathan-marisa.com/media/",
     files:{
         js: [
             "foundation-6.3/js/app.js"

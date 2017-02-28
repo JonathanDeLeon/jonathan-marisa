@@ -63,12 +63,12 @@ nav{
 }
 /*Different background images for other projects*/
 #background-home{
-    background-image: url("https://johndelion.com/media/img-lg/095.jpg");
+    background-image: url("https://jonathan-marisa.com/media/img-lg/095.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 #background-countdown{
-    background-image: url("https://johndelion.com/media/094.jpg");
+    background-image: url("https://jonathan-marisa.com/media/094.jpg");
 }
 /*Background overlay*/
 #background_overlay{
