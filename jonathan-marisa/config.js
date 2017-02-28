@@ -1,6 +1,6 @@
 var config = {
-    title: "Delion Web",
-    description: "Jonathan De Leon's personal webserver.",
+    title: "Jonathan & Marisa",
+    description: "Jonathan and Marisa's website displaying their wonderful memories together.",
     favicon: "",
     server: "https://jonathan-marisa.com/server/",
     media: "https://jonathan-marisa.com/media/",
