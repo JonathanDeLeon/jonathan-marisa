@@ -26,6 +26,12 @@
 /*}}}*/
 
 /*{{{Global Styling*/
+* {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
 /* root font-size=16px*/
 body{
 	background-color: #f6f6f6;
@@ -187,6 +193,9 @@ section h2, section h4{
 /*}}}2*/
 
 /*{{{2 Projects Section*/
+#projects .row > div:not(:last-child){
+    margin-bottom: 1rem;
+}
 #projects figure {
     position: relative;
     overflow: hidden;
@@ -198,6 +207,7 @@ figure.effect {
 }
 #projects figure .thumbnail{
     margin: 0;
+    height: 350px;
 }
 #projects figure img {
     width: 110%;
