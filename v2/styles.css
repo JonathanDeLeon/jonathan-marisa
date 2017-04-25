@@ -133,7 +133,7 @@ header {
     width: 65%;
     margin: -10% 0 0 -32%;
 }
-#frontpage-name h1, #frontpage-name h3 {
+#frontpage-name h1, #frontpage-name h4 {
     font-family: "Ostrich Sans Medium";
 }
 #frontpage-name hr {
@@ -318,6 +318,7 @@ footer {
 }
 footer a{
     opacity: 0.8;
+    margin: 0 1rem;
 }
 footer a:hover{
     opacity: 1;
