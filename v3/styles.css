@@ -34,7 +34,7 @@
 }
 /* root font-size=16px*/
 body{
-	background-color: #f6f6f6;
+	background-color: #f0f0f0;
     font-weight: 400;
 }
 main,header,nav,section,footer{display:block;}
@@ -150,14 +150,20 @@ header {
     margin-bottom: 1rem;
 }
 section{
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+    padding: 2rem 0;
 }
 section h2{
 	text-align: center;
 }
 section h2, section h4{
     color: rgba(26,26,26,.9);
+}
+section .card{
+    padding: 1rem 0.5rem;
+    background-color: #FFFFFF;
+}
+#contact-card{
+    position: fixed;
 }
 /*{{{2 Profile Section*/
 #profile .column.row .row:last-child{
