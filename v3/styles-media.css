@@ -1,20 +1,5 @@
 /*Small Only*/
 @media only screen and (max-width: 40em) {
-	.menu-text {
-	  display: none !important;
-	}
-    #frontpage-name hr {
-        max-width: 175px;
-    }
-    nav{
-        background-color: black;
-    }
-    .top-bar ul li{
-        font-size: 14px;
-    }
-    .top-bar ul li a{
-        padding: 0.7rem 0.5rem !important;
-    }
     #profile > div .row{
        padding-left: 2rem; 
        padding-right: 2rem; 
@@ -25,10 +10,12 @@
 }
 /* Medium and down */
 @media screen and (max-width: 63.9375em) {
+    section{
+        padding: 1rem 0;
+    }
 }
 /* Medium and up */
 @media screen and (min-width: 40em) {
-
 }
 
 /* Medium only */
@@ -38,7 +25,9 @@
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-
+    #contact-card{
+        position: fixed;
+    }
 }
 
 /* Large only */

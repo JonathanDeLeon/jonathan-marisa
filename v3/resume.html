@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Jonathan De Leon - Web Developer, Systems Administrator, Software Engineer"/>
+    <meta name="keywords" content="web development, website, design, engineer, freelance, software"/>
+    <title>Jonathan De Leon - Web Developer & Systems Administrator</title>
+
+    <link rel="stylesheet" type="text/css" href="foundation-6/css/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="foundation-6/foundation-icons/foundation-icons.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles-media.css">
+
+	<script type="text/javascript" src="foundation-6/js/vendor/jquery.min.js"></script>
+	<script src="foundation-6/js/foundation.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).foundation();
+            $('figure.effect').attr('onclick', "return true");      //mobile fix to trigger :hover, :focus animation
+        });
+    </script>
+</head>
+<body style="background-color:#F0F0F0;">
+<main class="columns">
+<!--Me Section-->
+<section id="contact-card"class="large-4 columns">
+    <div class="card">
+        <div class="row">
+            <div class="small-12 medium-centered columns">
+                <div class="circular-portrait">
+                    <img src="media/me3.jpg" alt="Profile Picture">
+                </div>
+                <h3>Jonathan De Leon</h3>
+                <h5 class="subheader">Systems Administrator &bull; Freelance Web Developer</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <hr>
+                <div id="contacts">
+                    <p><i class="fi-map font-24"></i>College Place, WA</p>
+                    <script>
+                        var username = "jondeleon200";
+                        var hostname = "gmail.com";
+                        var linktext = username + "@" + hostname ;
+                        document.write("<a href='" + "mail" + "to:" + username + "@" + hostname + "'><i class='fi-mail font-24'></i><p>" + linktext + "</p></a>");
+                    </script>
+                    <a href="resume.docx"><i class="fi-page-doc font-24"></i>
+                        <p>Resume (MS Word)</p>
+                    </a>
+                </div>
+                <hr>
+                <div id="links">
+                    <a href="https://github.com/JonathanDeLeon" target="_blank"><i class="fi-social-github git font-32"></i></a>
+                    <a href="www.linkedin.com/in/jonathan-de-leon" target="_blank"><i class="fi-social-linkedin font-32"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Me Section-->
+
+<!--Resume Section-->
+<section class="large-8 columns">
+    <div class="card">
+        <article id="profile">
+            <div class="small-12 column row">
+                <h3><i class="fi-address-book font-32"></i> About</h3>
+                <hr>
+                <div class="row">
+                    <div class="small-12 medium-11 medium-offset-1 columns">
+                        <p>I am a Software Developer who grew up in the suburbs of Montebello, CA. In 2014, I began my studies as a
+                        Computer Science major at Walla Walla University in Washington where I grew an interest to offer quality technical support.
+                        Over the years, I have picked up many skills including various web front-end and backend framework techniques, system administration,
+                        database management, and general application programming skills. When it comes to programming, I love structure and order and love spending
+                        time optimizing current and past applications. I currently spend my spare time working as a software developer for Campground Automation Systems, 
+                        working on freelance web projects, and playing soccer with Walla Walla University's varsity program. I am an ambitious worker, passionate about my job,
+                        who never stops learning and am always ready for a new challenge.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="experiences">
+            <div class="small-12 column row">
+                <h3><i class="fi-wrench font-32"></i> Work Experience</h3>
+                <hr>
+                <div class="row">
+                    <div class="small-4 large-3 columns">
+                        <img class="thumbnail" src="media/cas-icon.jpg" alt="Campground Automation Systems">
+                    </div>
+                    <div class="small-8 large-8 large-offset-1 columns">
+                        <div class="title">
+                            <h4 class="organization">Campground Automation Systems</h4>
+                            <h6 class="subtitle">Computer Developer <span class="float-right">2015-Present</span></h6>
+                        </div>
+                        <p>
+                        Campground Automation Systems provides cloud based campground reservation management software called Sunrise. 
+                        Sunrise is designed for the unique needs for RV parks and campgrounds by providing features such as  
+                        point of sale, recurring billing, gate integration, and last but not least a very flexible rules engine.
+                        I started as a rules developer writing in Java. I also help create campground report templates by retrieving data using MySQL.
+                        Currently, I am in the process of integrating the rules engine into a dynamic UI to automate the rules process using the Groovy & Grails Framework. 
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-4 large-3 columns">
+                        <img class="thumbnail" src="media/aswwu-icon.jpg" alt="Associated Students of Walla Walla University">
+                    </div>
+                    <div class="small-8 large-8 large-offset-1 columns">
+                        <div class="title">
+                            <h4 class="organization">Associated Students of Walla Walla University</h4>
+                            <h6 class="subtitle">Webmaster<span class="float-right">2015</span></h6>
+                        </div>
+                        <p>
+                        At <a href="https://www.aswwu.com" target="blank">aswwu.com</a>, I improved the current web application and re-factored the code. 
+                        I also helped expand the back-end system in PHP and resturctured the front-end by giving it a new look and feel.
+                        The site utilizes multiple functions including and not limited to: a dynamic student directory, the ability for students to create groups with events and followers,
+                         and responsive design.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-4 large-3 columns">
+                        <img class="thumbnail" src="media/wwu-icon.jpg" alt="Walla Walla University">
+                    </div>
+                    <div class="small-8 large-8 large-offset-1 columns">
+                        <div class="title">
+                            <h4 class="organization">Walla Walla University</h4>
+                            <h6 class="subtitle">Academic Computer Technician<span class="float-right">2014-2015</span></h6>
+                        </div>
+                        <p>
+                        As a freshman in college, I configured, maintained, and operated over 1000 computers on the main university campus and 4 satellite campuses.
+                        I worked in a small team in the IT department monitoring and repairing systems and networks.  
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="projects">
+            <div class="small-12 column row">
+                <h3><i class="fi-share font-32"></i> Projects</h3>
+                <hr>
+                <div class="row small-up-1 medium-up-2">
+                    <div class="column column-block">
+                        <figure class="effect">
+                            <img class="thumbnail" src="media/aswwu-web1.jpg" alt="aswwu.com">
+                            <figcaption>
+                                <h3>ASWWU</h3>
+                                <p>Built website with the ability to dynamically search in the student directory</p>
+                                <a href="https://www.aswwu.com" target="_blank"></a>
+                            </figcaption> 
+                        </figure>
+                    </div>
+                    <div class="column column-block">
+                        <figure class="effect">
+                            <img class="thumbnail" src="media/cmww-web.jpg" alt="Children's Museum of Walla Walla">
+                            <figcaption>
+                                <h3>Children's Museum of Walla Walla</h3>
+                                <p>CMWW, a non-profit organization located in Walla Walla, WA.</p>
+                                <a href="http://www.cmww.org" target="_blank"></a>
+                            </figcaption> 
+                        </figure>
+                    </div>
+                    <div class="column column-block">
+                        <figure class="effect">
+                            <img class="thumbnail" src="media/elkoss.jpg" alt="Elkoss 3D Printer">
+                            <figcaption>
+                                <h3>Elkoss</h3>
+                                <p>Designed and built a website with the functionality to purchase the 3D printer, Elkoss. The development of the website was part of a collaboration scrum/hackathon at Walla Walla University.</p>
+                                <a href="https://elkoss.johndelion.com" target="_blank"></a>
+                            </figcaption> 
+                        </figure>
+                    </div>
+                    <div class="column column-block">
+                        <figure class="effect">
+                            <img class="thumbnail" src="media/mprds.jpg" alt="Miniterio Profetico Roca de Salvacion">
+                            <figcaption>
+                                <h3>Miniterio Profetico Roca de Salvacion</h3>
+                                <p>MPRDS, a non-profit religious church organization in Fullerton, CA.</p>
+                                <a href="http://www.mprds.org" target="_blank"></a>
+                            </figcaption> 
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<!--End Resume Section-->
+</main>
+</body>
+</html>

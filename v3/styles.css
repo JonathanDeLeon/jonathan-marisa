@@ -33,6 +33,9 @@
     transition: all 0.5s;
 }
 /* root font-size=16px*/
+body, html{
+    height: 100%;
+}
 body{
 	background-color: #f0f0f0;
     font-weight: 400;
@@ -40,14 +43,15 @@ body{
 main,header,nav,section,footer{display:block;}
 
 main hr{
-	margin: 2.5rem auto;
+	margin: 1.5rem auto;
+    border-color: #eaeaea;
 }
 p{
     color: rgba(26,26,26,0.8);
 }
 /*}}}*/
 
-/*{{{Background Overlay Styling*/
+/*{{{Background Overlay Styling/
 header {
     -webkit-transition: -webkit-filter 300ms;
     -moz-transition: -moz-filter 300ms;
@@ -68,78 +72,50 @@ header::before {
 
 /*{{{Navbar styling*/
 nav{
-    position: absolute;
-    width: 100%;
-    background-color: transparent;
-    color: #fff;
-    font-family: normal;
-    z-index: 999;
+    text-align: center;
 }
-/*Title bar is nav bar in smaller media*/
-.title-bar {
-	background-color: transparent;
-	padding: 0.9rem;
-	color: rgba(255,255,255,.8);
-}
-.title-bar:hover {
-	color: #fff;
-}
-/*Top bar is nav bar in larger media*/
-.top-bar {
-	background-color: transparent;
-}
-.top-bar ul {
-	background-color: transparent;
-}
-/*Nav bar lists including logo*/
-.top-bar ul li {
-	text-transform: uppercase;
-    letter-spacing: 2px;
-}
-/*Nav bar links*/
-.top-bar ul li a {
-	color: rgba(255,255,255,.8);
-    margin: 0 0.1rem;
-}
-.top-bar ul li a:hover {
-	color: black;
-    background-color: #fff;
-}
-
 /*}}}*/
 
 /*{{{Frontpage Header*/
-header {
-    height: 100vh;
-    text-align: center;
-    color: #fff;
+#landing-main{
+    height: 100%;
+}
+header{
+    color: white;
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    background-image: url(media/header1.jpg);
-    background-color: #222;
-	background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    text-align: center;
+    height: 100%;
 }
 #frontpage-name {
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 30%;
-    width: 65%;
-    margin: -10% 0 0 -32%;
+    width: 100%;
+    transform: translate(-50%, -40%);
 }
-#frontpage-name h1, #frontpage-name h4 {
-    font-family: "Ostrich Sans Medium";
+#frontpage-name .subheader{
+    color: rgba(255,255,255,0.8);
 }
-#frontpage-name hr {
-    max-width: 18.75rem;
-    margin: 0 auto;
+#frontpage-name h1{
+    font-family: 'Abel', sans-serif;
+    font-size: 4rem;
 }
+#frontpage-name h5{
+    font-family: 'Lato', sans-serif;
+}
+
+#frontpage-name nav a{
+    padding: 1.5rem;
+}
+#frontpage-name nav .has-tip{
+    border: none;
+    cursor: pointer;
+}
+
+#frontpage-name nav i{
+    color: white;
+}
+
 /*}}}*/
 
 /*{{{1 Sections*/
@@ -150,37 +126,61 @@ header {
     margin-bottom: 1rem;
 }
 section{
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
-section h2{
-	text-align: center;
+section article{
+    padding: 1.5rem 0;
 }
-section h2, section h4{
+section h3, section h4{
     color: rgba(26,26,26,.9);
 }
 section .card{
     padding: 1rem 0.5rem;
     background-color: #FFFFFF;
 }
-#contact-card{
-    position: fixed;
+
+
+/*{{{ Contact-Card*/
+#contact-card h5, #contact-card h3{
+    text-align: center;
 }
-/*{{{2 Profile Section*/
-#profile .column.row .row:last-child{
-    margin-top: 20px;
+#contact-card hr{
+    margin: 1.0rem auto;
+}
+#contact-card a{
+    display: block;
+}
+#contact-card a p:nth-child(2){
+    display: inline-block;
+}
+#contacts i{
+    padding: 0 1.5rem;
+    color: #1585CF;
+}
+#links{
+    text-align: center;
+}
+#links a{
+    display: inline-block;
+}
+#links i{
+    padding: 0 1.0rem;
+}
+#links i.git{
+    color: #454545;
+}
+#contact-card img{
+    height: 11rem;
+    border-radius: 50%;
 }
 .circular-portrait {
     position: relative;
 	width: 11rem;
-	height: 12rem;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0 auto;
+    margin: 20px auto 30px;
 }
-#profile img{
-	width: 100%;
-    height: auto;
-}
+/*}}}*/
+
+/*{{{2 Profile Section*/
 /*}}}2*/
 
 /*{{{2 Experiences Section*/
@@ -213,7 +213,7 @@ figure.effect {
 }
 #projects figure .thumbnail{
     margin: 0;
-    height: 350px;
+    height: 300px;
 }
 #projects figure img {
     width: 110%;
@@ -251,6 +251,7 @@ figure.effect figcaption {
 figure.effect h3 {
     position: relative;
     overflow: hidden;
+    color: white;
     padding-bottom: 20px;
     opacity: 0;
     -moz-transition: opacity 0.35s, -moz-transform 0.35s;
@@ -314,26 +315,3 @@ figure.effect:hover a, figure.effect:focus a {
 /*}}}2*/
 /*}}}1*/
 
-/*{{{Footer*/
-footer {
-    text-align: center;
-    color: #fff;
-    overflow: hidden;
-    background: #434242;
-    padding: 5rem;
-}
-footer a{
-    opacity: 0.8;
-    margin: 0 1rem;
-}
-footer a:hover{
-    opacity: 1;
-}
-footer p{
-    color: #fff;
-}
-footer a p:nth-child(2){
-    display: inline-block;
-    margin-left: 5px;
-}
-/*}}}*/
