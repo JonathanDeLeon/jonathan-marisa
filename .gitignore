@@ -3,3 +3,9 @@
 *.db
 *.swp
 sqlite.py
+files/*
+*env/
+*.DS_Store
+*.sqlite3
+*.xml
+*.iml
