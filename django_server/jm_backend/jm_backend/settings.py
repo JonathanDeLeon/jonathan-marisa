@@ -43,6 +43,9 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
+    'users.apps.UsersConfig',
+    'media.apps.MediaConfig',
+
 ]
 
 MIDDLEWARE = [
