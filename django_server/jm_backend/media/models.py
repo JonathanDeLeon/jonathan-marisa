@@ -2,23 +2,22 @@
 from __future__ import unicode_literals
 
 import os
+import uuid
 
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 from PIL import Image
 
 # Create your models here.
-from django.utils import timezone
 
-
-def uploaded_filename(instance, filename, prefix="", image_id=0):
+def uploaded_filename(instance, filename, prefix="img/"):
     extension = filename.split(".")[-1]
-    image_id = instance.id if instance.id is not None else image_id
-    return "media/{}{}.{}".format(prefix, image_id, extension)
+    return "media/{}{}.{}".format(prefix, uuid.uuid4(), extension)
 
 
-def create_thumbnail(image_id, input_image, thumbnail_size=(256, 256)):
+def create_thumbnail(input_image, thumbnail_size=(256, 256)):
     """
     Create a thumbnail of an existing image
     :param input_image:
@@ -36,7 +35,7 @@ def create_thumbnail(image_id, input_image, thumbnail_size=(256, 256)):
     image.thumbnail(thumbnail_size, Image.ANTIALIAS)
 
     # parse the filename and scramble it
-    filename = uploaded_filename(None, os.path.basename(input_image.name), "thumb/", image_id)
+    filename = uploaded_filename(None, os.path.basename(input_image.name), "thumb/")
     arrdata = filename.split(".")
     # extension is in the last element, pop it
     extension = arrdata.pop()
@@ -61,10 +60,9 @@ class MediaImage(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, force_update=False):
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
-        self.thumbnail = create_thumbnail(self.id, self.image)
-
+        self.thumbnail = create_thumbnail(self.image)
         # force update as we just changed something
         super(MediaImage, self).save(force_update=force_update)
 

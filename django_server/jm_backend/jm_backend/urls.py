@@ -19,11 +19,12 @@ from django.contrib import admin
 from rest_framework import routers
 from rest_framework.authtoken import views as token
 
-from media.views import MediaImagesViewSet
+from media.views import MediaImagesViewSet, AlbumViewSet
 
 # initiate router and register all endpoints
 router = routers.DefaultRouter()
 router.register('images', MediaImagesViewSet, 'images')
+router.register('album', AlbumViewSet, 'album')
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
