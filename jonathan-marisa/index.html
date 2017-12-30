@@ -1,107 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=8.0, user-scalable=yes"/>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-
-    <link rel="stylesheet" type="text/css" href="foundation-6.3/css/foundation.min.css">
-    <link rel="stylesheet" type="text/css" href="foundation-6.3/foundation-icons/foundation-icons.css">
-    <link rel="stylesheet" type="application/x-font-woff" href="foundation-6.3/foundation-icons/foundation-icons.woff">
-
-	<script type="text/javascript" src="foundation-6.3/js/vendor/jquery.min.js"></script>
-	<script type="text/javascript" src="foundation-6.3/js/vendor/foundation.min.js"></script>
-
-	<script src="config.js"></script>
-	<script src="static/js/handlers.js"></script>
-	<script src="static/js/app.js"></script>
-	<!--
-	<script type='text/javascript'>
-			$(document).ready(function() {
-
-				if (typeof localStorage.user !== "undefined" && localStorage.user !== "") {
-					user_session("init", JSON.parse(localStorage.user));
-				} else {
-				$('#login_form').submit(function() {
-				    var username = $("#login_form").find("#username_input").val();
-					login(username, p.value);
-
-					return false;
-				});
-				$('#registration_form').submit(function(){
-					register(p.value);
-					return false;
-
-				});
-
-			});
-
-
-	</script>-->
-</head>
-<body>
-<header>
-    <div class="background" id="background-home"></div>
-    <!--Top Nav-->
-    <nav class="top-bar" id="main-menu">
-        <div class="top-bar-left">
-            <ul class="menu">
-                <li class="menu-text">Jonathan & Marisa</li>
-            </ul>
-        </div>
-        <div class="top-bar-right">
-            <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#/photos">Photos</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<!--End Top Nav-->
-<!--Main-->
-<main id="main-content" data-html="static/html/home.html"></main>
-<!--End Main-->
-<!--Modals-->
-<div class="reveal" id="showImage" data-reveal>
-    <div class="img-overlay">
-        <a id="editImage"><i class="fi-pencil"></i></a>
-    </div>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="small reveal" id="uploadImage" data-reveal>
-    <form id="upload" enctype="multipart/form-data" method="post"> 
-        <label for="file">File to upload:</label> 
-        <input id="file" type="file" name="images" multiple> 
-        <label for="submit">Press to...</label> 
-        <input type="submit" name="submit" value="Upload" class="success button"/>
-        <div id="loader" style="display:none"><img src="https://jonathan-marisa.com/media/other/ajax-loader.gif"/></div>
-    </form>
-    <div id="alertContainer" class="callout" style="display: none;"></div>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="small reveal" id="editImageModal" data-reveal>
-    <form id="edit" method="post"> 
-        <label>
-            Image description
-            <textarea placeholder="None" name="description"></textarea>
-        </label>
-        <fieldset class="fieldset">
-            <legend>Tags</legend>
-            <input type="checkbox" id="albumcover" name="tags[]" value="0"><label for="albumcover">Album Cover</label>
-            <input type="checkbox" id="timeline" name="tags[]" value="1"><label for="timeline">Timeline</label>
-        </fieldset>
-        <label for="submit">Press to...</label> 
-        <input type="submit" name="submit" value="Update" class="success button"/>
-    </form>
-    <div id="alertContainer" class="callout" style="display: none;"></div>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<!--End Modals-->
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>jonathan-marisa</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
