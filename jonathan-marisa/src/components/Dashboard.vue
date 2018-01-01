@@ -1,6 +1,6 @@
 <template>
   <div id="dashboard">
-    <div id="collection-cover" style="background-image: url('/static/media/img/bg3.jpg'); height: 805px;">
+    <div id="collection-cover" v-resize="onResize" :style="background">
       <div class="cover-detail">
         <h1 class="cover-collection-name">Marisa & Jonathan</h1>
       </div>
@@ -13,7 +13,15 @@
       name: "dashboard",
       data () {
         return {
-
+          background: {
+            backgroundImage: 'url(/static/media/img/bg3.jpg)',
+            height: window.innerHeight +'px'
+          }
+        }
+      },
+      methods: {
+        onResize () {
+          this.background.height = window.innerHeight+ 'px'
         }
       }
     }
