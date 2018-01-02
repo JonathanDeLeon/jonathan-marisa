@@ -8,4 +8,4 @@ sqlite.py
 *.sqlite3
 *.xml
 *.iml
-files/*
+files/

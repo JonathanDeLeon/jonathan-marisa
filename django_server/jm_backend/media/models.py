@@ -17,7 +17,7 @@ def uploaded_filename(instance, filename, prefix="img/"):
     return "media/{}{}.{}".format(prefix, uuid.uuid4(), extension)
 
 
-def create_thumbnail(input_image, thumbnail_size=(256, 256)):
+def create_thumbnail(input_image, thumbnail_size=(0.0, 256)):
     """
     Create a thumbnail of an existing image
     :param input_image:
@@ -31,8 +31,29 @@ def create_thumbnail(input_image, thumbnail_size=(256, 256)):
     # open image
     image = Image.open(input_image)
 
+    # if not RGB, convert
+    if image.mode not in ("L", "RGB"):
+        image = image.convert("RGB")
+
+    # get original image ratio
+    img_ratio = float(image.size[0]) / image.size[1]
+
+    width = thumbnail_size[0]
+    height = thumbnail_size[1]
+
+    # resize but constrain proportions?
+    if width == 0.0:
+        width = height * img_ratio
+    elif height == 0.0:
+        height = width * img_ratio
+
+    # output file ratio
+    width = int(width)
+    height = int(height)
+
     # use PILs thumbnail method; use anti aliasing to make the scaled picture look good
-    image.thumbnail(thumbnail_size, Image.ANTIALIAS)
+    # image = image.resize((width, height), Image.ANTIALIAS)
+    image.thumbnail((width, height), Image.ANTIALIAS)
 
     # parse the filename and scramble it
     filename = uploaded_filename(None, os.path.basename(input_image.name), "thumb/")
@@ -44,7 +65,7 @@ def create_thumbnail(input_image, thumbnail_size=(256, 256)):
     new_filename = basename + "_thumb." + extension
 
     # save the image in MEDIA_ROOT and return the filename
-    image.save(os.path.join(settings.MEDIA_ROOT, new_filename))
+    image.save(os.path.join(settings.MEDIA_ROOT, new_filename), "JPEG", optimize=True, quality=80)
 
     return new_filename
 
