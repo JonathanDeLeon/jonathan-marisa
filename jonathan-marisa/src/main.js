@@ -9,6 +9,12 @@ import('../node_modules/vuetify/dist/vuetify.min.css')
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false
+var axios = require('axios')
+axios.defaults.baseURL = 'http://localhost:8000'
+// axios.defaults.baseURL = 'https://api.jonathan-marisa.com'
+//axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+Vue.prototype.$http = axios
 
 /* eslint-disable no-new */
 new Vue({

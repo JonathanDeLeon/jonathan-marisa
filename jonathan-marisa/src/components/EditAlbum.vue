@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "image",
+    name: "edit-album",
     data() {
       return {}
     }

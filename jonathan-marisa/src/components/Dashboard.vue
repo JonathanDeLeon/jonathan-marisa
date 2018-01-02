@@ -2,7 +2,7 @@
   <div id="dashboard">
     <div id="collection-cover" v-resize="onResize" :style="background">
       <div class="cover-detail">
-        <h1 class="cover-collection-name">Marisa & Jonathan</h1>
+        <h1 class="cover-collection-name">{{coverTitle}}</h1>
       </div>
     </div>
   </div>
@@ -11,12 +11,9 @@
 <script>
     export default {
       name: "dashboard",
+      props: ['background', 'coverTitle'],
       data () {
         return {
-          background: {
-            backgroundImage: 'url(/static/media/img/bg3.jpg)',
-            height: window.innerHeight +'px'
-          }
         }
       },
       methods: {
