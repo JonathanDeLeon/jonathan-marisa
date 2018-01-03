@@ -73,7 +73,6 @@ def create_thumbnail(input_image, thumbnail_size=(0.0, 256)):
 class MediaImage(models.Model):
     image = models.ImageField("Uploaded image", upload_to=uploaded_filename)
     thumbnail = models.ImageField("Thumbnail of uploaded image", blank=True)
-    title = models.CharField("Title of the uploaded image", max_length=255, default="Unknown Picture")
     description = models.TextField("Description of the uploaded image", default="")
     favorite = models.BooleanField("Image that is a favorite", default=False)
     date_created = models.DateTimeField("Date image was created", default=timezone.now)
@@ -93,7 +92,6 @@ class MediaImage(models.Model):
 
 class Album(models.Model):
     title = models.CharField("Title of the album", max_length=255, default="Unknown Album")
-    description = models.TextField("Description of the album", default="")
     photos = models.ManyToManyField(MediaImage)
 
     def __str__(self):

@@ -10,8 +10,10 @@ from rest_framework.authtoken import views
 
 # Create your views here.
 
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
 
 from media.models import MediaImage, Album
 from media.serializers import MediaImageSerializer, AlbumSerializer
@@ -19,14 +21,15 @@ from media.serializers import MediaImageSerializer, AlbumSerializer
 
 class MediaImagesViewSet(viewsets.ModelViewSet):
     queryset = MediaImage.objects.all()
-    serializer_class = MediaImageSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = MediaImageSerializer(many=True)
+    parser_classes = (MultiPartParser, FormParser,)
+    # permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
 
 # FROM TORNADO SERVER
 # class ImageHandler(BaseHandler):
