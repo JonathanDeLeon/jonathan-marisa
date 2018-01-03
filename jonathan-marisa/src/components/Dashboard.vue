@@ -3,6 +3,7 @@
     <div id="collection-cover" v-resize="onResize" :style="background">
       <div class="cover-detail">
         <h1 class="cover-collection-name">{{coverTitle}}</h1>
+        <slot></slot>
       </div>
     </div>
   </div>
