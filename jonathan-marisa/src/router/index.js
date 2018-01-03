@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Album from '@/components/Album'
 import ViewAlbum from '@/components/ViewAlbum'
-import EditAlbum from '@/components/EditAlbum'
 import Gallery from '@/components/Gallery'
 
 
@@ -25,11 +24,6 @@ export default new Router({
       path: '/album/:album_id',
       name: 'view-album',
       component: ViewAlbum
-    },
-    {
-      path: '/album/edit/:album_id',
-      name: 'edit-album',
-      component: EditAlbum
     },
     {
       path: '/photos',
