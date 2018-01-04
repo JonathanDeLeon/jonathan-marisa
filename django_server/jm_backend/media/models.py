@@ -78,7 +78,7 @@ class MediaImage(models.Model):
     date_created = models.DateTimeField("Date image was created", default=timezone.now)
 
     def __str__(self):
-        return self.title
+        return self.image.name
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
@@ -92,7 +92,7 @@ class MediaImage(models.Model):
 
 class Album(models.Model):
     title = models.CharField("Title of the album", max_length=255, default="Unknown Album")
-    photos = models.ManyToManyField(MediaImage)
+    photos = models.ManyToManyField(MediaImage, related_name="albums")
 
     def __str__(self):
         return self.title

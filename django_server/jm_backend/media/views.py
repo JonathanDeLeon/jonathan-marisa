@@ -21,9 +21,15 @@ from media.serializers import MediaImageSerializer, AlbumSerializer
 
 class MediaImagesViewSet(viewsets.ModelViewSet):
     queryset = MediaImage.objects.all()
-    serializer_class = MediaImageSerializer(many=True)
+    serializer_class = MediaImageSerializer
     parser_classes = (MultiPartParser, FormParser,)
     # permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save()
+        for img in self.request.data.getlist('image'):
+            if img != serializer.validated_data['image']:
+                MediaImage.objects.create(image=img)
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
