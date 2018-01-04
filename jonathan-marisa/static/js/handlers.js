@@ -25,7 +25,8 @@ function hasher() {
 }
 
 function indexHandler() {
-    loader(main, "static/html/home.html", function() {
+    // loader(main, "static/html/home.html", function() {
+    loader(main, "static/html/coming-soon.html", function() {
     });
     if (window.location.hash.length > 1) {
         window.location.hash = "";
