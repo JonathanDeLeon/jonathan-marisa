@@ -1,17 +1,9 @@
 <template>
   <div class="photo">
     <v-card tile>
-      <!-- v-if -->
-      <v-card-media v-if="url" :src="url" height="240px">
+      <v-card-media :src="url" height="240px">
         <slot name="card-media"></slot>
       </v-card-media>
-      <!-- v-else -->
-      <v-card-title v-else primary-title>
-        <div>
-          <div class="headline">Image does not exist</div>
-        </div>
-      </v-card-title>
-
       <v-card-actions class="white">
         <slot name="card-actions"></slot>
       </v-card-actions>
@@ -25,6 +17,8 @@
     props: ['url'],
     data() {
       return {}
+    },
+    methods: {
     }
   }
 </script>

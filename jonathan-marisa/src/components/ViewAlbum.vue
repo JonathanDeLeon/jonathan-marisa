@@ -7,20 +7,22 @@
           <v-btn outline light color="grey darken-2" to="/album">Back</v-btn>
           <v-spacer></v-spacer>
           <v-btn color="primary" @click.stop="addPhotoDialog = true">Add Photos</v-btn>
-          <v-btn color="success">Edit Album</v-btn>
+          <v-btn color="success" @click.stop="editAlbumDialog = true">Edit Album</v-btn>
         </v-toolbar>
       </v-layout>
+      <h1 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h1>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in photos" :key="photo.pk">
-          <photo :url="photo.thumbnail">
+          <photo :url="photo.thumbnail" >
             <!--<v-layout media column slot="card-media">-->
               <!--<v-spacer></v-spacer>-->
               <!--<v-card-title class="headline white&#45;&#45;text">{{album.title}}</v-card-title>-->
             <!--</v-layout>-->
 
             <v-layout row slot="card-actions">
-              <v-btn icon>
-                <i class="far fa-heart"></i>
+              <v-btn icon v-on:click="favoritePhoto(photo)">
+                <span v-if="photo.favorite"><i class="fas fa-heart"></i></span>
+                <span v-show="!photo.favorite"><i class="far fa-heart"></i></span>
               </v-btn>
               <v-spacer></v-spacer>
               <v-btn icon>
@@ -56,6 +58,23 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="editAlbumDialog" persistent max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Edit Album</span>
+        </v-card-title>
+        <v-card-text>
+          <v-form ref="updateAlbum">
+            <v-text-field label="Album Name" v-model="title" :rules="albumTitleRules" required></v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="red darken-1" flat @click.native="editAlbumDialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" flat @click="editAlbum">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -78,7 +97,11 @@
         title: "Album",
         photos: [],
         addPhotoDialog: false,
-        uploadedImages: []
+        editAlbumDialog: false,
+        albumTitleRules: [
+          (v) => !!v || 'Album name is required'
+        ],
+        uploadedImages: [],
       }
     },
     components: {
@@ -126,16 +149,37 @@
         // handle file changes
         if (!fileList.length) return;
 
+        const formData = new FormData();
         // append the files to FormData
         Array
           .from(Array(fileList.length).keys())
           .map(x => {
-            const formData = new FormData();
             formData.append(fieldName, fileList[x], fileList[x].name);
             formData.append('date_created', new Date(fileList[x].lastModified).toISOString());
-            this.save(formData)
           });
-      }
+        this.save(formData)
+      },
+      editAlbum() {
+        if (this.$refs.updateAlbum.validate()) {
+          // Native form submission is not yet supported
+          this.$http.put('/api/album/'+this.id+'/', {
+            title: this.title,
+          })
+            .then(response => {
+              this.editAlbumDialog = false
+            })
+        }
+      },
+      favoritePhoto(photo){
+        const isFavorite = !photo.favorite
+
+        this.$http.patch('/api/images/'+photo.pk+'/set_favorite/', {
+          favorite: isFavorite,
+        })
+          .then(response => {
+            photo.favorite = isFavorite
+          })
+      },
     }
   }
 

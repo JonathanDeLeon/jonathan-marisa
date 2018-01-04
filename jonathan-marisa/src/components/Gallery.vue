@@ -7,10 +7,11 @@
           <v-btn outline light color="grey darken-2" to="/album">Back</v-btn>
           <v-spacer></v-spacer>
           <v-btn color="primary" @click.stop="addPhotoDialog = true">Add Photos</v-btn>
-          <v-btn color="success">Edit Album</v-btn>
+          <v-btn color="success">Add Photos to Album</v-btn>
         </v-toolbar>
       </v-layout>
       <v-layout row wrap>
+
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in photos" :key="photo.id">
           <photo :url="photo.thumbnail">
             <!--<v-layout media column slot="card-media">-->
