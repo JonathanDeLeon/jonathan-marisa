@@ -115,7 +115,7 @@
         upload(formData)
           .then(x => {
             this.uploadedImages = this.uploadedImages.concat(x);
-            //TODO: add success and error messages per image upload
+            //TODO: add success and error messages per image upload; send an object of image
           })
           // .catch(err => {
           //   this.uploadError = err.response;
