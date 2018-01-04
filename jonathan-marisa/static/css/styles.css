@@ -70,6 +70,9 @@ nav{
 #background-countdown{
     background-image: url("https://jonathan-marisa.com/media/094.jpg");
 }
+#background-coming-soon{
+    background-image: url("../../media/bg.jpg");
+}
 /*Background overlay*/
 #background_overlay{
     background-color: rgba(33, 39, 57, 0.5);

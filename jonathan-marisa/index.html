@@ -41,25 +41,25 @@
 </head>
 <body>
 <header>
-    <div class="background" id="background-home"></div>
-    <!--Top Nav-->
-    <nav class="top-bar" id="main-menu">
-        <div class="top-bar-left">
-            <ul class="menu">
-                <li class="menu-text">Jonathan & Marisa</li>
-            </ul>
-        </div>
-        <div class="top-bar-right">
-            <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#/photos">Photos</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!--<div class="background" id="background-home"></div>-->
+    <!--&lt;!&ndash;Top Nav&ndash;&gt;-->
+    <!--<nav class="top-bar" id="main-menu">-->
+        <!--<div class="top-bar-left">-->
+            <!--<ul class="menu">-->
+                <!--<li class="menu-text">Jonathan & Marisa</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="top-bar-right">-->
+            <!--<ul class="menu">-->
+                <!--<li><a href="#">Home</a></li>-->
+                <!--<li><a href="#/photos">Photos</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
 </header>
 <!--End Top Nav-->
 <!--Main-->
-<main id="main-content" data-html="static/html/home.html"></main>
+<main id="main-content" data-html="static/html/coming-soon.html"></main>
 <!--End Main-->
 <!--Modals-->
 <div class="reveal" id="showImage" data-reveal>
@@ -71,10 +71,10 @@
     </button>
 </div>
 <div class="small reveal" id="uploadImage" data-reveal>
-    <form id="upload" enctype="multipart/form-data" method="post"> 
-        <label for="file">File to upload:</label> 
-        <input id="file" type="file" name="images" multiple> 
-        <label for="submit">Press to...</label> 
+    <form id="upload" enctype="multipart/form-data" method="post">
+        <label for="file">File to upload:</label>
+        <input id="file" type="file" name="images" multiple>
+        <label for="submit">Press to...</label>
         <input type="submit" name="submit" value="Upload" class="success button"/>
         <div id="loader" style="display:none"><img src="https://jonathan-marisa.com/media/other/ajax-loader.gif"/></div>
     </form>
@@ -84,7 +84,7 @@
     </button>
 </div>
 <div class="small reveal" id="editImageModal" data-reveal>
-    <form id="edit" method="post"> 
+    <form id="edit" method="post">
         <label>
             Image description
             <textarea placeholder="None" name="description"></textarea>
@@ -94,7 +94,7 @@
             <input type="checkbox" id="albumcover" name="tags[]" value="0"><label for="albumcover">Album Cover</label>
             <input type="checkbox" id="timeline" name="tags[]" value="1"><label for="timeline">Timeline</label>
         </fieldset>
-        <label for="submit">Press to...</label> 
+        <label for="submit">Press to...</label>
         <input type="submit" name="submit" value="Update" class="success button"/>
     </form>
     <div id="alertContainer" class="callout" style="display: none;"></div>
