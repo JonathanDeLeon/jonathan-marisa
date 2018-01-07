@@ -83,7 +83,7 @@ class MediaImage(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
-        if self.thumbnail is None:
+        if not self.thumbnail:
             self.thumbnail = create_thumbnail(self.image)
         # force update as we just changed something
         super(MediaImage, self).save(force_update=force_update)
