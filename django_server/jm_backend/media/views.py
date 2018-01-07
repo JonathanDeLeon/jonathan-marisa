@@ -64,5 +64,16 @@ class AlbumViewSet(viewsets.ModelViewSet):
         albums = self.get_queryset().values('pk', 'title')
         return Response(albums, status=status.HTTP_200_OK)
 
-
-
+    @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
+    def add_images(self, request, pk=None):
+        album = self.get_object()
+        if 'images' in request.data:
+            images = request.data['images']
+            bulk = isinstance(images, list)
+            if bulk:
+                for img in images:
+                    album.photos.add(img)
+            else:
+                album.photos.add(images)
+            return Response({'status': 'Photos have been added to album'})
+        return Response({'status': 'Request does not have images parameter'}, status=status.HTTP_400_BAD_REQUEST)
