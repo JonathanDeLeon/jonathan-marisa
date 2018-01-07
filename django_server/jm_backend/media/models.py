@@ -12,6 +12,7 @@ from PIL import Image
 
 # Create your models here.
 
+
 def uploaded_filename(instance, filename, prefix="img/"):
     extension = filename.split(".")[-1]
     return "media/{}{}.{}".format(prefix, uuid.uuid4(), extension)
@@ -75,14 +76,15 @@ class MediaImage(models.Model):
     thumbnail = models.ImageField("Thumbnail of uploaded image", blank=True)
     description = models.TextField("Description of the uploaded image", default="")
     favorite = models.BooleanField("Image that is a favorite", default=False)
-    date_created = models.DateTimeField("Date image was created", default=timezone.now)
+    date_created = models.DateField("Date image was created", default=timezone.now().date)
 
     def __str__(self):
         return self.image.name
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
-        self.thumbnail = create_thumbnail(self.image)
+        if self.thumbnail is None:
+            self.thumbnail = create_thumbnail(self.image)
         # force update as we just changed something
         super(MediaImage, self).save(force_update=force_update)
 
@@ -99,4 +101,3 @@ class Album(models.Model):
 
     class Meta:
         ordering = ('title',)
-

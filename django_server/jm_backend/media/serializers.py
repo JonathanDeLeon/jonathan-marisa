@@ -14,8 +14,7 @@ class MediaImageSerializer(serializers.ModelSerializer):
 
 class AlbumSerializer(serializers.ModelSerializer):
     photos = MediaImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Album
         fields = ('pk', 'title', 'photos')
-
-
