@@ -17,7 +17,7 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
     queryset = MediaImage.objects.all()
     serializer_class = MediaImageSerializer
     parser_classes = (MultiPartParser, FormParser, JSONParser)
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save()
@@ -57,7 +57,7 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
 class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     @list_route()
     def minimal_list(self, request):
