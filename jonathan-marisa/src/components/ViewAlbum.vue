@@ -6,14 +6,14 @@
         <v-toolbar color="transparent" flat>
           <v-btn outline light color="grey darken-2" to="/album">Back</v-btn>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click.stop="getPhotosNotInAlbum">Add Photos To Album</v-btn>
+          <v-btn color="primary" v-if="user.authenticated" @click.stop="getPhotosNotInAlbum">Add Photos To Album</v-btn>
         </v-toolbar>
       </v-layout>
       <h1 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h1>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in photos" :key="photo.pk">
           <photo :url="photo.thumbnail">
-            <v-layout row slot="card-actions">
+            <v-layout row slot="card-actions" v-if="user.authenticated">
               <v-btn icon v-on:click="favoritePhoto(photo)">
                 <span v-if="photo.favorite"><i class="fas fa-heart"></i></span>
                 <span v-show="!photo.favorite"><i class="far fa-heart"></i></span>
@@ -28,7 +28,7 @@
       </v-layout>
     </v-container>
 
-    <v-dialog v-model="addPhotoDialog" persistent scrollable full-width>
+    <v-dialog v-model="addPhotoDialog" persistent scrollable full-width v-if="user.authenticated">
       <v-card>
         <v-card-title>
           <span class="headline">Add Photos To {{title}}</span>
@@ -46,7 +46,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="editPhotoDialog" persistent scrollable max-width="500">
+    <v-dialog v-model="editPhotoDialog" persistent scrollable max-width="500" v-if="user.authenticated">
       <v-card>
         <v-card-title>
           <span class="headline">Edit Photo</span>
@@ -95,6 +95,7 @@
 <script>
   import Dashboard from '@/components/Dashboard'
   import Photo from '@/components/Photo'
+  import auth from '../auth'
 
   let axios = require('axios')
 
@@ -102,6 +103,7 @@
     name: "view-album",
     data() {
       return {
+        user: auth.user,
         background: {
           backgroundImage: 'url(/static/media/img/bg2.jpg)',
           height: window.innerHeight +'px'

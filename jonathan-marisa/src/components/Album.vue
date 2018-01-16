@@ -3,7 +3,7 @@
     <dashboard :cover-title="title" :background="background"/>
     <v-container grid-list-md>
       <v-layout row>
-        <v-toolbar color="transparent" flat>
+        <v-toolbar color="transparent" flat v-if="user.authenticated">
           <v-spacer></v-spacer>
           <v-btn color="primary" @click.stop="addPhotoDialog = true">Upload Photos</v-btn>
           <v-btn color="success" @click.stop="addAlbumDialog = true">New Album</v-btn>
@@ -29,7 +29,7 @@
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
             </v-layout>
             <v-layout row slot="card-actions">
-              <v-btn icon @click.stop="updateAlbumObj.title = album.title; updateAlbumObj.id = album.id; editAlbumDialog = true">
+              <v-btn icon v-if="user.authenticated" @click.stop="updateAlbumObj.title = album.title; updateAlbumObj.id = album.id; editAlbumDialog = true">
                 <i class="fas fa-edit"></i>
               </v-btn>
               <v-spacer></v-spacer>
@@ -39,7 +39,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-dialog v-model="addAlbumDialog" persistent max-width="500px">
+    <v-dialog v-model="addAlbumDialog" persistent max-width="500px" v-if="user.authenticated">
       <v-card>
         <v-card-title>
           <span class="headline">New Album</span>
@@ -56,7 +56,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="editAlbumDialog" persistent max-width="500px">
+    <v-dialog v-model="editAlbumDialog" persistent max-width="500px" v-if="user.authenticated">
       <v-card>
         <v-card-title>
           <span class="headline">Edit Album</span>
@@ -74,7 +74,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="addPhotoDialog" persistent scrollable full-width>
+    <v-dialog v-model="addPhotoDialog" persistent scrollable full-width v-if="user.authenticated">
       <v-card>
         <v-card-title>
           <span class="headline">Upload Photos</span>
@@ -103,12 +103,14 @@
 <script>
   import Dashboard from '@/components/Dashboard'
   import Photo from '@/components/Photo'
-  import { upload } from '../assets/file-upload';
+  import { upload } from '../assets/file-upload'
+  import auth from '../auth'
 
   export default {
     name: "album",
     data() {
       return {
+        user: auth.user,
         title: "Photo Albums",
         background: {
           backgroundImage: 'url(/static/media/img/bg2.jpg)',

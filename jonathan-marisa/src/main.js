@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import auth from './auth'
 import Vuetify from 'vuetify'
 import('../node_modules/vuetify/dist/vuetify.min.css')
 
@@ -12,9 +13,11 @@ Vue.config.productionTip = false
 let axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8000'
 // axios.defaults.baseURL = 'https://api.jonathan-marisa.com'
-//axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 Vue.prototype.$http = axios
+
+auth.checkAuth()
+axios.defaults.headers.common['Authorization'] = auth.getAuthHeader()
 
 /* eslint-disable no-new */
 new Vue({
