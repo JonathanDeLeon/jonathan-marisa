@@ -25,7 +25,7 @@ SECRET_KEY = 'knhy%h006sceqj(k+sjx2*wpjz^a2c5)(@ndl4ey5@mvni&+t^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jonathan-marisa.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jonathan-marisa.com', 'www.jonathan-marisa.com']
 
 
 # Application definition
@@ -145,17 +145,3 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_URL = '/files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
-
-# REDIS/CELERY related settings
-# BROKER_URL = 'redis://localhost:6379'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_TIMEZONE = 'UTC'
-#
-# # Email settings
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'wwu.capsoul@gmail.com'
-# EMAIL_HOST_PASSWORD = 'wwucapsoul'

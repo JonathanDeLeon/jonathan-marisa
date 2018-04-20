@@ -6,6 +6,6 @@ sqlite.py
 *env/
 *.DS_Store
 *.sqlite3
-*.xml
-*.iml
 files/
+db/
+.idea/
