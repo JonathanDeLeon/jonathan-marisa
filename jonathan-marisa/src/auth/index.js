@@ -5,8 +5,8 @@ import router from '../router'
 let axios = require('axios')
 
 // URL and endpoint constants
-const API_URL = 'http://localhost:8000/'
-const LOGIN_URL = API_URL + 'token-auth/'
+const API_URL = 'https://www.jonathan-marisa.com'
+const LOGIN_URL = API_URL + '/token-auth/'
 
 export default {
 

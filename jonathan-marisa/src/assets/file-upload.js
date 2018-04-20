@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://jonathan-marisa.com';
 
 function upload(formData) {
   const url = `${BASE_URL}/api/images/`;
