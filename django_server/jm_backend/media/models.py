@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 import os
 import uuid
 
+from datetime import date
 from django.db import models
 from django.conf import settings
-from django.utils import timezone
 
 from PIL import Image
 
@@ -14,11 +14,12 @@ from PIL import Image
 
 
 def uploaded_filename(instance, filename, prefix="img/"):
+    id = instance.uuid if instance is not None and not isinstance(instance, uuid.UUID) else instance
     extension = filename.split(".")[-1]
-    return "media/{}{}.{}".format(prefix, uuid.uuid4(), extension)
+    return "media/{}{}.{}".format(prefix, id, extension)
 
 
-def create_thumbnail(input_image, thumbnail_size=(0.0, 256)):
+def create_thumbnail(input_image, uuid, thumbnail_size=(0.0, 256)):
     """
     Create a thumbnail of an existing image
     :param input_image:
@@ -57,7 +58,7 @@ def create_thumbnail(input_image, thumbnail_size=(0.0, 256)):
     image.thumbnail((width, height), Image.ANTIALIAS)
 
     # parse the filename and scramble it
-    filename = uploaded_filename(None, os.path.basename(input_image.name), "thumb/")
+    filename = uploaded_filename(uuid, os.path.basename(input_image.name), "thumb/")
     arrdata = filename.split(".")
     # extension is in the last element, pop it
     extension = arrdata.pop()
@@ -72,11 +73,12 @@ def create_thumbnail(input_image, thumbnail_size=(0.0, 256)):
 
 
 class MediaImage(models.Model):
+    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     image = models.ImageField("Uploaded image", upload_to=uploaded_filename)
     thumbnail = models.ImageField("Thumbnail of uploaded image", blank=True)
     description = models.TextField("Description of the uploaded image", default="")
     favorite = models.BooleanField("Image that is a favorite", default=False)
-    date_created = models.DateField("Date image was created", default=timezone.now().date)
+    date_created = models.DateField("Date image was created", default=date.today)
 
     def __str__(self):
         return self.image.name
@@ -84,7 +86,7 @@ class MediaImage(models.Model):
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
         if not self.thumbnail:
-            self.thumbnail = create_thumbnail(self.image)
+            self.thumbnail = create_thumbnail(self.image, self.uuid)
         # force update as we just changed something
         super(MediaImage, self).save(force_update=force_update)
 
