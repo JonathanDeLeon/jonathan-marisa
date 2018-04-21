@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 
-const BASE_URL = 'https://jonathan-marisa.com';
+const BASE_URL = 'https://api.jonathan-marisa.com';
 
 function upload(formData) {
   const url = `${BASE_URL}/api/images/`;

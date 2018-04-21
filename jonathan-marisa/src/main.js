@@ -11,7 +11,7 @@ Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 let axios = require('axios')
-axios.defaults.baseURL = 'https://www.jonathan-marisa.com'
+axios.defaults.baseURL = 'https://api.jonathan-marisa.com'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 Vue.prototype.$http = axios
 
