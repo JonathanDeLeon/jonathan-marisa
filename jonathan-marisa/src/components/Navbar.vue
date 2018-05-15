@@ -30,7 +30,7 @@
           { title: 'Home', href: '/', icon: '<span class="fa-layers fa-fw fa-lg"><i class="fas fa-home"></i></span>' },
           { title: 'Our Story', href: '/our-story', icon: '<span class="fa-layers fa-fw fa-lg"><i class="fas fa-pencil-alt"></i></span>' },
           { title: 'Photos', href: '/album', icon: '<span class="fa-layers fa-fw fa-lg"><i class="fas fa-camera-retro"></i></span>' },
-          { title: 'Proposal', href: 'proposal', icon: '<span class="fa-layers fa-fw fa-lg"><i class="far fa-circle" data-fa-transform="down-4"></i><i class="far fa-gem" data-fa-transform="shrink-8 up-6"></i></span>' },
+          { title: 'Proposal', href: '/proposal', icon: '<span class="fa-layers fa-fw fa-lg"><i class="far fa-circle" data-fa-transform="down-4"></i><i class="far fa-gem" data-fa-transform="shrink-8 up-6"></i></span>' },
           { title: 'Wedding', href: '/wedding', icon: '<span class="fa-layers fa-fw fa-lg"><i class="fas fa-heart" data-fa-transform="grow-2"></i><i class="far fa-heart fa-inverse" data-fa-transform="shrink-3 down-2 right-3"></i></span>' },
           { title: 'Contact', href: '/contact', icon: '<span class="fa-layers fa-fw fa-lg"><i class="far fa-address-card"></i></span>' },
         ]

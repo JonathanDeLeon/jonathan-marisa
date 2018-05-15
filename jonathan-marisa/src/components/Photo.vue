@@ -1,12 +1,10 @@
 <template>
   <div class="photo">
     <v-card tile>
-      <v-card-media :src="url" height="240px">
+      <v-card-media :src="url" :height="height">
         <slot name="card-media"></slot>
       </v-card-media>
-      <v-card-actions class="white">
-        <slot name="card-actions"></slot>
-      </v-card-actions>
+      <slot name="card-actions"></slot>
     </v-card>
   </div>
 </template>
@@ -14,17 +12,16 @@
 <script>
   export default {
     name: "photo",
-    props: ['url'],
+    props: ['url', 'height'],
     data() {
       return {}
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>
 
 <style>
-  .photo .card__media__content .card__title{
+  .photo .card__media__content .card__title {
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
   }
 </style>

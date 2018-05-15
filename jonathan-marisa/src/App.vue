@@ -2,6 +2,7 @@
   <v-app id="app">
     <Navbar/>
     <router-view></router-view>
+    <modal-renderer></modal-renderer>
   </v-app>
 </template>
 

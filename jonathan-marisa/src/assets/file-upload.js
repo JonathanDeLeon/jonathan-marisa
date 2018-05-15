@@ -1,10 +1,6 @@
-import * as axios from 'axios';
 
-const BASE_URL = 'https://api.jonathan-marisa.com';
-
-function upload(formData) {
-  const url = `${BASE_URL}/api/images/`;
-  return axios.post(url, formData)
+function upload(context, formData) {
+  return context.$http.post('/api/images/', formData)
   // get data
     .then(x => x.data)
     // // add url field
