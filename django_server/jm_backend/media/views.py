@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 # Create your views here.
 
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -58,11 +58,15 @@ class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = (filters.OrderingFilter,)
+    ordering_fields = ('title', 'priority')
+    ordering = ('priority',)
 
-    @list_route()
-    def minimal_list(self, request):
-        albums = self.get_queryset().values('pk', 'title')
-        return Response(albums, status=status.HTTP_200_OK)
+# TODO: Return only photo.pk and photo.thumbnail
+# TODO: pk -> id in the DB
+    # def list(self, request):
+    #     albums = self.filter_queryset(self.get_queryset()).values('pk', 'title', 'cover', 'priority', 'photos')
+    #     return Response(albums, status=status.HTTP_200_OK)
 
     @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
     def add_images(self, request, pk=None):

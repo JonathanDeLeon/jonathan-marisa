@@ -96,7 +96,9 @@ class MediaImage(models.Model):
 
 class Album(models.Model):
     title = models.CharField("Title of the album", max_length=255, default="Unknown Album")
+    priority = models.PositiveSmallIntegerField("Album ordinal", default=1)
     photos = models.ManyToManyField(MediaImage, related_name="albums")
+    cover = models.URLField("Album cover photo", blank=True, null=True)
 
     def __str__(self):
         return self.title
