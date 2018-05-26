@@ -11,7 +11,7 @@
     <v-container grid-list-md>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4>
-          <photo :url="'/static/media/img/bg2.jpg'" height="240px">
+          <list-photos :url="'/static/media/img/bg2.jpg'" height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">All Photos</v-card-title>
@@ -20,10 +20,10 @@
               <v-spacer></v-spacer>
               <v-btn outline color="pink accent-1" :to="'/album/photos'">View Album</v-btn>
             </v-layout>
-          </photo>
+          </list-photos>
         </v-flex>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="album in albums" :key="album.id">
-          <photo :url="getThumbnail(album)" height="240px">
+          <list-photos :url="getThumbnail(album)" height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
@@ -35,7 +35,7 @@
               <v-spacer></v-spacer>
               <v-btn outline color="pink accent-1" :to="'/album/'+album.id">View Album</v-btn>
             </v-layout>
-          </photo>
+          </list-photos>
         </v-flex>
       </v-layout>
     </v-container>
@@ -43,15 +43,11 @@
 </template>
 
 <script>
-  import Photo from '@/components/Photo'
   import sortUtil from '../_common/sort.util'
   import modalUtil from "../_common/modal.util";
 
   export default {
     name: "album",
-    components: {
-      Photo
-    },
     data() {
       return {
         title: "Photo Albums",
@@ -67,14 +63,7 @@
       this.$http.get('/api/album/')
         .then(response => {
           response.data.forEach(doc => {
-            const data = {
-              'id': doc.pk,
-              'title': doc.title,
-              'cover': doc.cover,
-              'priority': doc.priority,
-              'photos': doc.photos
-            }
-            this.albums.push(data)
+            this.albums.push(doc)
           })
         })
     },
@@ -95,8 +84,8 @@
       editAlbum(album) {
         modalUtil.showModal('album-create-edit', album)
           .then(data => {
-            let index = this.albums.indexOf(album);
             if (data) {
+              let index = this.albums.indexOf(album);
               if (data.delete) {
                 this.albums.splice(index, 1);
               } else {

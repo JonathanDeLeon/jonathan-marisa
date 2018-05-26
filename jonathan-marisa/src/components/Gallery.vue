@@ -12,7 +12,7 @@
 
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="photo in photos" :key="photo.id">
-          <photo :url="photo.thumbnail" height="360px">
+          <list-photos :url="photo.thumbnail" height="360px">
             <v-layout row slot="card-actions" v-if="user.authenticated">
               <v-btn icon v-on:click="favoritePhoto(photo)">
                 <span v-if="photo.favorite"><i class="fas fa-heart"></i></span>
@@ -23,7 +23,7 @@
                 <i class="fas fa-edit"></i>
               </v-btn>
             </v-layout>
-          </photo>
+          </list-photos>
         </v-flex>
       </v-layout>
     </v-container>
@@ -74,14 +74,16 @@
                     v-model="photoTemp.date_created"
                     prepend-icon="event"
                   ></v-text-field>
-                  <v-date-picker v-model="photoTemp.date_created" @input="photoTemp.date_created = formatDate($event)" no-title ></v-date-picker>
+                  <v-date-picker v-model="photoTemp.date_created" @input="photoTemp.date_created = formatDate($event)"
+                                 no-title></v-date-picker>
                 </v-menu>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-checkbox v-model="photoTemp.favorite" label="Favorite"></v-checkbox>
               </v-flex>
               <v-flex xs12 sm10>
-                <v-select label="Albums" multiple v-model="photoTemp.albums" :items="minimalAlbumList" item-text="title" item-value="id"></v-select>
+                <v-select label="Albums" multiple v-model="photoTemp.albums" :items="minimalAlbumList" item-text="title"
+                          item-value="id"></v-select>
               </v-flex>
             </v-layout>
           </v-container>
@@ -97,21 +99,21 @@
 </template>
 
 <script>
-  import Photo from '@/components/Photo'
-  import { upload } from '../assets/file-upload';
+  import VueGallery from 'vue-gallery';
+  import {upload} from '../assets/file-upload';
   import auth from '../auth'
 
   export default {
     name: "gallery",
     components: {
-      Photo
+      'gallery': VueGallery
     },
     data() {
       return {
         user: auth.user,
         background: {
           backgroundImage: 'url(/static/media/img/bg.jpg)',
-          height: window.innerHeight +'px'
+          height: window.innerHeight + 'px'
         },
         title: "Gallery",
         photos: [],
@@ -127,14 +129,16 @@
         addPhotoDialog: false,
         editPhotoDialog: false,
         datePickerMenu: false,
+        images: [],
+        index: null
       }
     },
     created() {
       this.$http.get('/api/images/')
         .then(response => {
-          response.data.forEach(doc =>{
+          response.data.forEach(doc => {
             const data = {
-              'id': doc.pk,
+              'id': doc.id,
               'image': doc.image,
               'thumbnail': doc.thumbnail,
               'description': doc.description,
@@ -158,7 +162,7 @@
       },
       filesChange() {
         let input = this.$refs.addPhoto.$el.querySelector('input')
-        if(input) {
+        if (input) {
           const fieldName = input.name
           const fileList = input.files
           // handle file changes
@@ -172,13 +176,13 @@
               formData.append(fieldName, fileList[x], fileList[x].name);
             });
           this.save(formData)
-        }else{
+        } else {
           alert("Input not valid. Error occured")
         }
       },
       clearChildrenByElement(element) {
-        if(element){
-          while(element.firstChild){
+        if (element) {
+          while (element.firstChild) {
             element.removeChild(element.firstChild)
           }
         }
@@ -199,52 +203,52 @@
             })
         }
       },
-      favoritePhoto(photo){
+      favoritePhoto(photo) {
         const isFavorite = !photo.favorite
 
-        this.$http.patch('/api/images/'+photo.id+'/', {
+        this.$http.patch('/api/images/' + photo.id + '/', {
           favorite: isFavorite,
         })
           .then(response => {
             photo.favorite = isFavorite
           })
       },
-      editPhoto(photo){
-        if(this.minimalAlbumList.length <= 0) {
+      editPhoto(photo) {
+        if (this.minimalAlbumList.length <= 0) {
           this.getListOfAlbums()
         }
         this.photoTemp = photo
         this.editPhotoDialog = true
       },
-      getListOfAlbums(){
+      getListOfAlbums() {
         this.$http.get('/api/album/minimal_list/')
           .then(response => {
             response.data.forEach(doc => {
               const data = {
-                id: doc.pk,
+                id: doc.id,
                 title: doc.title,
               }
               this.minimalAlbumList.push(data)
             })
           })
       },
-      formatDate (date) {
+      formatDate(date) {
         if (!date) {
           return null
         }
         const [year, month, day] = date.split('-')
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
-      updatePhoto(){
+      updatePhoto() {
         let data = {
           favorite: this.photoTemp.favorite,
           date_created: this.photoTemp.date_created,
         }
-        if(this.photoTemp.description.length > 0){
+        if (this.photoTemp.description.length > 0) {
           data.description = this.photoTemp.description
         }
         data.albums = this.photoTemp.albums
-        this.$http.patch('/api/images/'+this.photoTemp.id+'/', data)
+        this.$http.patch('/api/images/' + this.photoTemp.id + '/', data)
           .then(response => {
             window.location.href = window.location.pathname
           })

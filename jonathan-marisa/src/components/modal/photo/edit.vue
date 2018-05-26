@@ -12,7 +12,7 @@
           <br/>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field label="Description" v-model="photo.description" multi-line></v-text-field>
+              <v-text-field label="Title" v-model="photo.description"></v-text-field>
             </v-flex>
             <v-flex xs12 sm7>
               <v-menu :close-on-content-click="true" v-model="datePickerMenu" transition="scale-transition">
@@ -39,7 +39,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="black darken-1" flat @click.native="close">Close</v-btn>
-        <v-btn color="red darken-1" flat @click.native="removePhoto">Remove From Album</v-btn>
+        <v-btn color="red darken-1" flat @click.native="removePhoto">Delete Photo</v-btn>
         <v-btn color="blue darken-1" flat @click.native="updatePhoto">Update Photo</v-btn>
       </v-card-actions>
     </v-card>
@@ -48,21 +48,28 @@
 </template>
 
 <script>
+  import modalUtil from '@/_common/modal.util';
+
   export default {
     props: ['initialData', 'dialog'],
     data() {
       return {
+        photo: {},
         albums: [],
         datePickerMenu: false,
-        photo: {}
       }
     },
     created() {
+      if (!!this.initialData) {
+        let temp = {};
+        Object.assign(temp, this.initialData);
+        this.photo = temp;
+      }
       this.$http.get('/api/album/')
         .then(response => {
           response.data.forEach(doc => {
             const data = {
-              id: doc.pk,
+              id: doc.id,
               title: doc.title,
             }
             this.albums.push(data)
@@ -78,31 +85,22 @@
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
       updatePhoto() {
-        let data = {
-          favorite: this.photo.favorite,
-          date_created: this.photo.date_created,
-        }
-        if (this.photo.description.length > 0) {
-          data.description = this.photo.description
-        }
-        data.albums = this.photo.albums
-        this.$http.patch('/api/images/' + this.photo.pk + '/', data)
+        let temp = {};
+        Object.assign(temp, this.photo);
+        delete temp.image;
+        delete temp.thumbnail;
+        this.$http.patch('/api/images/' + this.photo.id + '/', temp)
           .then(response => {
-            window.location.href = window.location.pathname
+            if (response.data) {
+              modalUtil.hideModal(response.data)
+            }
           })
       },
       removePhoto() {
-        const index = this.photo.albums.indexOf(this.id)
-        if (index > -1) {
-          this.photo.albums.splice(index, 1)
-          const data = {
-            albums: this.photo.albums
-          }
-          this.$http.patch('/api/images/' + this.photo.pk + '/', data)
-            .then(response => {
-              window.location.href = window.location.pathname
-            })
-        }
+        this.$http.delete('/api/images/' + this.photo.id + '/')
+          .then(response => {
+            modalUtil.hideModal({delete: true})
+          })
       },
       close() {
         this.$emit('close');

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="dialog" @input="close" max-width="500px" v-if="$user.authenticated">
+  <v-dialog scrollable :value="dialog" @input="close" max-width="500px" v-if="$user.authenticated">
     <v-card>
       <v-card-title>
         <span class="headline">{{ isEdit ? 'Edit' : 'Create'}} Album</span>
@@ -9,22 +9,24 @@
           <v-text-field label="Album Name" v-model="album.title" required></v-text-field>
           <v-text-field label="Priority" v-model="album.priority" required></v-text-field>
         </v-form>
-        <v-layout column v-if="album.photos">
+        <v-container fluid grid-list-md v-if="album.photos">
           <div class="title">Cover Photo</div>
-          <v-layout row >
+          <v-layout row>
             <v-radio-group row v-model="album.cover" :mandatory="false">
-              <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in album.photos" :key="photo.pk">
+              <v-layout row wrap>
+              <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in album.photos" :key="photo.id">
                 <list-photos :url="photo.thumbnail" height="160px">
                   <v-card-actions class="white" slot="card-actions">
                     <v-layout row>
-                      <v-radio :value="photo.thumbnail"></v-radio>
+                      <v-radio :value="photo.image"></v-radio>
                     </v-layout>
                   </v-card-actions>
                 </list-photos>
               </v-flex>
+              </v-layout>
             </v-radio-group>
           </v-layout>
-        </v-layout>
+        </v-container>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -54,7 +56,6 @@
         let temp = {};
         Object.assign(temp, this.initialData);
         this.album = temp;
-        console.log(temp)
       }
     },
     methods: {

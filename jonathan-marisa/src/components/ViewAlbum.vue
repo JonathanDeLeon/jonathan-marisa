@@ -1,6 +1,7 @@
 <template>
   <div id="album">
     <dashboard :cover-title="title" :background="background"/>
+    <!--<gallery :images="images" :index="galleryIndex" @close="galleryIndex = null"></gallery>-->
     <v-layout row>
       <v-toolbar color="transparent" flat>
         <v-btn outline light color="grey darken-2" to="/album">Back</v-btn>
@@ -19,8 +20,12 @@
     <v-container fluid grid-list-md v-if="gridToggle == 1">
       <h2 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in photos" :key="photo.pk">
-          <photo :url="photo.image" height="860px">
+        <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in photos" :key="photo.id">
+          <list-photos :url="photo.image" height="860px">
+            <v-layout media column slot="card-media">
+              <v-spacer></v-spacer>
+              <v-card-title class="headline white--text">{{photo.description}}</v-card-title>
+            </v-layout>
             <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
               <v-layout row>
                 <v-btn icon v-on:click="favoritePhoto(photo)">
@@ -33,15 +38,20 @@
                 </v-btn>
               </v-layout>
             </v-card-actions>
-          </photo>
+          </list-photos>
         </v-flex>
       </v-layout>
     </v-container>
     <v-container grid-list-md v-else>
       <h2 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="photo in photos" :key="photo.pk">
-          <photo :url="photo.thumbnail" height="320px">
+        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in photos" :key="photo.id"
+                @click="galleryIndex = imageIndex">
+          <list-photos :url="photo.thumbnail" height="320px">
+            <v-layout media column slot="card-media">
+              <v-spacer></v-spacer>
+              <v-card-title class="headline white--text">{{photo.description}}</v-card-title>
+            </v-layout>
             <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
               <v-layout row>
                 <v-btn icon v-on:click="favoritePhoto(photo)">
@@ -54,7 +64,7 @@
                 </v-btn>
               </v-layout>
             </v-card-actions>
-          </photo>
+          </list-photos>
         </v-flex>
       </v-layout>
     </v-container>
@@ -62,16 +72,14 @@
 </template>
 
 <script>
-  import Photo from '@/components/Photo'
   import modalUtil from "../_common/modal.util";
-
-  let axios = require('axios')
+  import VueGallery from 'vue-gallery';
 
   export default {
-    name: "view-album",
     components: {
-      Photo
+      'gallery': VueGallery
     },
+    props: ['id'],
     data() {
       return {
         background: {
@@ -79,37 +87,29 @@
           height: window.innerHeight + 'px'
         },
         gridToggle: 0,
-        id: null,
         title: "Album",
         photos: [],
+        images: [],
+        galleryIndex: null
       }
     },
-    beforeRouteUpdate(to, from, next) {
-      this.$http.get('/api/album/' + to.params.album_id + '/')
+    created() {
+      this.$http.get('/api/album/' + this.id + '/')
         .then(response => {
-          const data = response.data
-          this.id = data.pk
-          this.title = data.title
-          this.photos = data.photos
-        })
-      next()
-    },
-    beforeRouteEnter(to, from, next) {
-      axios.get('/api/album/' + to.params.album_id + '/')
-        .then(response => {
-          let data = response.data
-          next(vm => {
-            vm.id = data.pk
-            vm.title = data.title
-            vm.photos = data.photos
-          })
+          if (response.data) {
+            const data = response.data;
+            this.title = data.title;
+            this.photos = data.photos;
+            this.images = this.photos.map(photo => photo.image);
+            this.background.backgroundImage = data.cover ? 'url(' + data.cover + ')' : 'url(/static/media/img/bg2.jpg)';
+          }
         })
     },
     methods: {
       favoritePhoto(photo) {
         const isFavorite = !photo.favorite
 
-        this.$http.patch('/api/images/' + photo.pk + '/', {
+        this.$http.patch('/api/images/' + photo.id + '/', {
           favorite: isFavorite,
         })
           .then(response => {
@@ -117,10 +117,26 @@
           })
       },
       editPhoto(photo) {
-        modalUtil.showModal('edit-photo', photo);
+        modalUtil.showModal('edit-photo', photo)
+          .then(data => {
+            if (data) {
+              let index = this.photos.indexOf(photo);
+              if (data.delete) {
+                this.photos.splice(index, 1);
+              } else {
+                this.photos.splice(index, 1, data);
+              }
+            }
+
+          });
       },
       addPhotos() {
-        modalUtil.showModal('album-add-photos', null);
+        modalUtil.showModal('album-add-photos', {id: this.id, title: this.title})
+          .then(data => {
+            if (data) {
+              this.photos = data.photos;
+            }
+          });
       }
     }
   }

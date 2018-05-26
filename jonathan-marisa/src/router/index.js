@@ -28,9 +28,10 @@ export default new Router({
       component: Gallery
     },
     {
-      path: '/album/:album_id',
+      path: '/album/:id',
       name: 'view-album',
-      component: ViewAlbum
+      component: ViewAlbum,
+      props: true
     },
     {
       path: '/login',

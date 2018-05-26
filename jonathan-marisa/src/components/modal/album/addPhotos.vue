@@ -1,12 +1,13 @@
 <template>
-  <v-dialog :value="dialog" @input="close" scrollable full-width v-if="$user.authenticated">
+  <v-dialog scrollable :value="dialog" @input="close" scrollable full-width v-if="$user.authenticated">
     <v-card>
       <v-card-title>
-        <span class="headline">Add Photos To {{album.title}}</span>
+        <span class="headline">Add Photos To {{title}}</span>
       </v-card-title>
       <v-card-text>
         <v-container grid-list-md>
-          <v-layout row wrap justify-center ref="images">
+          <v-layout row wrap justify-center>
+            <img v-for="(image, index) in images" :key="index" class="photos-not-album" height="180" :src="image.thumbnail" @click="selectImage(image, $event)">
           </v-layout>
         </v-container>
       </v-card-text>
@@ -20,47 +21,45 @@
 </template>
 
 <script>
+  import modalUtil from '@/_common/modal.util';
+
   export default {
     props: ['initialData', 'dialog'],
     data() {
       return {
+        id: null,
+        title: '',
         album: {},
-        images: []
+        images: [],
+        selectedImages: [],
       }
     },
     created() {
+      this.id = this.initialData.id;
+      this.title = this.initialData.title;
       if (this.id) {
         this.$http.get('/api/images/not_in/?album_id=' + this.id)
           .then(response => {
             response.data.forEach(doc => {
-              let imgTag = document.createElement("img")
-              imgTag.height = '180'
-              imgTag.id = doc.pk
-              imgTag.className = "photos-not-album"
-              imgTag.src = doc.thumbnail
-              imgTag.addEventListener("click", event => {
-                event.target.classList.toggle('selected')
-              })
-              this.$refs.images.appendChild(imgTag)
+              this.images.push(doc);
             })
-            this.addPhotoDialog = true
           })
       }
     },
     methods: {
-      addPhotosToAlbum() {
-        const selected = document.getElementsByClassName("photos-not-album selected");
-        let images = []
-        Array.from(selected)
-          .forEach(el => {
-            images.push(el.id)
-          })
-        const data = {
-          images: images
+      selectImage(image, $event) {
+        $event.target.classList.toggle('selected')
+        let index = this.selectedImages.indexOf(image.id);
+        if (index >= 0) {
+          this.selectedImages.splice(index, 1);
+        } else {
+          this.selectedImages.push(image.id);
         }
-        this.$http.patch('/api/album/' + this.id + '/add_images/', data)
+      },
+      addPhotosToAlbum() {
+        this.$http.patch('/api/album/' + this.id + '/add_images/', this.selectedImages)
           .then(response => {
-            window.location.href = window.location.pathname
+            modalUtil.hideModal(response.data)
           })
       },
       close() {
