@@ -8,7 +8,7 @@ from media.models import MediaImage, Album
 class MediaImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = MediaImage
-        fields = ('pk', 'image', 'thumbnail', 'description', 'favorite', 'date_created', 'albums',)
+        fields = ('id', 'image', 'thumbnail', 'description', 'favorite', 'date_created', 'albums',)
         read_only_fields = ('thumbnail',)
 
 
@@ -17,4 +17,4 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ('pk', 'title', 'photos', 'cover', 'priority')
+        fields = ('id', 'title', 'cover', 'priority', 'photos')

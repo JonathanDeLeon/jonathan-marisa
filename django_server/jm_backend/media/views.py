@@ -71,13 +71,7 @@ class AlbumViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
     def add_images(self, request, pk=None):
         album = self.get_object()
-        if 'images' in request.data:
-            images = request.data['images']
-            bulk = isinstance(images, list)
-            if bulk:
-                for img in images:
-                    album.photos.add(img)
-            else:
-                album.photos.add(images)
-            return Response({'status': 'Photos have been added to album'})
-        return Response({'status': 'Request does not have images parameter'}, status=status.HTTP_400_BAD_REQUEST)
+        for img in request.data:
+            album.photos.add(img)
+        serializer = self.get_serializer(album)
+        return Response(serializer.data)

@@ -76,7 +76,7 @@ class MediaImage(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     image = models.ImageField("Uploaded image", upload_to=uploaded_filename)
     thumbnail = models.ImageField("Thumbnail of uploaded image", blank=True)
-    description = models.TextField("Description of the uploaded image", default="")
+    description = models.TextField("Description of the uploaded image", default="", blank=True)
     favorite = models.BooleanField("Image that is a favorite", default=False)
     date_created = models.DateField("Date image was created", default=date.today)
 
