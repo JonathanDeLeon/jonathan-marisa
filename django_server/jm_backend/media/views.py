@@ -64,9 +64,9 @@ class AlbumViewSet(viewsets.ModelViewSet):
 
 # TODO: Return only photo.pk and photo.thumbnail
 # TODO: pk -> id in the DB
-    # def list(self, request):
-    #     albums = self.filter_queryset(self.get_queryset()).values('pk', 'title', 'cover', 'priority', 'photos')
-    #     return Response(albums, status=status.HTTP_200_OK)
+    def list(self, request):
+        albums = self.filter_queryset(self.get_queryset()).values('id', 'title', 'cover', 'priority')
+        return Response(albums, status=status.HTTP_200_OK)
 
     @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
     def add_images(self, request, pk=None):
