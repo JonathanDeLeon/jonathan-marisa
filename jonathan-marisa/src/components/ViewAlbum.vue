@@ -1,6 +1,6 @@
 <template>
   <div id="album">
-    <dashboard :cover-title="title" :background="background"/>
+    <dashboard :cover-title="album.title" :background="background"/>
     <!--<gallery :images="images" :index="galleryIndex" @close="galleryIndex = null"></gallery>-->
     <v-layout row>
       <v-toolbar color="transparent" flat>
@@ -15,16 +15,18 @@
           </v-btn>
         </v-btn-toggle>
         <v-btn color="primary" v-if="$user.authenticated" @click.stop="addPhotos">Add Photos To Album</v-btn>
+        <v-btn color="success" v-if="$user.authenticated" @click.stop="editAlbum">Edit Album</v-btn>
       </v-toolbar>
     </v-layout>
+    <h2 v-if="album.photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
     <v-container fluid grid-list-md v-if="gridToggle == 1">
-      <h2 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in photos" :key="photo.id">
+        <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in album.photos" :key="photo.id">
           <list-photos :url="photo.image" height="860px">
-            <v-layout media column slot="card-media">
+            <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
-              <v-card-title class="headline white--text">{{photo.description}}</v-card-title>
+                <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
+              <v-spacer></v-spacer>
             </v-layout>
             <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
               <v-layout row>
@@ -43,14 +45,14 @@
       </v-layout>
     </v-container>
     <v-container grid-list-md v-else>
-      <h2 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in photos" :key="photo.id"
+        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in album.photos" :key="photo.id"
                 @click="galleryIndex = imageIndex">
-          <list-photos :url="photo.thumbnail" height="320px">
-            <v-layout media column slot="card-media">
+          <list-photos :url="photo.image" height="320px">
+            <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
-              <v-card-title class="headline white--text">{{photo.description}}</v-card-title>
+                <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
+              <v-spacer></v-spacer>
             </v-layout>
             <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
               <v-layout row>
@@ -87,8 +89,10 @@
           height: window.innerHeight + 'px'
         },
         gridToggle: 0,
-        title: "Album",
-        photos: [],
+        album: {
+          title: "Album",
+          photos: [],
+        },
         images: [],
         galleryIndex: null
       }
@@ -97,15 +101,22 @@
       this.$http.get('/api/album/' + this.id + '/')
         .then(response => {
           if (response.data) {
-            const data = response.data;
-            this.title = data.title;
-            this.photos = data.photos;
-            this.images = this.photos.map(photo => photo.image);
-            this.background.backgroundImage = data.cover ? 'url(' + data.cover + ')' : 'url(/static/media/img/bg2.jpg)';
+            this.album = response.data;
+            this.images = this.album.photos.map(photo => photo.image);
+            this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover + ')' : 'url(/static/media/img/bg2.jpg)';
           }
         })
     },
     methods: {
+      editAlbum() {
+        modalUtil.showModal('album-create-edit', this.album)
+          .then(data => {
+            if (data) {
+              this.album = data;
+              this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover + ')' : 'url(/static/media/img/bg2.jpg)';
+            }
+          })
+      },
       favoritePhoto(photo) {
         const isFavorite = !photo.favorite
 
@@ -120,11 +131,11 @@
         modalUtil.showModal('edit-photo', photo)
           .then(data => {
             if (data) {
-              let index = this.photos.indexOf(photo);
+              let index = this.album.photos.indexOf(photo);
               if (data.delete) {
-                this.photos.splice(index, 1);
+                this.album.photos.splice(index, 1);
               } else {
-                this.photos.splice(index, 1, data);
+                this.album.photos.splice(index, 1, data);
               }
             }
 
@@ -134,7 +145,7 @@
         modalUtil.showModal('album-add-photos', {id: this.id, title: this.title})
           .then(data => {
             if (data) {
-              this.photos = data.photos;
+              this.album.photos = data.photos;
             }
           });
       }

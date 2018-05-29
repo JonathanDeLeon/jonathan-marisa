@@ -23,8 +23,8 @@ Vue.config.productionTip = false;
  * Axios definition
  */
 let axios = require('axios');
-// axios.defaults.baseURL = 'http://localhost:8000';
-axios.defaults.baseURL = 'https://api.jonathan-marisa.com'
+axios.defaults.baseURL = 'http://localhost:8000';
+// axios.defaults.baseURL = 'https://api.jonathan-marisa.com'
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 auth.checkAuth();
 axios.defaults.headers.common['Authorization'] = auth.getAuthHeader();
