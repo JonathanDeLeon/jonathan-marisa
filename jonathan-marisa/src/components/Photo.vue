@@ -43,6 +43,9 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
+  .photo .card__media__content .headline {
+    text-transform: lowercase;
+  }
   .photo img {
     max-width: 100%;
     height: auto;
