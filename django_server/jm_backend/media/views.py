@@ -19,6 +19,17 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
     parser_classes = (MultiPartParser, FormParser, JSONParser)
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = self.queryset
+        favorite = self.request.query_params.get('favorite', None)
+        if favorite is not None:
+            queryset = queryset.filter(favorite=favorite)
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save()
         for img in self.request.data.getlist('image'):
