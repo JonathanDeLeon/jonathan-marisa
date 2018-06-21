@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'corsheaders',
+    'cloudinary',
 
     'users.apps.UsersConfig',
     'media.apps.MediaConfig',
@@ -148,3 +150,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_URL = '/files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
+
+# CLOUDINARY = {
+#     'cloud_name': 'jonathan-marisa',
+#     'api_key': '635764857546892',
+#     'api_secret': 'nrka3L7GQCIIvefsRVUUALz3tLY'
+# }
+cloudinary.config(
+    cloud_name= 'jonathan-marisa',
+    api_key = '635764857546892',
+    api_secret = 'nrka3L7GQCIIvefsRVUUALz3tLY'
+)

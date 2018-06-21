@@ -5,6 +5,10 @@ import os
 import uuid
 
 from datetime import date
+
+import cloudinary.uploader
+import cloudinary.api
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.conf import settings
 
@@ -75,7 +79,7 @@ def create_thumbnail(input_image, uuid, thumbnail_size=(0.0, 256)):
 class MediaImage(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     image = models.ImageField("Uploaded image", upload_to=uploaded_filename)
-    thumbnail = models.ImageField("Thumbnail of uploaded image", blank=True)
+    thumbnail = models.URLField("Thumbnail of uploaded image", blank=True)
     description = models.TextField("Description of the uploaded image", default="", blank=True)
     favorite = models.BooleanField("Image that is a favorite", default=False)
     date_created = models.DateField("Date image was created", default=date.today)
@@ -85,9 +89,14 @@ class MediaImage(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         # generate and set thumbnail or none
-        if not self.thumbnail:
-            self.thumbnail = create_thumbnail(self.image, self.uuid)
+        # if not self.thumbnail:
+        #     self.thumbnail = create_thumbnail(self.image, self.uuid)
         # force update as we just changed something
+        arr = cloudinary.uploader.upload(
+            self.image,
+            public_id = str(self.uuid)
+        )
+        self.thumbnail = arr['secure_url']
         super(MediaImage, self).save(force_update=force_update)
 
     class Meta:
