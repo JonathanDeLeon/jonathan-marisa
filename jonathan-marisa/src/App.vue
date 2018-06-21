@@ -20,8 +20,10 @@
 <style>
   @font-face {
     font-family: "Bombshell Pro";
-    src: url("/static/fonts/Bombshell_Pro.woff") format('woff');
+    src: local("Bombshell Pro"),
+    url("/static/fonts/Bombshell_Pro.woff") format('woff');
   }
+
   #app {
     font-family: 'Libre Baskerville', serif;
   }
