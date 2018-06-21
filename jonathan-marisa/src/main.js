@@ -6,6 +6,7 @@ import Vuetify from 'vuetify'
 import App from './App'
 import modalRenderer from './_common/modalRenderer'
 import dashboard from './_common/dashboard'
+import youtube from './_common/youtube'
 import listPhotos from './components/Photo'
 import './components/modal/_module';
 
@@ -16,6 +17,7 @@ import('../node_modules/vuetify/dist/vuetify.min.css')
 Vue.use(Vuetify);
 Vue.component('modal-renderer', modalRenderer);
 Vue.component('dashboard', dashboard);
+Vue.component('youtube', youtube);
 Vue.component('list-photos', listPhotos);
 
 Vue.config.productionTip = false;
