@@ -11,9 +11,13 @@ class MediaImageSerializer(serializers.ModelSerializer):
         fields = ('id', 'image', 'thumbnail', 'description', 'favorite', 'date_created', 'albums',)
         read_only_fields = ('thumbnail',)
 
+class AlbumMediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MediaImage
+        fields = ('id', 'thumbnail', 'description', 'favorite')
 
 class AlbumSerializer(serializers.ModelSerializer):
-    photos = MediaImageSerializer(many=True, read_only=True)
+    photos = AlbumMediaSerializer(many=True, read_only=True)
 
     class Meta:
         model = Album
