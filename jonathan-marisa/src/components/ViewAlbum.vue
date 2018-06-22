@@ -22,7 +22,7 @@
     <v-container fluid grid-list-md v-if="gridToggle == 1">
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in album.photos" :key="photo.id">
-          <list-photos :url="photo.image" height="860px">
+          <list-photos :url="photo.thumbnail" height="860px">
             <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
                 <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
@@ -48,7 +48,7 @@
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in album.photos" :key="photo.id"
                 @click="galleryIndex = imageIndex">
-          <list-photos :url="photo.image" height="320px">
+          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')" height="320px">
             <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
                 <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
@@ -102,7 +102,7 @@
         .then(response => {
           if (response.data) {
             this.album = response.data;
-            this.images = this.album.photos.map(photo => photo.image);
+            this.images = this.album.photos.map(photo => photo.thumbnail);
             this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover + ')' : 'url(/static/media/img/bg2.jpg)';
           }
         })
