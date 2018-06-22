@@ -19,8 +19,10 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
     serializer_class = MediaImageSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     parser_classes = (MultiPartParser, FormParser, JSONParser)
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     filter_fields = ('uuid', 'favorite', 'albums')
+    ordering_fields = ('description', 'date_created')
+    ordering = ('date_created',)
     pagination_class = LinkHeaderPagination
     # pagination_class = CustomPagination
 
