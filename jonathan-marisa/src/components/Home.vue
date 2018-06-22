@@ -25,9 +25,6 @@
 </template>
 
 <script>
-
-
-
   export default {
     data() {
       return {
@@ -48,6 +45,18 @@
         })
 
     },
+    methods: {
+      favoritePhoto(photo) {
+        const isFavorite = !photo.favorite
+
+        this.$http.patch('/api/images/' + photo.id + '/', {
+          favorite: isFavorite,
+        })
+          .then(response => {
+            photo.favorite = isFavorite
+          })
+      },
+    }
   }
 </script>
 
