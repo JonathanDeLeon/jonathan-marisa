@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'knhy%h006sceqj(k+sjx2*wpjz^a2c5)(@ndl4ey5@mvni&+t^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jonathan-marisa.com', 'www.jonathan-marisa.com', 'api.jonathan-marisa.com']
 
