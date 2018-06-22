@@ -8,13 +8,10 @@ from datetime import date
 
 import cloudinary.uploader
 import cloudinary.api
-from cloudinary.models import CloudinaryField
 from django.db import models
 from django.conf import settings
 
 from PIL import Image
-
-# Create your models here.
 
 
 def uploaded_filename(instance, filename, prefix="img/"):
@@ -95,7 +92,7 @@ class MediaImage(models.Model):
         if not self.thumbnail:
             arr = cloudinary.uploader.upload(
                 self.image,
-                public_id = str(self.uuid)
+                public_id=str(self.uuid)
             )
             self.thumbnail = arr['secure_url']
         super(MediaImage, self).save(force_update=force_update)
