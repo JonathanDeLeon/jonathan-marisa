@@ -92,11 +92,12 @@ class MediaImage(models.Model):
         # if not self.thumbnail:
         #     self.thumbnail = create_thumbnail(self.image, self.uuid)
         # force update as we just changed something
-        arr = cloudinary.uploader.upload(
-            self.image,
-            public_id = str(self.uuid)
-        )
-        self.thumbnail = arr['secure_url']
+        if not self.thumbnail:
+            arr = cloudinary.uploader.upload(
+                self.image,
+                public_id = str(self.uuid)
+            )
+            self.thumbnail = arr['secure_url']
         super(MediaImage, self).save(force_update=force_update)
 
     class Meta:
