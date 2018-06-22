@@ -15,6 +15,7 @@
 <script>
   /* Light YouTube Embeds by @labnol */
   /* Web: http://labnol.org/?p=27941 */
+  // https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
 
   export default {
     props: ['embed'],
