@@ -2,33 +2,28 @@
 from __future__ import unicode_literals
 
 # Create your views here.
-
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status, filters
-from rest_framework.decorators import detail_route, list_route
+from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from media.models import MediaImage, Album
+from media.pagination import LinkHeaderPagination, CustomPagination
 from media.serializers import MediaImageSerializer, AlbumSerializer
 
 
 class MediaImagesViewSet(viewsets.ModelViewSet):
     queryset = MediaImage.objects.all()
     serializer_class = MediaImageSerializer
-    parser_classes = (MultiPartParser, FormParser, JSONParser)
     permission_classes = [IsAuthenticatedOrReadOnly]
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('uuid', 'favorite', 'albums')
+    pagination_class = LinkHeaderPagination
+    # pagination_class = CustomPagination
 
-    def get_queryset(self):
-        """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
-        """
-        queryset = self.queryset
-        favorite = self.request.query_params.get('favorite', None)
-        if favorite is not None:
-            queryset = queryset.filter(favorite=favorite)
-        return queryset
 
     def perform_create(self, serializer):
         serializer.save()
@@ -36,7 +31,7 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
             if img != serializer.validated_data['image']:
                 MediaImage.objects.create(image=img)
 
-    @list_route()
+    @action(detail=False)
     def not_in(self, request):
         album_id = request.GET.get('album_id')
         if album_id is not None:
@@ -46,7 +41,7 @@ class MediaImagesViewSet(viewsets.ModelViewSet):
         else:
             return Response({'status': 'Request params not set'}, status=status.HTTP_400_BAD_REQUEST)
 
-    @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
+    @action(detail=True, methods=['put', 'patch'], parser_classes=(JSONParser,))
     def add_album(self, request, pk=None):
         media = self.get_object()
         if 'albums' in request.data:
@@ -69,18 +64,17 @@ class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    parser_classes = (JSONParser,)
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('title', 'priority')
     ordering = ('priority',)
 
-# TODO: Return only photo.pk and photo.thumbnail
-# TODO: pk -> id in the DB
     def list(self, request):
-        albums = self.filter_queryset(self.get_queryset()).values('id', 'title', 'cover', 'priority')
+        albums = self.filter_queryset(self.get_queryset().values('id', 'title', 'cover', 'priority'))
         return Response(albums, status=status.HTTP_200_OK)
 
-    @detail_route(methods=['put', 'patch'], parser_classes=(JSONParser,))
-    def add_images(self, request, pk=None):
+    @action(detail=True, methods=['put', 'patch'])
+    def add_images(self, request):
         album = self.get_object()
         for img in request.data:
             album.photos.add(img)
