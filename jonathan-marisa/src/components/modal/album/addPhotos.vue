@@ -7,7 +7,7 @@
       <v-card-text>
         <v-container grid-list-md>
           <v-layout row wrap justify-center>
-            <img v-for="(image, index) in images" :key="index" class="photos-not-album" height="180" :src="image.thumbnail" @click="selectImage(image, $event)">
+            <img v-for="(image, index) in images" :key="index" class="photos-not-album" height="180" :src="image.thumbnail.replace(/v[0-9]*/,'f_auto/h_120,c_scale/dpr_2.0')" @click="selectImage(image, $event)">
           </v-layout>
         </v-container>
       </v-card-text>

@@ -31,7 +31,7 @@
       return {
         title: "Marisa & Jonathan",
         background: {
-          backgroundImage: 'url(/static/media/img/bg3.jpg)',
+          backgroundImage: 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg3.jpg)',
           height: window.innerHeight + 'px'
         },
         photos: [],

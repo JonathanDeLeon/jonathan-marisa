@@ -15,10 +15,10 @@
             <v-radio-group row v-model="album.cover" :mandatory="false">
               <v-layout row wrap>
               <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in album.photos" :key="photo.id">
-                <list-photos :url="photo.thumbnail" height="160px">
+                <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_120,c_scale/dpr_2.0')" height="160px">
                   <v-card-actions class="white" slot="card-actions">
                     <v-layout row>
-                      <v-radio :value="photo.image"></v-radio>
+                      <v-radio :value="photo.thumbnail"></v-radio>
                     </v-layout>
                   </v-card-actions>
                 </list-photos>

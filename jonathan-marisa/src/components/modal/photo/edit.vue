@@ -7,7 +7,7 @@
       <v-card-text>
         <v-container grid-list-md>
           <v-layout row>
-            <img :src="photo.thumbnail" height="160">
+            <img :src="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_120,c_scale/dpr_2.0')" height="160">
           </v-layout>
           <br/>
           <v-layout wrap>

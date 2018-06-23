@@ -52,7 +52,7 @@
       return {
         title: "Photo Albums",
         background: {
-          backgroundImage: 'url(/static/media/img/bg2.jpg)',
+          backgroundImage: 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)',
           height: window.innerHeight + 'px'
         },
         albums: [],
@@ -69,7 +69,7 @@
     },
     methods: {
       getThumbnail(album) {
-        return album.cover || '/static/media/img/image-not-found.png';
+        return album.cover || 'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
       },
       createAlbum() {
         modalUtil.showModal('album-create-edit', null)
