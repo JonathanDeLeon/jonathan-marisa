@@ -85,7 +85,7 @@
     data() {
       return {
         background: {
-          backgroundImage: 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)',
           height: window.innerHeight + 'px'
         },
         gridToggle: 0,
@@ -102,7 +102,7 @@
         .then(response => {
           if (response.data) {
             this.album = response.data;
-            this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0') + ')' : 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)';
+            this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0') + ')' : 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)';
           }
         })
       this.$http.get('/api/images/?albums=' + this.id)
@@ -119,7 +119,7 @@
           .then(data => {
             if (data) {
               this.album = data;
-              this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')  + ')' : 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)';
+              this.background.backgroundImage = this.album.cover ? 'url(' + this.album.cover.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')  + ')' : 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)';
             }
           })
       },

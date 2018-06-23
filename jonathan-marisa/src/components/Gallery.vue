@@ -112,7 +112,7 @@
       return {
         user: auth.user,
         background: {
-          backgroundImage: 'url(http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg.jpg)',
           height: window.innerHeight + 'px'
         },
         title: "Gallery",
