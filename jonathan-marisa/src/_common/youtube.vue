@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex xs12>
+    <v-flex xs10 offset-xs1>
       <div class="youtube-player" :data-id="embed">
         <div v-if="!loadVideo" :data-id="embed" @click="embedYoutube">
           <img :src="'https://i.ytimg.com/vi/'+embed+'/maxresdefault.jpg'">
