@@ -76,7 +76,7 @@ class AlbumViewSet(viewsets.ModelViewSet):
         return Response(albums, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['put', 'patch'])
-    def add_images(self, request):
+    def add_images(self, request, pk=None):
         album = self.get_object()
         for img in request.data:
             album.photos.add(img)
