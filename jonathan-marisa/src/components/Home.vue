@@ -70,8 +70,8 @@
     font-size: 4.5vw;
     font-weight: 400;
     word-wrap: break-word;
-    margin: 1.5em 0;
+    margin: 1.5em 0 0.8em;
     color: rgba(0, 0, 0, .54);
-    color: #FADEE6;
+    /*color: #FADEE6;*/
   }
 </style>
