@@ -11,7 +11,7 @@
     <v-container grid-list-md>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4>
-          <list-photos :url="'/static/media/img/bg2.jpg'" height="240px">
+          <list-photos url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg" height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">All Photos</v-card-title>
@@ -69,7 +69,7 @@
     },
     methods: {
       getThumbnail(album) {
-        return album.cover || 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
+        return album.cover.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0') || 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
       },
       createAlbum() {
         modalUtil.showModal('album-create-edit', null)

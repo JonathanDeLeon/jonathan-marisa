@@ -22,7 +22,7 @@
     <v-container fluid grid-list-md v-if="gridToggle == 1">
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in photos" :key="photo.id">
-          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_860,c_scale/dpr_2.0')" height="860px">
+          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_720,c_scale/dpr_2.0')" height="860px">
             <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
                 <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
@@ -48,7 +48,7 @@
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in photos" :key="photo.id"
                 @click="galleryIndex = imageIndex">
-          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')" height="320px">
+          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0')" height="320px">
             <v-layout column slot="card-media" class="card-overlay">
               <v-spacer></v-spacer>
                 <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>
@@ -109,7 +109,7 @@
         .then(response => {
           if (response.data) {
             this.photos = response.data;
-            this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_860,c_scale/dpr_2.0'));
+            this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_720,c_scale/dpr_2.0'));
           }
         })
     },

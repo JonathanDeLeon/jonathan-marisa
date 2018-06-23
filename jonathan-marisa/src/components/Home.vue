@@ -7,7 +7,7 @@
     <v-container grid-list-sm>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="photo in photos" :key="photo.id">
-          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')" height="320px">
+          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0')" height="320px">
             <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
               <v-layout row>
                 <v-btn icon v-on:click="favoritePhoto(photo)">
