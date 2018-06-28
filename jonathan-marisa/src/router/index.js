@@ -5,6 +5,7 @@ import Album from '@/components/Album'
 import ViewAlbum from '@/components/ViewAlbum'
 import Gallery from '@/components/Gallery'
 import Login from '@/components/Login'
+import wedding from '@/components/wedding'
 
 
 Vue.use(Router)
@@ -12,6 +13,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/wedding',
+      name: 'wedding',
+      component: wedding
+    },
     {
       path: '/album',
       name: 'album',
