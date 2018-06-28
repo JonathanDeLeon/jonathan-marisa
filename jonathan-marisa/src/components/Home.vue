@@ -2,7 +2,7 @@
   <div id="home">
     <dashboard :cover-title="title" :background="background"></dashboard>
     <h2 class="display-header text-xs-center">Proposal Video</h2>
-    <youtube embed="0f4x5WNUw9I"></youtube>
+    <youtube embed="zr__nuPTYtI"></youtube>
     <h2 class="display-header text-xs-center">Our Favorites</h2>
     <v-container grid-list-sm>
       <v-layout row wrap>
@@ -62,16 +62,5 @@
 </script>
 
 <style>
-  h2.display-header {
-    font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    letter-spacing: 4px;
-    text-align: center;
-    font-size: 70px;
-    font-size: 4.5vw;
-    font-weight: 400;
-    word-wrap: break-word;
-    margin: 1.5em 0 0.8em;
-    color: rgba(0, 0, 0, .54);
-    /*color: #FADEE6;*/
-  }
+
 </style>
