@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/components/Home'
-import Album from '@/components/Album'
-import ViewAlbum from '@/components/ViewAlbum'
-import Gallery from '@/components/Gallery'
-import Login from '@/components/Login'
-import wedding from '@/components/wedding'
+import Home from '@/components/home'
+import Album from '@/components/album'
+import ViewAlbum from '@/components/viewAlbum'
+import Gallery from '@/components/gallery'
+import Login from '@/components/login'
+import Wedding from '@/components/wedding'
 
 
 Vue.use(VueRouter)
@@ -16,7 +16,7 @@ export default new VueRouter({
     {
       path: '/wedding',
       name: 'wedding',
-      component: wedding
+      component: Wedding
     },
     {
       path: '/album',

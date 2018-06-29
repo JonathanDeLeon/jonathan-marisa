@@ -7,7 +7,7 @@ import App from './App'
 import modalRenderer from './_common/modalRenderer'
 import dashboard from './_common/dashboard'
 import youtube from './_common/youtube'
-import listPhotos from './components/Photo'
+import listPhotos from './components/photo'
 import './components/modal/_module';
 
 import router from './router'
