@@ -6,6 +6,8 @@ import ViewAlbum from '@/components/viewAlbum'
 import Gallery from '@/components/gallery'
 import Login from '@/components/login'
 import Wedding from '@/components/wedding'
+import Proposal from '@/components/proposal'
+import OurStory from '@/components/ourStory'
 
 
 Vue.use(VueRouter)
@@ -17,6 +19,16 @@ export default new VueRouter({
       path: '/wedding',
       name: 'wedding',
       component: Wedding
+    },
+    {
+      path: '/our-story',
+      name: 'ourStory',
+      component: OurStory
+    },
+    {
+      path: '/proposal',
+      name: 'proposal',
+      component: Proposal
     },
     {
       path: '/album',
