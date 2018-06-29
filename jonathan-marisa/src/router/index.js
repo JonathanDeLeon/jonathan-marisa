@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Home from '@/components/Home'
 import Album from '@/components/Album'
 import ViewAlbum from '@/components/ViewAlbum'
@@ -8,9 +8,9 @@ import Login from '@/components/Login'
 import wedding from '@/components/wedding'
 
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   mode: 'history',
   routes: [
     {

@@ -7,7 +7,7 @@
           <span>MENU</span>
         </div>
         <v-list>
-          <v-list-tile v-for="item in items" :key="item.title" :href="item.href" @click="">
+          <v-list-tile v-for="item in items" :key="item.title" :to="item.href" @click="">
             <v-list-tile-action class="pink--text text--lighten-3">
               <span v-html="item.icon"></span>
             </v-list-tile-action>
