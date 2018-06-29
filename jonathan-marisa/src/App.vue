@@ -3,11 +3,17 @@
     <navbar/>
     <router-view></router-view>
     <modal-renderer></modal-renderer>
+    <footer-view/>
   </v-app>
 </template>
 
 <script>
-  export default {}
+  import navbar from './components/navbar'
+  import footerView from './components/footer'
+
+  export default {
+    components: {navbar, footerView}
+  }
 </script>
 
 <style>
@@ -35,7 +41,7 @@
 
   h2.display-header {
     font-size: 70px;
-    font-size: 4.3em;
+    font-size: 4.0em;
   }
 
   h3.display-header {
