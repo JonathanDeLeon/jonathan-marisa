@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <dashboard :cover-title="title" :background="background"></dashboard>
-    <h2 class="display-header text-xs-center">Proposal Video</h2>
+    <h3 class="display-header text-xs-center">Proposal Video</h3>
     <youtube embed="zr__nuPTYtI"></youtube>
-    <h2 class="display-header text-xs-center">Our Favorites</h2>
+    <h3 class="display-header text-xs-center">Our Favorites</h3>
     <v-container grid-list-sm>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="photo in photos" :key="photo.id">
@@ -20,8 +20,8 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <h2 class="display-header text-xs-center">Wedding Date</h2>
-    <h2 class="display-header text-xs-center">Countdown</h2>
+    <h3 class="display-header text-xs-center">Wedding Date</h3>
+    <h3 class="display-header text-xs-center">Countdown</h3>
   </div>
 </template>
 

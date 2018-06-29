@@ -96,8 +96,8 @@
     line-height: 1.125em;
     text-align: center;
     font-size: 80px;
-    font-size: 5em;
-    width: 80%;
+    font-size: 4.5em;
+    width: 90%;
     display: inline-block;
     /*word-wrap: break-word;*/
     font-weight: 400;

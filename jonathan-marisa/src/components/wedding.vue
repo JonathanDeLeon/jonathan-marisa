@@ -193,7 +193,7 @@
   }
 
   .bridesmaid-label p:first-child, .groomsman-label p:first-child {
-    font-family: "Bombshell Pro";
+    font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   }
 
   .bridesmaid-label p {
