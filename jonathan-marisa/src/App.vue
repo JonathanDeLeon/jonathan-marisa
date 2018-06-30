@@ -30,7 +30,6 @@
   .display-header {
     font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     letter-spacing: 4px;
-    text-align: center;
     font-weight: 400;
     /*word-wrap: break-word;*/
     margin: 1.5em 0 0.8em;

@@ -33,7 +33,7 @@
       </v-layout>
     </v-container>
     <v-parallax height="300"
-                src="http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax.jpg">
+                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax.jpg">
       <v-layout column align-center justify-center>
         <h2 class="display-header text-xs-center white--text">Bridesmaids</h2>
       </v-layout>
@@ -62,7 +62,7 @@
       </v-layout>
     </v-container>
     <v-parallax height="300"
-                src="http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax2.png">
+                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax2.png">
       <v-layout column align-center justify-center>
         <h2 class="display-header text-xs-center white--text">Groomsmen</h2>
       </v-layout>
