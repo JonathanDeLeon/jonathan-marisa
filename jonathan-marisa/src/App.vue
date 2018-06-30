@@ -27,7 +27,7 @@
     background: #fafafa;
   }
 
-  #app {
+  #app, #app .title{
     font-family: 'Libre Baskerville', serif !important;
   }
 
