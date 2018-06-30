@@ -23,6 +23,10 @@
     url("/static/fonts/Bombshell_Pro.woff") format('woff');
   }
 
+  body, html {
+    background: #fafafa;
+  }
+
   #app {
     font-family: 'Libre Baskerville', serif;
   }

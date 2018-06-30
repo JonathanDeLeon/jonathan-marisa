@@ -9,7 +9,7 @@
           <p class="subheading text-xs-center"><em>As told by Marisa</em></p>
         </v-flex>
         <v-flex xs12>
-          <v-layout>
+          <v-layout justify-center>
             <v-flex xs12 md10>
               <v-card-media :height="$vuetify.breakpoint.mdAndUp ? 700 : 370" contain src="/static/media/test.png"></v-card-media>
             </v-flex>
