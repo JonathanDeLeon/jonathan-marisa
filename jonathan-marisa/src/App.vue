@@ -28,7 +28,7 @@
   }
 
   #app {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Libre Baskerville', serif !important;
   }
 
   .display-header {
