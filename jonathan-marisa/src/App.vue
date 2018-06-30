@@ -43,13 +43,24 @@
   }
 
   h2.display-header {
-    font-size: 70px;
     font-size: 4.0em;
   }
 
   h3.display-header {
-    font-size: 40px;
     font-size: 2.5em;
+  }
+
+  @media (max-width: 600px) {
+    .display-header {
+      margin: 1.0em 0 0.4em;
+    }
+    h2.display-header {
+      font-size: 3.0em;
+    }
+    h3.display-header {
+      font-size: 2.0em;
+    }
+
   }
 </style>
 

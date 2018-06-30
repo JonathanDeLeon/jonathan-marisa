@@ -95,12 +95,18 @@
     letter-spacing: 4px;
     line-height: 1.125em;
     text-align: center;
-    font-size: 80px;
     font-size: 4.5em;
     width: 90%;
     display: inline-block;
     /*word-wrap: break-word;*/
     font-weight: 400;
+  }
+  @media (max-width: 600px) {
+    #collection-cover .cover-detail h1.cover-collection-name {
+      width: 90%;
+      font-size: 3.6em;
+    }
+
   }
 
 </style>
