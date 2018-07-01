@@ -49,7 +49,9 @@
                   <v-card-media class="circle" height="290" :src="bridesmaid.image"></v-card-media>
                 </v-flex>
                 <v-flex xs12 text-xs-center class="bridesmaid-label">
-                  <p class="title mt-4 mb-2">{{bridesmaid.label.slice(0, bridesmaid.label.indexOf('|')).trim()}}</p>
+                  <v-card-media contain class="mt-2" height="25"
+                                :src="(index+1)%2==0 ? '/static/media/test2.png' : '/static/media/test3.png'"></v-card-media>
+                  <p class="title mt-2 mb-2">{{bridesmaid.label.slice(0, bridesmaid.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{bridesmaid.label.slice(bridesmaid.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
               </v-layout>
@@ -79,7 +81,9 @@
                                 :src="groomsman.image || 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_180/image-not-found.png'"></v-card-media>
                 </v-flex>
                 <v-flex xs12 text-xs-center class="groomsman-label">
-                  <p class="title mt-4 mb-2">{{groomsman.label.slice(0, groomsman.label.indexOf('|')).trim()}}</p>
+                  <v-card-media contain class="mt-2" height="20"
+                                :src="(index+1)%2==0 ? '/static/media/test9.png' : '/static/media/test8.png'"></v-card-media>
+                  <p class="title mt-2 mb-2">{{groomsman.label.slice(0, groomsman.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{groomsman.label.slice(groomsman.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
               </v-layout>
@@ -185,15 +189,15 @@
 </script>
 
 <style scoped>
-  .card__media.circle {
+  .v-card__media.circle {
     border-color: white;
     border-radius: 50% !important;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
   }
 
-  .bridesmaid-label p:first-child, .groomsman-label p:first-child {
-    font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  .bridesmaid-label p.title, .groomsman-label p.title {
+    font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
   }
 
   .bridesmaid-label p {

@@ -5,14 +5,16 @@
         <v-flex xs12>
           <v-layout justify-center>
             <v-flex xs12 md10>
-              <v-card-media :height="$vuetify.breakpoint.smAndUp ? 250 : 100" contain src="/static/media/our_story.png"></v-card-media>
+              <v-card-media :height="$vuetify.breakpoint.smAndUp ? 250 : 100" contain
+                            src="/static/media/our_story.png"></v-card-media>
             </v-flex>
           </v-layout>
-          <p class="text-xs-center" :class="$vuetify.breakpoint.smAndUp ? 'title' : 'body-2'" style="letter-spacing: 0.5em !important;">Highschool Sweethearts</p>
+          <p class="text-xs-center" :class="$vuetify.breakpoint.smAndUp ? 'title' : 'body-2'"
+             style="letter-spacing: 0.5em !important;">Highschool Sweethearts</p>
         </v-flex>
         <v-flex xs12 md6 px-2>
           <v-layout justify-center wrap>
-            <v-flex xs12>
+            <v-flex xs6>
               <h3 class="display-header">From Her</h3>
             </v-flex>
             <v-flex xs12>
@@ -49,7 +51,7 @@
         </v-flex>
         <v-flex xs12 md6 px-2>
           <v-layout justify-center wrap>
-            <v-flex xs12>
+            <v-flex xs6>
               <h3 class="display-header">From Him</h3>
             </v-flex>
             <v-flex xs12>
@@ -99,5 +101,7 @@
 </script>
 
 <style scoped>
-
+  #app .title {
+    font-family: 'Libre Baskerville', serif !important;
+  }
 </style>

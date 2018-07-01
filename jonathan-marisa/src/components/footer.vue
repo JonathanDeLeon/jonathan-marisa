@@ -1,15 +1,16 @@
 <template>
-  <div id="footer">
+  <footer id="footer-wrap">
 
-  </div>
+  </footer>
 </template>
 
 <script>
-    export default {
-        name: "footer"
-    }
+  export default {
+    name: "footer-wrap"
+  }
 </script>
 
 <style scoped>
+
 
 </style>

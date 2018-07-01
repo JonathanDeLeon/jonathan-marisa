@@ -27,7 +27,7 @@
     background: #fafafa;
   }
 
-  #app, #app .title{
+  #app {
     font-family: 'Libre Baskerville', serif !important;
   }
 
@@ -54,9 +54,11 @@
     .display-header {
       margin: 1.0em 0 0.4em;
     }
+
     h2.display-header {
       font-size: 3.0em;
     }
+
     h3.display-header {
       font-size: 2.0em;
     }
