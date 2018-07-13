@@ -149,6 +149,7 @@ STATIC_URL = '/static/'
 
 # CORS Headers fix
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_EXPOSE_HEADERS = ['LINK']
 
 MEDIA_URL = '/files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
