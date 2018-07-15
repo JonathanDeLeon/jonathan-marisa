@@ -2,8 +2,14 @@
   <div id="dashboard">
     <div id="collection-cover" v-resize="onResize" :style="background">
       <div class="cover-detail">
-        <h1 class="cover-collection-name">{{coverTitle}}</h1>
-        <slot></slot>
+        <v-container fill-height>
+          <v-layout align-center>
+            <v-flex text-xs-center>
+                <h1 v-if="coverTitle" class="cover-collection-name">{{coverTitle}}</h1>
+                <slot></slot>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </div>
     </div>
   </div>
@@ -78,16 +84,18 @@
   }
 
   #collection-cover .cover-detail {
+    height: 100%;
+    position: relative;
     width: 100%;
     text-align: center;
     color: #fff;
-    position: absolute;
-    top: 50%;
     z-index: 2;
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*-ms-transform: translateY(-50%);*/
+    /*-moz-transform: translateY(-50%);*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
   }
 
   #collection-cover .cover-detail h1.cover-collection-name {
@@ -96,14 +104,16 @@
     line-height: 1.125em;
     text-align: center;
     font-size: 4.5em;
-    width: 90%;
-    display: inline-block;
     /*word-wrap: break-word;*/
     font-weight: 400;
   }
+
+  .cover-detail .container {
+    overflow: hidden;
+  }
+
   @media (max-width: 600px) {
     #collection-cover .cover-detail h1.cover-collection-name {
-      width: 90%;
       font-size: 3.6em;
     }
 
