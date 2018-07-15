@@ -1,9 +1,13 @@
 <template>
   <div id="home">
-    <dashboard :cover-title="title" :background="background"></dashboard>
+    <dashboard :background="background">
+        <countdown end="June 23, 2019"></countdown>
+    </dashboard>
     <our-story/>
     <v-parallax :height="$vuetify.breakpoint.mdAndUp ? 300 : 200"
-                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax.jpg">
+                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/MarandJonEngagedEdits-176.jpg">
+      <!--src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_800,w_1200,x_200,y_200/MarandJonEngagedEdits-176.jpg">-->
+      <!--src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax.jpg">-->
       <v-layout column align-center justify-center>
         <h2 class="display-header text-xs-center white--text">How He Asked</h2>
       </v-layout>
@@ -12,39 +16,24 @@
     <h3 class="display-header text-xs-center">Proposal Video</h3>
     <youtube embed="zr__nuPTYtI"></youtube>
     <h3 class="display-header text-xs-center">Our Favorites</h3>
-    <v-container grid-list-md>
-      <v-layout justify-center row wrap>
-        <v-flex xs6 md4 v-for="photo in photos" :key="photo.id">
-          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0')"
-                       :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'">
-            <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
-              <v-layout row>
-                <v-btn icon v-on:click="favoritePhoto(photo)">
-                  <span v-if="photo.favorite"><i class="fas fa-heart"></i></span>
-                  <span v-show="!photo.favorite"><i class="far fa-heart"></i></span>
-                </v-btn>
-              </v-layout>
-            </v-card-actions>
-          </list-photos>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <list-photos :photos="photos" class-obj="xs6 md4"
+                 :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
     <h3 class="display-header text-xs-center">Wedding Date</h3>
-    <h3 class="display-header text-xs-center">Countdown</h3>
   </div>
 </template>
 
 <script>
   import ourStory from './ourStory'
   import proposal from './proposal'
+  import countdown from './countdown'
 
   export default {
-    components: {ourStory, proposal},
+    components: {ourStory, proposal, countdown},
     data() {
       return {
         title: "Marisa & Jonathan",
         background: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg3.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg)',
           height: window.innerHeight + 'px'
         },
         photos: [],

@@ -39,4 +39,7 @@
   }
 </script>
 <style scoped>
+  nav {
+    z-index: 3;
+  }
 </style>

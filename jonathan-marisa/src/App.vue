@@ -64,5 +64,8 @@
     }
 
   }
+  .bombshell {
+    font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
 </style>
 

@@ -10,8 +10,8 @@
     </v-layout>
     <v-container grid-list-md>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4>
-          <list-photos url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg" height="240px">
+        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-if="$user.authenticated">
+          <list-album url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg" height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">All Photos</v-card-title>
@@ -20,10 +20,10 @@
               <v-spacer></v-spacer>
               <v-btn outline color="pink accent-1" :to="'/album/photos'">View Album</v-btn>
             </v-layout>
-          </list-photos>
+          </list-album>
         </v-flex>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="album in albums" :key="album.id">
-          <list-photos :url="getThumbnail(album)" height="240px">
+          <list-album :url="getThumbnail(album)" height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
@@ -35,7 +35,7 @@
               <v-spacer></v-spacer>
               <v-btn outline color="pink accent-1" :to="'/album/'+album.id">View Album</v-btn>
             </v-layout>
-          </list-photos>
+          </list-album>
         </v-flex>
       </v-layout>
     </v-container>
@@ -43,16 +43,18 @@
 </template>
 
 <script>
-  import sortUtil from '../_common/sort.util'
-  import modalUtil from "../_common/modal.util";
+  import sortUtil from '@/_common/sort.util'
+  import modalUtil from "@/_common/modal.util";
+
+  import listAlbum from "@/components/listAlbum"
 
   export default {
-    name: "album",
+    components: {listAlbum},
     data() {
       return {
         title: "Photo Albums",
         background: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-132.jpg)',
           height: window.innerHeight + 'px'
         },
         albums: [],
