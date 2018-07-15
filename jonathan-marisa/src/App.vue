@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+    <loader></loader>
     <navbar/>
     <router-view></router-view>
     <modal-renderer></modal-renderer>

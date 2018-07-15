@@ -88,6 +88,7 @@
 <script>
   import modalUtil from "../_common/modal.util";
   import VueGallery from 'vue-gallery';
+  import loadingUtil from "../_common/loading.util";
 
   export default {
     components: {
@@ -117,6 +118,7 @@
       }
     },
     created() {
+      loadingUtil.show();
       this.$http.get('/api/album/' + this.id + '/')
         .then(response => {
           if (response.data) {
@@ -134,8 +136,8 @@
               this.observeState.nextPage = links.next || '';
             }
           }
-        });
-
+        })
+        .then(() => loadingUtil.hide());
     },
     mounted() {
       // Options

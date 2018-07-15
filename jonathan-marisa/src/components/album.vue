@@ -44,6 +44,7 @@
 
 <script>
   import sortUtil from '@/_common/sort.util'
+  import loadingUtil from '@/_common/loading.util'
   import modalUtil from "@/_common/modal.util";
 
   import listAlbum from "@/components/listAlbum"
@@ -62,12 +63,14 @@
       }
     },
     created() {
+      loadingUtil.show();
       this.$http.get('/api/album/')
         .then(response => {
           response.data.forEach(doc => {
             this.albums.push(doc)
           })
         })
+        .then(() => loadingUtil.hide());
     },
     methods: {
       getThumbnail(album) {

@@ -1,10 +1,22 @@
 const loadingUtil = {
-	_loader: $('<div class="ui active dimmer"><div class="ui text loader">Loading</div></div>'),
+	_loader: null,
+  registerLoader(loader) {
+    this._loader = loader;
+  },
+  unregister() {
+		if (this._loader) {
+			this._loader.hide();
+			this._loader = null;
+		}
+	},
 	show() {
-		$('body').append(this._loader);
+	  if (!this._loader) {
+			throw new Error('A loader is not registered!');
+		}
+		this._loader.show();
 	},
 	hide() {
-		this._loader.remove();
+		this._loader.hide();
 	}
 };
 

@@ -27,6 +27,8 @@
   import proposal from './proposal'
   import countdown from './countdown'
 
+  import loadingUtil from '@/_common/loading.util'
+
   export default {
     components: {ourStory, proposal, countdown},
     data() {
@@ -40,13 +42,14 @@
       }
     },
     created() {
+      loadingUtil.show();
       this.$http.get('/api/images/?favorite=True')
         .then(response => {
           if (response.data) {
             this.photos = response.data;
           }
         })
-
+        .then(() => loadingUtil.hide());
     },
     methods: {
       favoritePhoto(photo) {
