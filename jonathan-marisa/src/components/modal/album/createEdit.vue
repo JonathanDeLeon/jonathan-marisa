@@ -15,13 +15,13 @@
             <v-radio-group row v-model="album.cover" :mandatory="false">
               <v-layout row wrap>
               <v-flex xs10 offset-xs1 sm6 offset-sm0 md3 v-for="photo in album.photos" :key="photo.id">
-                <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_120,c_scale/dpr_2.0')" height="160px">
+                <list-album :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_120,c_scale/dpr_2.0')" height="160px">
                   <v-card-actions class="white" slot="card-actions">
                     <v-layout row>
                       <v-radio :value="photo.thumbnail"></v-radio>
                     </v-layout>
                   </v-card-actions>
-                </list-photos>
+                </list-album>
               </v-flex>
               </v-layout>
             </v-radio-group>
@@ -41,9 +41,13 @@
 
 <script>
   import modalUtil from '@/_common/modal.util';
+  import loadingUtil from '@/_common/loading.util';
+
+  import listAlbum from "@/components/listAlbum"
 
   export default {
     props: ['initialData', 'dialog'],
+    components: {listAlbum},
     data() {
       return {
         isEdit: false,
@@ -51,16 +55,19 @@
       }
     },
     created() {
-      this.isEdit = !!this.initialData
+      loadingUtil.show({modal: true});
+      this.isEdit = !!this.initialData;
       if (this.isEdit) {
         let temp = {};
         Object.assign(temp, this.initialData);
         this.album = temp;
       }
+      loadingUtil.hide();
     },
     methods: {
       submitSetup() {
         if (this.$refs.albumForm.validate()) {
+          loadingUtil.show({modal: true});
           if (this.isEdit) {
             let temp = {};
             Object.assign(temp, this.album);
@@ -72,6 +79,7 @@
                 }
               })
               .catch(err => console.log(err))
+              .then(() => loadingUtil.hide());
           } else {
             this.$http.post('/api/album/', this.album)
               .then(response => {
@@ -79,15 +87,18 @@
                   modalUtil.hideModal(response.data)
                 }
               })
+              .then(() => loadingUtil.hide());
           }
         }
       },
       deleteAlbum() {
         if (this.isEdit && confirm("Are you sure you want to delete album?")) {
+          loadingUtil.show({modal: true});
           this.$http.delete('/api/album/' + this.album.id + '/')
             .then(response => {
               modalUtil.hideModal({delete: true})
             })
+            .then(() => loadingUtil.hide());
         }
       },
       close() {

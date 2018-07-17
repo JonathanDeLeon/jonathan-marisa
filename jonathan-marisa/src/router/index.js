@@ -43,5 +43,8 @@ export default new VueRouter({
       name: 'home',
       component: Home
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

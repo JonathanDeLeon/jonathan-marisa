@@ -49,6 +49,7 @@
 
 <script>
   import modalUtil from '@/_common/modal.util';
+  import loadingUtil from '@/_common/loading.util';
 
   export default {
     props: ['initialData', 'dialog'],
@@ -60,6 +61,7 @@
       }
     },
     created() {
+      loadingUtil.show({modal: true});
       if (!!this.initialData) {
         let temp = {};
         Object.assign(temp, this.initialData);
@@ -75,6 +77,7 @@
             this.albums.push(data)
           })
         })
+        .then(() => loadingUtil.hide());
     },
     methods: {
       formatDate(date) {
@@ -85,6 +88,7 @@
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
       updatePhoto() {
+        loadingUtil.show({modal: true});
         let temp = {};
         Object.assign(temp, this.photo);
         delete temp.image;
@@ -95,12 +99,15 @@
               modalUtil.hideModal(response.data)
             }
           })
+          .then(() => loadingUtil.hide());
       },
       removePhoto() {
+        loadingUtil.show({modal: true});
         this.$http.delete('/api/images/' + this.photo.id + '/')
           .then(response => {
             modalUtil.hideModal({delete: true})
           })
+          .then(() => loadingUtil.hide());
       },
       close() {
         this.$emit('close');

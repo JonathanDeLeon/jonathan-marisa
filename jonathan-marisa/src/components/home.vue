@@ -1,8 +1,17 @@
 <template>
   <div id="home">
-    <dashboard :background="background">
-        <countdown end="June 23, 2019"></countdown>
-    </dashboard>
+    <!--<dashboard :background="background">-->
+      <!--<countdown end="June 23, 2019"></countdown>-->
+    <!--</dashboard>-->
+    <v-parallax :height="background.height" :src="background.backgroundImage">
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex text-xs-center>
+            <countdown end="June 23, 2019"></countdown>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-parallax>
     <our-story/>
     <v-parallax :height="$vuetify.breakpoint.mdAndUp ? 300 : 200"
                 src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/MarandJonEngagedEdits-176.jpg">
@@ -15,10 +24,30 @@
     <proposal/>
     <h3 class="display-header text-xs-center">Proposal Video</h3>
     <youtube embed="zr__nuPTYtI"></youtube>
-    <h3 class="display-header text-xs-center">Our Favorites</h3>
+    <v-container>
+      <v-layout wrap>
+        <v-flex xs12>
+          <h3 class="display-header text-xs-center my-3">Our Favorites</h3>
+          <p class="subheading text-xs-center mb-2">from the past five years...</p>
+        </v-flex>
+      </v-layout>
+    </v-container>
     <list-photos :photos="photos" class-obj="xs6 md4"
                  :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
-    <h3 class="display-header text-xs-center">Wedding Date</h3>
+    <v-container>
+      <v-layout justify-center class="text-xs-center">
+        <v-flex xs6>
+          <v-layout column>
+            <v-flex>
+              <i class="fas fa-lg fa-long-arrow-alt-down mb-3"></i>
+            </v-flex>
+            <v-flex>
+              <v-btn light outline color="pink lighten-4" to="/album">View Albums</v-btn>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -35,8 +64,8 @@
       return {
         title: "Marisa & Jonathan",
         background: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg)',
-          height: window.innerHeight + 'px'
+          backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg',
+          height: window.innerHeight
         },
         photos: [],
       }
@@ -49,7 +78,7 @@
             this.photos = response.data;
           }
         })
-        .then(() => loadingUtil.hide());
+        .then(() => window.setTimeout(() => loadingUtil.hide(), 1000));
     },
     methods: {
       favoritePhoto(photo) {
@@ -67,4 +96,20 @@
 </script>
 
 <style>
+  .v-parallax::after {
+    -webkit-transition: all 100ms ease-out;
+    -moz-transition: all 100ms ease-out;
+    -ms-transition: all 100ms ease-out;
+    -o-transition: all 100ms ease-out;
+    transition: all 100ms ease-out;
+    content: " ";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.18);
+  }
 </style>

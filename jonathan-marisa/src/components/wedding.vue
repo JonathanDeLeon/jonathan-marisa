@@ -8,7 +8,7 @@
           <v-layout justify-center wrap>
             <v-flex xs12 md7>
               <v-card-media height="450"
-                            src="https://scontent-lax3-1.cdninstagram.com/vp/1c6338ed76231e59f6fa23c9c99a73a7/5BE5C1EB/t51.2885-15/e35/12224203_1648108658792843_1486545466_n.jpg"></v-card-media>
+                            src="/static/media/Bella_Vista_Groves_Wedding_0036.jpeg"></v-card-media>
             </v-flex>
             <v-flex xs12 md6 mt-3>
               <p class="text-xs-center">
@@ -108,7 +108,8 @@
           // backgroundImage: 'url(https://s23203.pcdn.co/wp-content/uploads/2018/01/bride-groom-with-wedding-flowers-bouquet.jpg)',
           // backgroundImage: 'url(https://thespencer.com/wp-content/uploads/2017/06/bride-groom-bouquet-2.jpg)',
           // height: '650px'
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-130.jpg)',
+          // backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_720/dpr_2.0/MarandJonEngagedEdits-130.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_1024,w_1067,y_200/MarandJonEngagedEdits-130.jpg)',
           height: window.innerHeight+'px'
         },
         bridesmaids: [

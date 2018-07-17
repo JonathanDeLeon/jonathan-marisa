@@ -2,7 +2,7 @@
   <v-app id="app">
     <loader></loader>
     <navbar/>
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
     <modal-renderer></modal-renderer>
     <footer-view/>
   </v-app>
@@ -49,6 +49,10 @@
 
   h3.display-header {
     font-size: 2.5em;
+  }
+
+  .v-card .headline, .v-card .title {
+    font-family: inherit !important;
   }
 
   @media (max-width: 600px) {

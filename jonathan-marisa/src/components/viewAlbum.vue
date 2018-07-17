@@ -76,23 +76,41 @@
     <div id="loading" ref="loading">
       <v-container>
         <v-layout justify-center row v-if="this.observeState.loading">
-          <v-flex xs3>
-            <span v-if="this.observeState.loading">Loading...</span>
+          <v-flex xs6>
+            <heart-animation v-if="this.observeState.loading" class="text-xs-center"></heart-animation>
           </v-flex>
         </v-layout>
       </v-container>
     </div>
+    <v-container v-if="!this.observeState.loading">
+      <v-layout justify-center class="text-xs-center">
+        <v-flex xs6>
+          <v-layout column>
+            <v-flex>
+              <i class="fas fa-lg fa-long-arrow-alt-down mb-3"></i>
+            </v-flex>
+            <v-flex>
+              <v-btn light outline color="pink lighten-4" v-if="id != 6" :to="'/album/'+nextId">View Next Album</v-btn>
+              <v-btn light outline color="pink lighten-4" v-else to="/album">View Albums</v-btn>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
 <script>
   import modalUtil from "../_common/modal.util";
-  import VueGallery from 'vue-gallery';
   import loadingUtil from "../_common/loading.util";
+
+  import VueGallery from 'vue-gallery';
+  import heartAnimation from '@/_common/heartAnimation'
 
   export default {
     components: {
-      'gallery': VueGallery
+      'gallery': VueGallery,
+      heartAnimation
     },
     props: ['id'],
     data() {
@@ -117,6 +135,12 @@
 
       }
     },
+    computed: {
+      nextId: function() {
+        let next = parseInt(this.id, 10) + 1;
+        return next;
+      }
+    },
     created() {
       loadingUtil.show();
       this.$http.get('/api/album/' + this.id + '/')
@@ -137,7 +161,8 @@
             this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
           }
         })
-        .then(() => loadingUtil.hide());
+        .then(() => window.setTimeout(() => loadingUtil.hide(), 1000));
+
     },
     mounted() {
       // Options
@@ -215,7 +240,7 @@
           })
       },
       addPhotos() {
-        modalUtil.showModal('album-add-photos', {id: this.id, title: this.title})
+        modalUtil.showModal('album-add-photos', {id: this.id, title: this.album.title})
           .then(data => {
             if (data) {
               this.photos = data.photos;

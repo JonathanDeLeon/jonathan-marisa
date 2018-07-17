@@ -1,6 +1,17 @@
 <template>
   <div id="albums">
-    <dashboard :cover-title="title" :background="background"/>
+    <!--<dashboard :cover-title="title" :background="background"/>-->
+    <v-carousel :style="{height: background.height}" hide-controls hide-delimiters interval="5000">
+      <v-carousel-item v-for="(slide, index) in slideshow" :key="index" :src="slide" transition="fade">
+        <v-container fill-height>
+          <v-layout align-center>
+            <v-flex text-xs-center>
+              <h2 class="bombshell display-header white--text">{{title}}</h2>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-carousel-item>
+    </v-carousel>
     <v-layout row>
       <v-toolbar color="transparent" flat v-if="$user.authenticated">
         <v-spacer></v-spacer>
@@ -11,7 +22,8 @@
     <v-container grid-list-md>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-if="$user.authenticated">
-          <list-album url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg" height="240px">
+          <list-album url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg"
+                      height="240px">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">All Photos</v-card-title>
@@ -60,6 +72,18 @@
         },
         albums: [],
         addPhotoDialog: false,
+        slideshow: [
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/935bc394-6fec-496a-a00e-501b9c5973c9.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/c2953c16-dd80-4c58-9c16-75b60cd78d97.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/6eb8f065-4485-4c10-8a03-bbe73367c3dc.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/f3976120-1f27-4dd6-bd86-c8f8bea05f81.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/3f781ded-c8d3-4f8c-9a31-7dd28e90f79f.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_720/dpr_2.0/MarandJonEngagedEdits-86.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-97.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-46.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-141.jpg',
+          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-165.jpg',
+        ]
       }
     },
     created() {
@@ -70,11 +94,11 @@
             this.albums.push(doc)
           })
         })
-        .then(() => loadingUtil.hide());
+        .then(() => window.setTimeout(() => loadingUtil.hide(), 1000));
     },
     methods: {
       getThumbnail(album) {
-        return album.cover ? album.cover.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0') : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
+        return album.cover ? album.cover.replace(/v[0-9]*/, 'f_auto/h_320,c_scale/dpr_2.0') : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
       },
       createAlbum() {
         modalUtil.showModal('album-create-edit', null)
@@ -102,11 +126,44 @@
       },
       uploadPhotos() {
         modalUtil.showModal('upload-photos', null);
-
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
+  #albums .v-jumbotron__background::after {
+    -webkit-transition: all 100ms ease-out;
+    -moz-transition: all 100ms ease-out;
+    -ms-transition: all 100ms ease-out;
+    -o-transition: all 100ms ease-out;
+    transition: all 100ms ease-out;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.18);
+
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    -o-transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -webkit-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .fade-leave, .fade-enter-to {
+    opacity: 1
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

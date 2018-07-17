@@ -9,14 +9,15 @@ const loadingUtil = {
 			this._loader = null;
 		}
 	},
-	show() {
-	  if (!this._loader) {
-			throw new Error('A loader is not registered!');
-		}
-		this._loader.show();
+	show(data) {
+		if (this._loader) {
+      this._loader.show(data);
+    }
 	},
 	hide() {
-		this._loader.hide();
+    if (this._loader) {
+      this._loader.hide();
+    }
 	}
 };
 

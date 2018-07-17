@@ -155,7 +155,6 @@
       <span class="char13"
             style="display: inline-block; transition: none 0s ease 0s; transform: translateX(0px) translateY(-23px) rotate(-29deg);">e</span>
     </div>
-    <i class="mt-3 fas fa-long-arrow-alt-down"></i>
   </div>
 </template>
 
@@ -417,7 +416,6 @@
 
   /* 2.4. END Swirl Date */
 
-
   /***********************************
               /* 4. RESPONSIVE */
   /***********************************/
@@ -446,17 +444,44 @@
     .flip-clock-divider .flip-clock-label {
       bottom: -0.2em;
     }
-  }
 
-  @media only screen and (max-width: 620px) {
+    .flip-clock-wrapper {
+      max-width: 403px;
+    }
+
     .flip-clock-wrapper ul {
-      width: 40px;
-      height: 70px;
-      margin: 2px;
+      width: 34px;
+      height: 55px;
+    }
+
+    .flip-clock-wrapper ul li {
+      line-height: 60px;
+    }
+
+    .flip-clock-wrapper ul li div.inn {
+      font-size: 42px;
+    }
+
+    .flip-clock-dot.top {
+      top: 13px;
+    }
+
+    .flip-clock-dot.bottom {
+      bottom: 30px;
+    }
+
+    .flip-clock-divider {
+      height: 80px;
     }
   }
 
-  @media only screen and (max-width: 510px) {
+  @media only screen and (max-width: 480px) {
+
+    .flip-clock-wrapper {
+      max-width: 291px;
+      margin: 20px auto;
+    }
+
     .flip-clock-wrapper ul {
       width: 26px;
       height: 40px;
@@ -468,12 +493,12 @@
       line-height: 39px;
     }
 
-    .flip-clock-wrapper {
-      max-width: 291px;
-    }
-
     .flip-clock-wrapper ul li div.inn {
       font-size: 28px;
+    }
+
+    .flip-clock-label {
+      font-size: 0.8em;
     }
 
     .flip-clock-divider.days .flip-clock-label {
@@ -504,30 +529,84 @@
       height: 4px;
     }
 
-
     .flip-clock-divider {
       width: 13px;
       height: 60px;
     }
-  }
 
-  @media only screen and (max-width: 480px) {
     #countdown-wrapper {
       padding-right: 10px;
       padding-left: 10px;
     }
 
     .all-title {
-      font-size: 2.5em;
+      font-size: 2.0em;
+    }
+
+    .title-front, .title-under {
+      font-size: 0.8em;
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    .countdown-title {
+      font-size: 1em;
     }
 
     .title-date {
       font-size: 20px;
     }
+  }
 
+  @media only screen and (max-width: 345px) {
     .flip-clock-wrapper {
-      max-width: 295px;
+      max-width: 258px;
     }
+
+    .flip-clock-wrapper ul {
+      width: 22px;
+      height: 35px;
+    }
+
+    .flip-clock-wrapper ul li {
+      line-height: 39px;
+    }
+
+    .flip-clock-wrapper ul li div.inn {
+      font-size: 24px;
+    }
+
+    .flip-clock-divider.days .flip-clock-label {
+      right: -55px;
+    }
+
+    .flip-clock-divider.hours .flip-clock-label {
+      right: -45px;
+    }
+
+    .flip-clock-divider.minutes .flip-clock-label {
+      right: -52px;
+    }
+
+    .flip-clock-divider.seconds .flip-clock-label {
+      right: -52px;
+    }
+
+    .flip-clock-dot.top {
+      top: 13px;
+    }
+
+    .flip-clock-dot.bottom {
+      bottom: 24px;
+    }
+
+    .flip-clock-divider {
+      width: 13px;
+      height: 52px;
+    }
+
   }
 
   /***********************************

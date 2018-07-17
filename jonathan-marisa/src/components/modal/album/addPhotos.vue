@@ -22,6 +22,7 @@
 
 <script>
   import modalUtil from '@/_common/modal.util';
+  import loadingUtil from '@/_common/loading.util';
 
   export default {
     props: ['initialData', 'dialog'],
@@ -35,6 +36,7 @@
       }
     },
     created() {
+      loadingUtil.show({modal: true});
       this.id = this.initialData.id;
       this.title = this.initialData.title;
       if (this.id) {
@@ -44,6 +46,9 @@
               this.images.push(doc);
             })
           })
+          .then(() => loadingUtil.hide());
+      } else {
+        loadingUtil.hide();
       }
     },
     methods: {
@@ -57,10 +62,12 @@
         }
       },
       addPhotosToAlbum() {
+        loadingUtil.show({modal: true});
         this.$http.patch('/api/album/' + this.id + '/add_images/', this.selectedImages)
           .then(response => {
             modalUtil.hideModal(response.data)
           })
+          .then(() => loadingUtil.hide());
       },
       close() {
         this.$emit('close');

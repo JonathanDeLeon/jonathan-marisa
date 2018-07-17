@@ -8,11 +8,11 @@
         </div>
         <v-list>
           <v-list-tile v-for="item in items" :key="item.title" :to="item.href" @click="">
-            <v-list-tile-action class="pink--text text--lighten-3">
+            <v-list-tile-action class="pink--text text--lighten-4">
               <span v-html="item.icon"></span>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title class="pink--text text--lighten-3">{{ item.title }}</v-list-tile-title>
+              <v-list-tile-title class="pink--text text--lighten-4">{{ item.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>

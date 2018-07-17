@@ -48,25 +48,6 @@
     position: relative;
   }
 
-  #collection-cover::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 300px;
-    width: 100%;
-    content: " ";
-    display: block;
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.7) 100%);
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.7) 100%);
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.7) 100%);
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.7) 100%);
-    -webkit-transition: all 100ms ease-out;
-    -moz-transition: all 100ms ease-out;
-    -ms-transition: all 100ms ease-out;
-    -o-transition: all 100ms ease-out;
-    transition: all 100ms ease-out;
-  }
-
   #collection-cover::after {
     -webkit-transition: all 100ms ease-out;
     -moz-transition: all 100ms ease-out;
@@ -90,12 +71,6 @@
     text-align: center;
     color: #fff;
     z-index: 2;
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*-ms-transform: translateY(-50%);*/
-    /*-moz-transform: translateY(-50%);*/
-    /*-webkit-transform: translateY(-50%);*/
-    /*transform: translateY(-50%);*/
   }
 
   #collection-cover .cover-detail h1.cover-collection-name {

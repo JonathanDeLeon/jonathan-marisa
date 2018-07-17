@@ -26,6 +26,7 @@
 
 <script>
   import modalUtil from '@/_common/modal.util';
+  import loadingUtil from '@/_common/loading.util';
   import {upload} from '@/assets/file-upload'
 
   export default {
@@ -37,12 +38,14 @@
       }
     },
     created() {
+      loadingUtil.show({modal: true});
       this.isEdit = !!this.initialData
       if (this.isEdit) {
         let temp = {};
         Object.assign(temp, this.initialData);
         this.album = temp;
       }
+      loadingUtil.hide();
     },
     methods: {
       save(formData) {
@@ -51,10 +54,12 @@
           .then(x => {
             modalUtil.hideModal(null);
           })
+          .then(() => loadingUtil.hide());
       },
       filesChange() {
         let input = this.$refs.addPhoto.$el.querySelector('input')
         if (input) {
+          loadingUtil.show({modal: true});
           const fieldName = input.name
           const fileList = input.files
           // handle file changes
