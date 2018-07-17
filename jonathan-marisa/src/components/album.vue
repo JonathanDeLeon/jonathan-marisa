@@ -74,7 +74,7 @@
     },
     methods: {
       getThumbnail(album) {
-        return album.cover.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0') || 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
+        return album.cover ? album.cover.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0') : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
       },
       createAlbum() {
         modalUtil.showModal('album-create-edit', null)
