@@ -152,9 +152,7 @@
         options
       );
       //Observe the `loadingRef`
-      this.$nextTick(() => {
-        this.observer.observe(this.$refs.loading);
-      });
+      this.observer.observe(this.$refs.loading);
     },
     beforeDestroy() {
       this.observer.disconnect();
