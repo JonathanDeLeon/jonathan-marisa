@@ -128,13 +128,13 @@
         });
       this.$http.get('/api/images/?albums=' + this.id)
         .then(response => {
+          if (response.headers && response.headers.link) {
+            let links = this.parse_link_header(response.headers.link);
+            this.observeState.nextPage = links.next || '';
+          }
           if (response.data) {
             this.photos = response.data;
             this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
-            if (response.headers && response.headers.link) {
-              let links = this.parse_link_header(response.headers.link);
-              this.observeState.nextPage = links.next || '';
-            }
           }
         })
         .then(() => loadingUtil.hide());
@@ -200,8 +200,9 @@
                 this.observeState.loading = false;
               }
             })
-        } else {
+        } else if (this.photos.length > 0) {
           this.observer.disconnect();
+          this.$refs.loading.remove();
         }
       },
       editAlbum() {
