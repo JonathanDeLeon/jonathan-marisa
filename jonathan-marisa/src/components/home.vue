@@ -5,7 +5,7 @@
     <!--</dashboard>-->
     <v-parallax :height="background.height"
                 :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')"
-                v-if="$vuetify.breakpoint.mdAndUp" v-resize="onResize">
+                v-if="$vuetify.breakpoint.mdAndUp">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex text-xs-center>
@@ -16,7 +16,7 @@
     </v-parallax>
     <v-parallax :height="background.height"
                 :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_370,c_scale/dpr_2.0')"
-                v-else v-resize="onResize">
+                v-else>
       <v-container fill-height>
         <v-layout align-center>
           <v-flex text-xs-center>
@@ -120,9 +120,6 @@
           .then(response => {
             photo.favorite = isFavorite
           })
-      },
-      onResize() {
-        this.background.height = window.innerHeight
       }
     }
   }

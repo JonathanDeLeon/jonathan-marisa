@@ -24,10 +24,27 @@
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
   }
 
+
+
+
   .list-album .v-card__media:hover .card-overlay {
     filter: alpha(opacity=100);
     opacity: 1;
     zoom: 1;
+  }
+
+  .list-album .v-card__media {
+    cursor: pointer;
+  }
+
+  .list-album .v-card__media:hover .v-card__title {
+    text-decoration: underline;
+  }
+
+  @media (hover: none) {
+    .list-album .v-card__media__content .v-card__title {
+      text-decoration: underline;
+    }
   }
 
   .list-album .v-card__media__content .card-overlay {

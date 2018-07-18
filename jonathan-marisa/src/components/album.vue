@@ -25,16 +25,14 @@
         <v-flex xs6 md4 v-for="album in albums" :key="album.id">
           <list-album :url="getThumbnail(album)"
                       :height="$vuetify.breakpoint.mdAndUp ? '240px' : $vuetify.breakpoint.smOnly ? '240px' : '140px'">
-            <v-layout media column slot="card-media">
+            <v-layout media column slot="card-media" @click="$router.push('/album/'+album.id)">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
             </v-layout>
-            <v-layout row slot="card-actions">
-              <v-btn icon v-if="$user.authenticated" @click.stop="editAlbum(album)">
+            <v-layout row slot="card-actions" v-if="$user.authenticated">
+              <v-btn icon  @click.stop="editAlbum(album)">
                 <i class="fas fa-edit"></i>
               </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn outline color="pink accent-1" :to="'/album/'+album.id">View Album</v-btn>
             </v-layout>
           </list-album>
         </v-flex>
@@ -94,7 +92,7 @@
         console.log(this.$vuetify.breakpoint.name)
         let height = (() => {
           switch (this.$vuetify.breakpoint.name) {
-            case 'xs': return ['220', '500px']
+            case 'xs': return ['250', '500px']
             case 'sm': return ['400', '800px']
             case 'md': return ['520', window.innerHeight+'px']
             case 'lg': return ['520', window.innerHeight+'px']

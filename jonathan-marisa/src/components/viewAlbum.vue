@@ -1,7 +1,7 @@
 <template>
   <div id="album">
     <dashboard :cover-title="album.title" :background="background"/>
-    <gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null"></gallery>
+    <gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null" @onslideend="getGalleryPhotos"></gallery>
 
     <v-layout row>
       <v-toolbar color="transparent" flat>
@@ -182,6 +182,11 @@
         } else if (this.photos.length > 0) {
           this.observer.disconnect();
           this.$refs.loading.remove();
+        }
+      },
+      getGalleryPhotos(args) {
+        if (this.observeState.nextPage && args.index == this.galleryImages.length - 2) {
+          this.getPhotos()
         }
       },
       editAlbum() {
