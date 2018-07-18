@@ -1,6 +1,5 @@
 <template>
   <div id="albums">
-    <!--<dashboard :cover-title="title" :background="background"/>-->
     <v-carousel :style="{height: background.height}" hide-controls hide-delimiters interval="5000">
       <v-carousel-item v-for="(slide, index) in slideshow" :key="index" :src="slide" transition="fade">
         <v-container fill-height>
@@ -12,6 +11,7 @@
         </v-container>
       </v-carousel-item>
     </v-carousel>
+
     <v-layout row>
       <v-toolbar color="transparent" flat v-if="$user.authenticated">
         <v-spacer></v-spacer>
@@ -19,10 +19,12 @@
         <v-btn color="success" @click="createAlbum">New Album</v-btn>
       </v-toolbar>
     </v-layout>
+
     <v-container grid-list-md>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="album in albums" :key="album.id">
-          <list-album :url="getThumbnail(album)" height="240px">
+        <v-flex xs6 md4 v-for="album in albums" :key="album.id">
+          <list-album :url="getThumbnail(album)"
+                      :height="$vuetify.breakpoint.mdAndUp ? '240px' : $vuetify.breakpoint.smOnly ? '240px' : '140px'">
             <v-layout media column slot="card-media">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
@@ -38,6 +40,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+
   </div>
 </template>
 
@@ -54,7 +57,6 @@
       return {
         title: "Photo Albums",
         background: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-132.jpg)',
           height: window.innerHeight + 'px'
         },
         albums: [],
@@ -75,6 +77,7 @@
     },
     created() {
       loadingUtil.show();
+      this.responsiveImage();
       this.$http.get('/api/album/')
         .then(response => {
           response.data.forEach(doc => {
@@ -83,7 +86,26 @@
         })
         .then(() => window.setTimeout(() => loadingUtil.hide(), 1000));
     },
+    mounted() {
+
+    },
     methods: {
+      responsiveImage() {
+        console.log(this.$vuetify.breakpoint.name)
+        let height = (() => {
+          switch (this.$vuetify.breakpoint.name) {
+            case 'xs': return ['220', '500px']
+            case 'sm': return ['400', '800px']
+            case 'md': return ['520', window.innerHeight+'px']
+            case 'lg': return ['520', window.innerHeight+'px']
+            case 'xl': return ['520', window.innerHeight+'px']
+          }
+        }).call(this);
+        this.slideshow.forEach((slide, index) => {
+          this.slideshow.splice(index, 1, slide.replace(/h_[0-9]*/, 'h_'+height[0]));
+        })
+        this.background.height = height[1]
+      },
       getThumbnail(album) {
         return album.cover ? album.cover.replace(/v[0-9]*/, 'f_auto/h_320,c_scale/dpr_2.0') : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_220/image-not-found.png';
       },
@@ -113,12 +135,13 @@
       },
       uploadPhotos() {
         modalUtil.showModal('upload-photos', null);
-      }
+      },
     }
   }
 </script>
 
 <style>
+
   #albums .v-jumbotron__background::after {
     -webkit-transition: all 100ms ease-out;
     -moz-transition: all 100ms ease-out;
@@ -153,4 +176,5 @@
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
+
 </style>

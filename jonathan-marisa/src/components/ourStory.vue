@@ -20,7 +20,7 @@
         </v-flex>
         <v-flex xs12 md6 px-2>
           <v-layout justify-center wrap>
-            <v-flex xs7 class="text-xs-center">
+            <v-flex xs10 class="text-xs-center">
               <h3 class="display-header mt-4">From Her</h3>
             </v-flex>
             <v-flex xs12>
@@ -47,7 +47,7 @@
         </v-flex>
         <v-flex xs12 md6 px-2>
           <v-layout justify-center wrap>
-            <v-flex xs7 class="text-xs-center">
+            <v-flex xs10 class="text-xs-center">
               <h3 class="display-header mt-4">From Him</h3>
             </v-flex>
             <v-flex xs12>

@@ -26,7 +26,7 @@
     },
     methods: {
       onResize() {
-        if (this.resize || parseInt(this.background.height) > window.innerHeight) {
+        if (this.resize) {
           this.background.height = window.innerHeight + 'px'
         }
       }
@@ -38,14 +38,17 @@
   #collection-cover {
     background: #FFF;
     background-image: none;
-    background-repeat: repeat;
-    background-position-x: 0%;
-    background-position-y: 0%;
-    background-size: auto auto;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+  }
+  #dashboard.parallax #collection-cover {
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   #collection-cover::after {
@@ -85,6 +88,8 @@
 
   .cover-detail .container {
     overflow: hidden;
+  }
+  @media screen and (max-device-width: 1024px){
   }
 
   @media (max-width: 600px) {

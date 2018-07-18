@@ -1,9 +1,11 @@
 <template>
   <div id="home">
-    <!--<dashboard :background="background">-->
-      <!--<countdown end="June 23, 2019"></countdown>-->
+    <!--<dashboard class="parallax" :background="backgroundBackup">-->
+    <!--<countdown end="June 23, 2019"></countdown>-->
     <!--</dashboard>-->
-    <v-parallax :height="background.height" :src="background.backgroundImage">
+    <v-parallax :height="background.height"
+                :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')"
+                v-if="$vuetify.breakpoint.mdAndUp" v-resize="onResize">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex text-xs-center>
@@ -12,18 +14,39 @@
         </v-layout>
       </v-container>
     </v-parallax>
+    <v-parallax :height="background.height"
+                :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_370,c_scale/dpr_2.0')"
+                v-else v-resize="onResize">
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex text-xs-center>
+            <countdown end="June 23, 2019"></countdown>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-parallax>
+
     <our-story/>
-    <v-parallax :height="$vuetify.breakpoint.mdAndUp ? 300 : 200"
-                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/MarandJonEngagedEdits-176.jpg">
-      <!--src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_800,w_1200,x_200,y_200/MarandJonEngagedEdits-176.jpg">-->
-      <!--src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_600/b_rgb:4f4c4c,o_85/parallax.jpg">-->
+
+    <v-parallax v-if="$vuetify.breakpoint.mdAndUp" height="300"
+                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_800/MarandJonEngagedEdits-176.jpg">
       <v-layout column align-center justify-center>
         <h2 class="display-header text-xs-center white--text">How He Asked</h2>
       </v-layout>
     </v-parallax>
+
+    <v-parallax v-else height="200"
+                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_400/MarandJonEngagedEdits-176.jpg">
+      <v-layout column align-center justify-center>
+        <h2 class="display-header text-xs-center white--text">How He Asked</h2>
+      </v-layout>
+    </v-parallax>
+
     <proposal/>
+
     <h3 class="display-header text-xs-center">Proposal Video</h3>
     <youtube embed="zr__nuPTYtI"></youtube>
+
     <v-container>
       <v-layout wrap>
         <v-flex xs12>
@@ -32,8 +55,10 @@
         </v-flex>
       </v-layout>
     </v-container>
+
     <list-photos :photos="photos" class-obj="xs6 md4"
                  :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
+
     <v-container>
       <v-layout justify-center class="text-xs-center">
         <v-flex xs6>
@@ -48,6 +73,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+
   </div>
 </template>
 
@@ -63,8 +89,12 @@
     data() {
       return {
         title: "Marisa & Jonathan",
+        backgroundBackup: {
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg)',
+          height: window.innerHeight + 'px'
+        },
         background: {
-          backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg',
+          backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/v19234/MarandJonEngagedEdits-94.jpg',
           height: window.innerHeight
         },
         photos: [],
@@ -91,6 +121,9 @@
             photo.favorite = isFavorite
           })
       },
+      onResize() {
+        this.background.height = window.innerHeight
+      }
     }
   }
 </script>

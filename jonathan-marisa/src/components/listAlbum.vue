@@ -2,7 +2,7 @@
   <div class="list-album">
     <v-card tile>
       <!--<v-flex xs12 d-block>-->
-        <!--<img :src="url">-->
+      <!--<img :src="url">-->
       <!--</v-flex>-->
       <v-card-media :src="url" :height="height">
         <slot name="card-media"></slot>
@@ -51,6 +51,12 @@
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .list-album .v-card__media__content .headline {
+      font-size: 16px!important;
+    }
   }
 
 </style>
