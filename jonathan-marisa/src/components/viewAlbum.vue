@@ -1,7 +1,8 @@
 <template>
   <div id="album">
     <dashboard :cover-title="album.title" :background="background"/>
-    <!--<gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null"></gallery>-->
+    <gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null"></gallery>
+
     <v-layout row>
       <v-toolbar color="transparent" flat>
         <v-btn outline light color="grey darken-2" to="/album">Back</v-btn>
@@ -18,61 +19,12 @@
         <v-btn color="success" v-if="$user.authenticated" @click.stop="editAlbum">Edit Album</v-btn>
       </v-toolbar>
     </v-layout>
-    <h2 v-if="photos.length == 0" class="text-xs-center display-4">Album is empty</h2>
-    <v-container fluid grid-list-md v-if="gridToggle == 1">
-      <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md12 v-for="photo in photos" :key="photo.id">
-          <list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_720,c_scale/dpr_2.0')" height="860px">
-            <v-layout column slot="card-media" class="card-overlay">
-              <v-spacer></v-spacer>
-              <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p>
-              </v-card-text>
-              <v-spacer></v-spacer>
-            </v-layout>
-            <v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">
-              <v-layout row>
-                <v-btn icon v-on:click="favoritePhoto(photo)">
-                  <span v-if="photo.favorite"><i class="fas fa-heart"></i></span>
-                  <span v-show="!photo.favorite"><i class="far fa-heart"></i></span>
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn icon v-on:click="editPhoto(photo)">
-                  <i class="fas fa-edit"></i>
-                </v-btn>
-              </v-layout>
-            </v-card-actions>
-          </list-photos>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <!--<v-container grid-list-md v-else>-->
-    <!--<v-layout row wrap>-->
-    <!--<v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="(photo, imageIndex) in photos" :key="photo.id"-->
-    <!--@click="galleryIndex = imageIndex">-->
-    <!--<list-photos :url="photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0')" height="320px">-->
-    <!--<v-layout column slot="card-media" class="card-overlay">-->
-    <!--<v-spacer></v-spacer>-->
-    <!--<v-card-text class="headline white&#45;&#45;text"><p class="text-xs-center">{{photo.description}}</p></v-card-text>-->
-    <!--<v-spacer></v-spacer>-->
-    <!--</v-layout>-->
-    <!--<v-card-actions class="white" slot="card-actions" v-if="$user.authenticated">-->
-    <!--<v-layout row>-->
-    <!--<v-btn icon v-on:click="favoritePhoto(photo)">-->
-    <!--<span v-if="photo.favorite"><i class="fas fa-heart"></i></span>-->
-    <!--<span v-show="!photo.favorite"><i class="far fa-heart"></i></span>-->
-    <!--</v-btn>-->
-    <!--<v-spacer></v-spacer>-->
-    <!--<v-btn icon v-on:click="editPhoto(photo)">-->
-    <!--<i class="fas fa-edit"></i>-->
-    <!--</v-btn>-->
-    <!--</v-layout>-->
-    <!--</v-card-actions>-->
-    <!--</list-photos>-->
-    <!--</v-flex>-->
-    <!--</v-layout>-->
-    <!--</v-container>-->
-    <list-photos :photos="photos" class-obj="xs10 sm6 md4"
+
+    <h2 v-if="photos.length == 0" class="text-xs-center display-4 bombshell my-5">Album is empty</h2>
+
+    <list-photos :photos="photos" :class-obj="gridToggle ? 'xs12' : 'xs10 sm6 md4'" :fluid="gridToggle" @gallery="(index) => {galleryIndex = index}"
                  :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
+
     <div id="loading" ref="loading">
       <v-container>
         <v-layout justify-center row v-if="this.observeState.loading">
@@ -82,6 +34,7 @@
         </v-layout>
       </v-container>
     </div>
+
     <v-container v-if="!this.observeState.loading">
       <v-layout justify-center class="text-xs-center">
         <v-flex xs6>
@@ -97,6 +50,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+
   </div>
 </template>
 
@@ -110,7 +64,7 @@
   export default {
     components: {
       'gallery': VueGallery,
-      heartAnimation
+      heartAnimation,
     },
     props: ['id'],
     data() {
@@ -136,7 +90,7 @@
       }
     },
     computed: {
-      nextId: function() {
+      nextId: function () {
         let next = parseInt(this.id, 10) + 1;
         return next;
       }
@@ -217,7 +171,7 @@
             .then(response => {
               if (response.data) {
                 this.photos = this.photos.concat(response.data);
-                // this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
+                this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
                 if (response.headers && response.headers.link) {
                   let links = this.parse_link_header(response.headers.link);
                   this.observeState.nextPage = links.next || '';

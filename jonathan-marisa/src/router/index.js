@@ -23,11 +23,6 @@ export default new VueRouter({
       component: Album
     },
     {
-      path: '/album/photos',
-      name: 'gallery',
-      component: Gallery
-    },
-    {
       path: '/album/:id',
       name: 'view-album',
       component: ViewAlbum,

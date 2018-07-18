@@ -21,19 +21,6 @@
     </v-layout>
     <v-container grid-list-md>
       <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-if="$user.authenticated">
-          <list-album url="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg"
-                      height="240px">
-            <v-layout media column slot="card-media">
-              <v-spacer></v-spacer>
-              <v-card-title class="headline white--text">All Photos</v-card-title>
-            </v-layout>
-            <v-layout row slot="card-actions">
-              <v-spacer></v-spacer>
-              <v-btn outline color="pink accent-1" :to="'/album/photos'">View Album</v-btn>
-            </v-layout>
-          </list-album>
-        </v-flex>
         <v-flex xs10 offset-xs1 sm6 offset-sm0 md4 v-for="album in albums" :key="album.id">
           <list-album :url="getThumbnail(album)" height="240px">
             <v-layout media column slot="card-media">
