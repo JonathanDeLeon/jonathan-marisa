@@ -1,7 +1,8 @@
 <template>
   <div id="album">
     <dashboard :cover-title="album.title" :background="background"/>
-    <gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null" @onslideend="getGalleryPhotos"></gallery>
+    <gallery :images="galleryImages" :index="galleryIndex" @close="galleryIndex = null"
+             @onslideend="getGalleryPhotos"></gallery>
 
     <v-layout row>
       <v-toolbar color="transparent" flat>
@@ -22,7 +23,8 @@
 
     <h2 v-if="photos.length == 0" class="text-xs-center display-4 bombshell my-5">Album is empty</h2>
 
-    <list-photos :photos="photos" :class-obj="gridToggle ? 'xs12' : 'xs10 sm6 md4'" :fluid="gridToggle" @gallery="(index) => {galleryIndex = index}"
+    <list-photos :photos="photos" :class-obj="gridToggle ? 'xs12' : 'xs10 sm6 md4'" :fluid="gridToggle"
+                 @gallery="(index) => {galleryIndex = index}"
                  :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
 
     <div id="loading" ref="loading">
@@ -70,10 +72,10 @@
     data() {
       return {
         background: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/bg2.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_10/dpr_2.0/bg2.jpg)',
           height: window.innerHeight + 'px'
         },
-        gridToggle: 0,
+        gridToggle: this.$vuetify.breakpoint.mdAndUp ? 0 : 1,
         album: {
           title: "Album",
         },
@@ -86,7 +88,6 @@
           loading: false,
           prevY: 0
         }
-
       }
     },
     computed: {
@@ -112,7 +113,11 @@
           }
           if (response.data) {
             this.photos = response.data;
-            this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
+            if (this.$vuetify.breakpoint.mdAndUp) {
+              this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
+            } else {
+              this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_320,c_scale/dpr_2.0'));
+            }
           }
         })
         .then(() => window.setTimeout(() => loadingUtil.hide(), 1000));
@@ -171,7 +176,11 @@
             .then(response => {
               if (response.data) {
                 this.photos = this.photos.concat(response.data);
-                this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
+                if (this.$vuetify.breakpoint.mdAndUp) {
+                  this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_720,c_scale/dpr_2.0'));
+                } else {
+                  this.galleryImages = this.photos.map(photo => photo.thumbnail.replace(/v[0-9]*/, 'f_auto/h_320,c_scale/dpr_2.0'));
+                }
                 if (response.headers && response.headers.link) {
                   let links = this.parse_link_header(response.headers.link);
                   this.observeState.nextPage = links.next || '';
@@ -185,9 +194,10 @@
         }
       },
       getGalleryPhotos(args) {
-        if (this.observeState.nextPage && args.index == this.galleryImages.length - 2) {
-          this.getPhotos()
-        }
+        // Vue-Gallery library doesn't support blue-imp gallery API calls to add slides
+        // if (this.observeState.nextPage && args.index == this.galleryImages.length - 2) {
+        //   this.getPhotos()
+        // }
       },
       editAlbum() {
         modalUtil.showModal('album-create-edit', this.album)

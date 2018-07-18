@@ -104,11 +104,6 @@
       return {
         title: "The Wedding",
         background: {
-          // backgroundImage: 'url(http://thedesignerweddingshow.ie/wp-content/uploads/2012/08/Couple-Hold-Hands4.jpg)',
-          // backgroundImage: 'url(https://s23203.pcdn.co/wp-content/uploads/2018/01/bride-groom-with-wedding-flowers-bouquet.jpg)',
-          // backgroundImage: 'url(https://thespencer.com/wp-content/uploads/2017/06/bride-groom-bouquet-2.jpg)',
-          // height: '650px'
-          // backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_720/dpr_2.0/MarandJonEngagedEdits-130.jpg)',
           backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_1024,w_1067,y_200/MarandJonEngagedEdits-130.jpg)',
           height: window.innerHeight+'px'
         },

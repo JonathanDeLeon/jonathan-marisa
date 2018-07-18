@@ -1,8 +1,5 @@
 <template>
   <div id="home">
-    <!--<dashboard class="parallax" :background="backgroundBackup">-->
-    <!--<countdown end="June 23, 2019"></countdown>-->
-    <!--</dashboard>-->
     <v-parallax :height="background.height"
                 :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')"
                 v-if="$vuetify.breakpoint.mdAndUp">
@@ -89,10 +86,6 @@
     data() {
       return {
         title: "Marisa & Jonathan",
-        backgroundBackup: {
-          backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-94.jpg)',
-          height: window.innerHeight + 'px'
-        },
         background: {
           backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/v19234/MarandJonEngagedEdits-94.jpg',
           height: window.innerHeight
