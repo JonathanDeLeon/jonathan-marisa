@@ -23,9 +23,9 @@
 
     <h2 v-if="photos.length == 0" class="text-xs-center display-4 bombshell my-5">Album is empty</h2>
 
-    <list-photos :photos="photos" :class-obj="gridToggle ? 'xs12' : 'xs10 sm6 md4'" :fluid="gridToggle"
+    <list-photos :photos="photos" :class-obj="gridToggle ? 'xs12' : 'xs6 md4'" :fluid="gridToggle"
                  @gallery="(index) => {galleryIndex = index}"
-                 :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '250px' : '180px'"></list-photos>
+                 :height="$vuetify.breakpoint.mdAndUp ? '320px' : $vuetify.breakpoint.smOnly ? '280px' : '180px'"></list-photos>
 
     <div id="loading" ref="loading">
       <v-container>
@@ -170,7 +170,7 @@
         this.observeState.prevY = y;
       },
       getPhotos() {
-        if (this.observeState.nextPage) {
+        if (!this.loading && this.observeState.nextPage) {
           this.observeState.loading = true;
           this.$http.get(this.observeState.nextPage)
             .then(response => {
@@ -188,7 +188,7 @@
                 this.observeState.loading = false;
               }
             })
-        } else if (this.photos.length > 0) {
+        } else if (!this.loading && this.photos.length > 0) {
           this.observer.disconnect();
           this.$refs.loading.remove();
         }

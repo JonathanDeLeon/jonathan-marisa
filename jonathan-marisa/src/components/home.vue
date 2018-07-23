@@ -87,7 +87,7 @@
       return {
         title: "Marisa & Jonathan",
         background: {
-          backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/v19234/MarandJonEngagedEdits-94.jpg',
+          backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/v19234/MarandJonEngagedEdits-94-1.jpeg',
           height: window.innerHeight
         },
         photos: [],

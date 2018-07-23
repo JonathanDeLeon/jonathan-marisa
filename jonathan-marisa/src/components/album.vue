@@ -20,7 +20,7 @@
       </v-toolbar>
     </v-layout>
 
-    <v-container grid-list-md>
+    <v-container grid-list-md my-5>
       <v-layout row wrap>
         <v-flex xs6 md4 v-for="album in albums" :key="album.id">
           <list-album :url="getThumbnail(album)"
@@ -60,16 +60,16 @@
         albums: [],
         addPhotoDialog: false,
         slideshow: [
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/935bc394-6fec-496a-a00e-501b9c5973c9.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/c2953c16-dd80-4c58-9c16-75b60cd78d97.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/6eb8f065-4485-4c10-8a03-bbe73367c3dc.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/f3976120-1f27-4dd6-bd86-c8f8bea05f81.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/3f781ded-c8d3-4f8c-9a31-7dd28e90f79f.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_720/dpr_2.0/MarandJonEngagedEdits-86.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-97.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-46.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-141.jpg',
-          'http://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-165.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/935bc394-6fec-496a-a00e-501b9c5973c9.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/c2953c16-dd80-4c58-9c16-75b60cd78d97.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/6eb8f065-4485-4c10-8a03-bbe73367c3dc.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/f3976120-1f27-4dd6-bd86-c8f8bea05f81.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/3f781ded-c8d3-4f8c-9a31-7dd28e90f79f.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_720/dpr_2.0/MarandJonEngagedEdits-86.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-97.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-46.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-141.jpg',
+          'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_520/dpr_2.0/MarandJonEngagedEdits-165.jpg',
         ]
       }
     },
@@ -89,7 +89,6 @@
     },
     methods: {
       responsiveImage() {
-        console.log(this.$vuetify.breakpoint.name)
         let height = (() => {
           switch (this.$vuetify.breakpoint.name) {
             case 'xs': return ['250', '500px']

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/components/home'
 import Album from '@/components/album'
 import ViewAlbum from '@/components/viewAlbum'
-import Gallery from '@/components/gallery'
+import Rsvp from '@/components/rsvp'
 import Login from '@/components/login'
 import Wedding from '@/components/wedding'
 
@@ -16,6 +16,11 @@ export default new VueRouter({
       path: '/wedding',
       name: 'wedding',
       component: Wedding
+    },
+    {
+      path: '/rsvp',
+      name: 'rsvp',
+      component: Rsvp
     },
     {
       path: '/album',

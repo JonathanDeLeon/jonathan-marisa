@@ -1,11 +1,21 @@
 <template>
-  <v-app id="app">
-    <loader></loader>
-    <navbar/>
-    <router-view :key="$route.fullPath"></router-view>
-    <modal-renderer></modal-renderer>
-    <footer-view/>
-  </v-app>
+  <v-fade-transition>
+    <v-app id="app">
+      <loader></loader>
+      <navbar/>
+      <router-view :key="$route.fullPath"></router-view>
+      <modal-renderer></modal-renderer>
+      <footer-view/>
+      <v-fade-transition>
+        <v-btn fab bottom right color="pink lighten-4" :small="$vuetify.breakpoint.xs" dark fixed
+               v-scroll="onScroll"
+               v-show="fab"
+               @click="toTop">
+          <i class="fas fa-lg fa-angle-up"></i>
+        </v-btn>
+      </v-fade-transition>
+    </v-app>
+  </v-fade-transition>
 </template>
 
 <script>
@@ -13,7 +23,25 @@
   import footerView from './components/footer'
 
   export default {
-    components: {navbar, footerView}
+    components: {navbar, footerView},
+    data() {
+      return {
+        fab: false
+      }
+    },
+    methods: {
+      onScroll() {
+        if (typeof window === 'undefined') return
+        const top = window.pageYOffset ||
+          document.documentElement.offsetTop ||
+          0
+        this.fab = top > 300
+      },
+      toTop() {
+        this.$router.push({hash: ''})
+        this.$vuetify.goTo(0)
+      }
+    }
   }
 </script>
 
@@ -69,6 +97,7 @@
     }
 
   }
+
   .bombshell, h1.bombshell, h2.bombshell {
     font-family: "Bombshell Pro", "proxima-nova", "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
   }

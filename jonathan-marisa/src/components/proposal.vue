@@ -10,7 +10,8 @@
         <v-flex xs12>
           <v-layout justify-center>
             <v-flex xs12 md10>
-              <v-card-media :height="$vuetify.breakpoint.mdAndUp ? 700 : 370" contain src="/static/media/proposal.png"></v-card-media>
+              <v-card-media :height="$vuetify.breakpoint.mdAndUp ? 700 : 370" contain
+                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_420/dpr_2.0/proposal.png"></v-card-media>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -20,9 +21,9 @@
 </template>
 
 <script>
-    export default {
-        name: "proposal"
-    }
+  export default {
+    name: "proposal"
+  }
 </script>
 
 <style scoped>

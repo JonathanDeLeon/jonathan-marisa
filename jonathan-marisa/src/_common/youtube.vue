@@ -3,7 +3,7 @@
     <v-flex xs10 offset-xs1>
       <div class="youtube-player" :data-id="embed">
         <div v-if="!loadVideo" :data-id="embed" @click="embedYoutube">
-          <img :src="'https://i.ytimg.com/vi/'+embed+'/maxresdefault.jpg'">
+          <img :src="src">
           <div class="play"></div>
         </div>
         <iframe v-else :src="'https://www.youtube.com/embed/'+embed+'?autoplay=1&showinfo=1&rel=0'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -22,6 +22,11 @@
     data() {
       return {
         loadVideo: false,
+      }
+    },
+    computed: {
+      src() {
+        return this.$vuetify.breakpoint.mdAndUp ? 'https://i.ytimg.com/vi/'+this.embed+'/maxresdefault.jpg' :'https://i.ytimg.com/vi/'+this.embed+'/hqdefault.jpg';
       }
     },
     methods: {

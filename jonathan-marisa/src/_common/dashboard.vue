@@ -1,6 +1,6 @@
 <template>
   <div id="dashboard">
-    <div id="collection-cover" v-resize="onResize" :style="background">
+    <div id="collection-cover" :style="background">
       <div class="cover-detail">
         <v-container fill-height>
           <v-layout align-center>
