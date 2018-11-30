@@ -20,9 +20,5 @@ yarn-error.log*
 *.log
 *.db
 sqlite.py
-*env/
-*.DS_Store
 *.sqlite3
-files/
-db/
-.idea/
+*env/
