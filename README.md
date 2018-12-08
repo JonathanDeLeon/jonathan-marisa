@@ -1,9 +1,10 @@
-# jonathan-marisa
+# Jonathan-Marisa
 
 > Jonathan & Marisa's website
 
 ## Build Setup
-
+### Django Backend
+### Vue Frontend
 ``` bash
 # install dependencies
 npm install
