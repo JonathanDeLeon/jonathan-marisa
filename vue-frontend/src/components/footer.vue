@@ -97,7 +97,7 @@
             <v-flex xs12 order-xs4 v-if="$vuetify.breakpoint.xsOnly">
               <v-layout row fill-height xs12>
 
-                <v-flex xs6 pa-3 style="border-right: 0.2px solid rgba(0, 0, 0, .54);">
+                <v-flex xs6 pa-3 style="border-right: 0.2px solid rgba(0, 0, 0, 0.2);">
                   <ul class="pa-0">
                     <li><em>The Links</em></li>
                     <li v-for="item in items" :key="item.title">
@@ -204,19 +204,19 @@
 
   #footer-wrap > .container > .layout,
   #footer-wrap .layout.column > .flex:last-child {
-    border-top: 0.2px solid rgba(0, 0, 0, .54);
+    border-top: 0.2px solid rgba(0, 0, 0, 0.2);
   }
 
   #footer-wrap > .container > .layout > .flex > .layout > .flex:first-child {
-    border-right: 0.2px solid rgba(0, 0, 0, .54);
+    border-right: 0.2px solid rgba(0, 0, 0, 0.2);
   }
 
   #footer-wrap > .container > .layout > .flex > .layout > .flex:last-child {
-    border-left: 0.2px solid rgba(0, 0, 0, .54);
+    border-left: 0.2px solid rgba(0, 0, 0, 0.2);
   }
 
   #footer-wrap .layout.row.fill-height > .flex:first-child {
-    border-right: 0.2px solid rgba(0, 0, 0, .54);
+    border-right: 0.2px solid rgba(0, 0, 0, 0.2);
   }
 
   p {
@@ -259,11 +259,11 @@
     }
 
     #footer-wrap > .container > .layout > .flex .layout.column > .flex:only-child {
-      border-right: 0.2px solid rgba(0, 0, 0, .54);
+      border-right: 0.2px solid rgba(0, 0, 0, 0.2);
     }
 
     #footer-wrap > .container > .layout > .flex > .layout > .flex:not(:only-of-type) {
-      border-bottom: 0.2px solid rgba(0, 0, 0, .54) !important;
+      border-bottom: 0.2px solid rgba(0, 0, 0, 0.2) !important;
     }
 
   }
