@@ -1,7 +1,7 @@
 <template>
   <div id="albums">
-    <v-carousel :style="{height: background.height}" hide-controls hide-delimiters interval="5000">
-      <v-carousel-item v-for="(slide, index) in slideshow" :key="index" :src="slide" transition="fade">
+    <v-carousel :height="parseInt(background.height, 10)" hide-controls hide-delimiters interval="8000">
+      <v-carousel-item v-for="(slide, index) in slideshow" :key="index" :src="slide">
         <v-container fill-height>
           <v-layout align-center>
             <v-flex text-xs-center>
@@ -25,7 +25,7 @@
         <v-flex xs6 md4 v-for="album in albums" :key="album.id">
           <list-album :url="getThumbnail(album)"
                       :height="$vuetify.breakpoint.mdAndUp ? '240px' : $vuetify.breakpoint.smOnly ? '240px' : '140px'">
-            <v-layout media column slot="card-media" @click="$router.push('/album/'+album.id)">
+            <v-layout class="ma-0" media fill-height column slot="card-media" @click="$router.push('/album/'+album.id)">
               <v-spacer></v-spacer>
               <v-card-title class="headline white--text">{{album.title}}</v-card-title>
             </v-layout>
@@ -139,7 +139,7 @@
 
 <style>
 
-  #albums .v-jumbotron__background::after {
+  #albums .v-image__image--cover::after {
     -webkit-transition: all 100ms ease-out;
     -moz-transition: all 100ms ease-out;
     -ms-transition: all 100ms ease-out;
@@ -155,23 +155,4 @@
     background: rgba(0, 0, 0, 0.18);
 
   }
-
-  .fade-enter-active, .fade-leave-active {
-    -o-transition: 0.5s ease-out;
-    -moz-transition: 0.5s ease-out;
-    -webkit-transition: 0.5s ease-out;
-    transition: 0.5s ease-out;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .fade-leave, .fade-enter-to {
-    opacity: 1
-  }
-
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-
 </style>
