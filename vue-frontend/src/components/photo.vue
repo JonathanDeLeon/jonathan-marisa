@@ -23,16 +23,16 @@
           </v-card>
 
           <v-card tile v-else>
-            <v-card-media
+            <v-img
               :src="$vuetify.breakpoint.mdAndUp ? photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_320,c_scale/dpr_2.0') : photo.thumbnail.replace(/v[0-9]*/,'f_auto/h_200,c_scale/dpr_2.0')"
               :height="height">
-              <v-layout column class="card-overlay">
+              <v-layout column fill-height class="card-overlay ma-0">
                 <v-spacer></v-spacer>
                 <v-card-text class="headline white--text"><p class="text-xs-center">{{photo.description}}</p>
                 </v-card-text>
                 <v-spacer></v-spacer>
               </v-layout>
-            </v-card-media>
+            </v-img>
             <v-card-actions class="white" v-if="$user.authenticated">
               <v-layout row>
                 <v-btn icon v-on:click="favoritePhoto(photo)">
@@ -98,18 +98,18 @@
 
 <style>
 
-  .photo .v-card__media__content .v-card__title {
+  .photo .v-responsive__content .v-card__title {
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
   }
 
-  .photo .v-card__media:hover .card-overlay, .photo .fluid .card-overlay:hover {
+  .photo .v-image:hover .card-overlay, .photo .fluid .card-overlay:hover {
     filter: alpha(opacity=100);
     opacity: 1;
     zoom: 1;
     cursor: pointer;
   }
 
-  .photo .v-card__media__content .card-overlay, .photo-overlay .card-overlay {
+  .photo .v-responsive__content .card-overlay, .photo-overlay .card-overlay {
     /*background: rgba(0, 0, 0, 0.2);*/
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
     opacity: 0;
@@ -122,7 +122,7 @@
     backface-visibility: hidden;
   }
 
-  .photo .v-card__media__content .headline {
+  .photo .v-responsive__content .headline {
     text-transform: lowercase;
   }
 

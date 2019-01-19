@@ -7,8 +7,8 @@
           <h3 class="display-header text-xs-center">Bella Vista Groves</h3>
           <v-layout justify-center wrap>
             <v-flex xs12 md7>
-              <v-card-media height="450"
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_320/dpr_2.0/Bella_Vista_Groves_Wedding_0036.jpg"></v-card-media>
+              <v-img height="450"
+                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_320/dpr_2.0/Bella_Vista_Groves_Wedding_0036.jpg"></v-img>
             </v-flex>
             <v-flex xs12 md6 mt-3>
               <p class="text-xs-center">
@@ -52,11 +52,11 @@
             <v-flex xs10 sm5 md4 lg3 :class="(index+1)%2==0 ? 'order-md2' : ''">
               <v-layout wrap>
                 <v-flex xs12>
-                  <v-card-media class="circle" height="290" :src="bridesmaid.image"></v-card-media>
+                  <v-img class="circle" height="290" :src="bridesmaid.image"></v-img>
                 </v-flex>
                 <v-flex xs12 text-xs-center class="bridesmaid-label">
-                  <v-card-media contain class="mt-2" height="25"
-                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower1.png'"></v-card-media>
+                  <v-img contain class="mt-2" height="25"
+                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower1.png'"></v-img>
                   <p class="title mt-2 mb-2">{{bridesmaid.label.slice(0, bridesmaid.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{bridesmaid.label.slice(bridesmaid.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
@@ -83,12 +83,12 @@
             <v-flex xs10 sm5 md4 lg3 :class="(index+1)%2==0 ? 'order-md2' : ''">
               <v-layout wrap>
                 <v-flex xs12>
-                  <v-card-media class="circle" height="290"
-                                :src="groomsman.image"></v-card-media>
+                  <v-img class="circle" height="290"
+                                :src="groomsman.image"></v-img>
                 </v-flex>
                 <v-flex xs12 text-xs-center class="groomsman-label">
-                  <v-card-media contain class="mt-2" height="20"
-                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf1.png'"></v-card-media>
+                  <v-img contain class="mt-2" height="20"
+                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf1.png'"></v-img>
                   <p class="title mt-2 mb-2">{{groomsman.label.slice(0, groomsman.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{groomsman.label.slice(groomsman.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
@@ -199,7 +199,7 @@
 </script>
 
 <style scoped>
-  .v-card__media.circle {
+  .v-image.circle {
     border-color: white;
     border-radius: 50% !important;
     -moz-border-radius: 50%;

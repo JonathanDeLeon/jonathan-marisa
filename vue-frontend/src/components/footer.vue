@@ -30,8 +30,8 @@
                 <v-flex xs0 sm12 v-if="$vuetify.breakpoint.smAndUp">
                   <v-layout row fill-height xs12>
                     <v-flex xs0 sm6 pa-3>
-                      <v-card-media height="100" contain
-                                    src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-card-media>
+                      <v-img height="100" contain
+                                    src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
                     </v-flex>
                     <v-flex xs0 sm6 pa-3>
                       <ul class="pa-0">
@@ -48,8 +48,8 @@
             </v-flex>
 
             <v-flex xs12 sm4 pa-3 order-xs5 order-sm2>
-              <v-card-media :height="$vuetify.breakpoint.smAndUp ? 250 : 150" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_280/dpr_2.0/footer-savethedate.png"></v-card-media>
+              <v-img :height="$vuetify.breakpoint.smAndUp ? 250 : 150" contain
+                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_280/dpr_2.0/footer-savethedate.png"></v-img>
             </v-flex>
 
             <v-flex xs6 sm4 order-xs2 order-sm3>
@@ -80,8 +80,8 @@
                   </v-layout>
                 </v-flex>
                 <v-flex xs12 pa-3 v-if="$vuetify.breakpoint.smAndUp">
-                  <v-card-media height="50" contain
-                                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-card-media>
+                  <v-img height="50" contain
+                                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
                   <h3 style="font-weight: 400">Website designed by the bride & groom</h3>
                   <h3 class="display-header mt-2 mb-0">Jonathan & Marisa</h3>
                 </v-flex>
@@ -90,8 +90,8 @@
 
             <!--Only show on 'xs' screens -->
             <v-flex xs12 pa-3 order-xs3 v-if="$vuetify.breakpoint.xsOnly">
-              <v-card-media height="50" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-card-media>
+              <v-img height="50" contain
+                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
             </v-flex>
 
             <v-flex xs12 order-xs4 v-if="$vuetify.breakpoint.xsOnly">
@@ -141,8 +141,8 @@
         <v-flex xs12 v-if="$vuetify.breakpoint.xsOnly">
           <v-layout row xs12 justify-center wrap>
             <v-flex xs2 offset-xs10>
-              <v-card-media height="80" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-card-media>
+              <v-img height="80" contain
+                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
             </v-flex>
           </v-layout>
         </v-flex>

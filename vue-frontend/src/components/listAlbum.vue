@@ -4,9 +4,9 @@
       <!--<v-flex xs12 d-block>-->
       <!--<img :src="url">-->
       <!--</v-flex>-->
-      <v-card-media :src="url" :height="height">
+      <v-img :src="url" :height="height">
         <slot name="card-media"></slot>
-      </v-card-media>
+      </v-img>
       <slot name="card-actions"></slot>
     </v-card>
   </div>
@@ -20,34 +20,31 @@
 
 <style>
 
-  .list-album .v-card__media__content .v-card__title {
+  .list-album .v-responsive__content .v-card__title {
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
   }
 
-
-
-
-  .list-album .v-card__media:hover .card-overlay {
+  .list-album .v-image:hover .card-overlay {
     filter: alpha(opacity=100);
     opacity: 1;
     zoom: 1;
   }
 
-  .list-album .v-card__media {
+  .list-album .v-image {
     cursor: pointer;
   }
 
-  .list-album .v-card__media:hover .v-card__title {
+  .list-album .v-image:hover .v-card__title {
     text-decoration: underline;
   }
 
   @media (hover: none) {
-    .list-album .v-card__media__content .v-card__title {
+    .list-album .v-responsive__content .v-card__title {
       text-decoration: underline;
     }
   }
 
-  .list-album .v-card__media__content .card-overlay {
+  .list-album .v-responsive__content .card-overlay {
     /*background: rgba(0, 0, 0, 0.2);*/
     background: linear-gradient(transparent, rgba(0, 0, 0, .7));
     opacity: 0;
@@ -60,7 +57,7 @@
     backface-visibility: hidden;
   }
 
-  .list-album .v-card__media__content .headline {
+  .list-album .v-responsive__content .headline {
     text-transform: lowercase;
   }
 
@@ -71,7 +68,7 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .list-album .v-card__media__content .headline {
+    .list-album .v-responsive__content .headline {
       font-size: 16px!important;
     }
   }
