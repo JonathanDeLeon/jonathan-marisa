@@ -46,6 +46,16 @@
 </script>
 
 <style>
+  /*
+  Current Color Scheme
+  #DCC8B4 // soft amber
+  #f6f4f2
+  #FFBCD4 // pink
+  #F8BBD0 // pink lighten-4
+  #FFFFFF
+  #F5F5F5
+  */
+
   @font-face {
     font-family: "Bombshell Pro";
     src: local("Bombshell Pro"),
@@ -53,7 +63,15 @@
   }
 
   body, html {
-    background: #fafafa;
+    /*background: #fafafa;*/
+    background: #fff;
+  }
+
+  div.theme--light.application {
+    background: #fff;
+  }
+  nav.theme--light.v-toolbar {
+    background: #fff;
   }
 
   #app {
@@ -67,8 +85,8 @@
     /*word-wrap: break-word;*/
     margin: 1.5em 0 0.8em;
     /*color: rgba(0, 0, 0, .54);*/
-    color: #ffbcd4;
-
+    /*color: #ffbcd4;*/
+    color: #F8BBD0;
   }
 
   h2.display-header {
