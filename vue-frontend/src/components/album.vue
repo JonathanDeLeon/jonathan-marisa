@@ -16,7 +16,7 @@
       <v-toolbar color="transparent" flat v-if="$user.authenticated">
         <v-spacer></v-spacer>
         <v-btn color="primary" @click.stop="uploadPhotos">Upload Photos</v-btn>
-        <v-btn color="success" @click="createAlbum">New Album</v-btn>
+        <v-btn color="success" @click.stop="createAlbum">New Album</v-btn>
       </v-toolbar>
     </v-layout>
 
