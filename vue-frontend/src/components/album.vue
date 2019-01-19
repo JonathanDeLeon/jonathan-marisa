@@ -55,7 +55,7 @@
       return {
         title: "Photo Albums",
         background: {
-          height: window.innerHeight + 'px'
+          height: window.innerHeight - 64 + 'px'
         },
         albums: [],
         addPhotoDialog: false,
@@ -93,9 +93,9 @@
           switch (this.$vuetify.breakpoint.name) {
             case 'xs': return ['250', '500px']
             case 'sm': return ['400', '800px']
-            case 'md': return ['520', window.innerHeight+'px']
-            case 'lg': return ['520', window.innerHeight+'px']
-            case 'xl': return ['520', window.innerHeight+'px']
+            case 'md': return ['520', window.innerHeight-64+'px']
+            case 'lg': return ['520', window.innerHeight-64+'px']
+            case 'xl': return ['520', window.innerHeight-64+'px']
           }
         }).call(this);
         this.slideshow.forEach((slide, index) => {

@@ -113,7 +113,7 @@
         title: "The Wedding",
         background: {
           backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_1024,w_1067,y_200/MarandJonEngagedEdits-130.jpg)',
-          height: window.innerHeight + 'px'
+          height: window.innerHeight -64 + 'px'
         },
         bridesmaids: [
           {

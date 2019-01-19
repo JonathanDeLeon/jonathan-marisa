@@ -88,7 +88,7 @@
         title: "Marisa & Jonathan",
         background: {
           backgroundImage: 'https://res.cloudinary.com/jonathan-marisa/image/upload/v19234/MarandJonEngagedEdits-94-1.jpeg',
-          height: window.innerHeight
+          height: window.innerHeight - 64 // navbar is about 64px
         },
         photos: [],
       }
