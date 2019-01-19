@@ -77,7 +77,7 @@
                     </v-form>
                   </v-card-text>
                 </v-card>
-                <transition name="zoom" duration="1000">
+                <transition name="zoom" duration="2000">
                   <v-layout class="card-overlay" fill-height column justify-center align-center
                             v-if="successfulSubmit && !loading">
                     <div class="heart">
@@ -236,7 +236,8 @@
   }
 
   .heart {
-    font-size: 100em;
+    font-size: 125em;
+    transform: scale(1.25);
   }
 
   .zoom-enter-active .heart {
