@@ -1,6 +1,39 @@
 <template>
   <footer id="footer-wrap" class="mt-5">
-    <v-container class="text-xs-center" :pa-0="$vuetify.breakpoint.smAndDown">
+    <section style="background-color: #f5f4ec;">
+      <v-container class="text-xs-center">
+        <v-layout justify-center row wrap>
+          <v-flex xs12>
+            <h3>We are registered at</h3>
+          </v-flex>
+          <v-flex xs4>
+            <a href="https://www.macys.com/wgl/registry/guest/7009675" target="_blank">
+              <v-img contain height="100"
+                  src="https://content-az.equisolve.net/_47db57411b1afcd222335d939c1e9a81/macysinc/db/476/4495/file/macys-logo-on-white_high.jpg"
+              >
+              </v-img>
+            </a>
+          </v-flex>
+          <v-flex xs4>
+            <a href="https://www.bedbathandbeyond.com/store/giftregistry/viewregistryguest/546940939?eventType=Wedding" target="_blank">
+              <v-img contain height="100"
+                  src="https://www.crossironmills.com/media/stores/logos/BedBathBeyond-bedding-towels-kitchen-electronics-cookware-logo_7nTdiI7.svg"
+              >
+              </v-img>
+            </a>
+          </v-flex>
+          <v-flex xs4>
+            <a href="http://tgt.gifts/9f50f206008e4ca7a6284040875ccae4" target="_blank">
+              <v-img contain height="100"
+                  src="https://www.makeitmsp.org/site/wp-content/uploads/2017/03/target-logo.png"
+              >
+              </v-img>
+            </a>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </section>
+    <v-container class="text-xs-center" pt-0 :pa-0="$vuetify.breakpoint.smAndDown">
       <v-layout column>
 
         <v-flex xs12>
@@ -31,7 +64,7 @@
                   <v-layout row fill-height xs12>
                     <v-flex xs0 sm6 pa-3>
                       <v-img height="100" contain
-                                    src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
+                             src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
                     </v-flex>
                     <v-flex xs0 sm6 pa-3>
                       <ul class="pa-0">
@@ -49,7 +82,7 @@
 
             <v-flex xs12 sm4 pa-3 order-xs5 order-sm2>
               <v-img :height="$vuetify.breakpoint.smAndUp ? 250 : 150" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_280/dpr_2.0/footer-savethedate.png"></v-img>
+                     src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_280/dpr_2.0/footer-savethedate.png"></v-img>
             </v-flex>
 
             <v-flex xs6 sm4 order-xs2 order-sm3>
@@ -81,7 +114,7 @@
                 </v-flex>
                 <v-flex xs12 pa-3 v-if="$vuetify.breakpoint.smAndUp">
                   <v-img height="50" contain
-                                src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
+                         src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
                   <h3 style="font-weight: 400">Website designed by the bride & groom</h3>
                   <h3 class="display-header mt-2 mb-0">Jonathan & Marisa</h3>
                 </v-flex>
@@ -91,7 +124,7 @@
             <!--Only show on 'xs' screens -->
             <v-flex xs12 pa-3 order-xs3 v-if="$vuetify.breakpoint.xsOnly">
               <v-img height="50" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
+                     src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-design.png"></v-img>
             </v-flex>
 
             <v-flex xs12 order-xs4 v-if="$vuetify.breakpoint.xsOnly">
@@ -142,7 +175,7 @@
           <v-layout row xs12 justify-center wrap>
             <v-flex xs2 offset-xs10>
               <v-img height="80" contain
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
+                     src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_120/dpr_2.0/footer-thankyou.png"></v-img>
             </v-flex>
           </v-layout>
         </v-flex>

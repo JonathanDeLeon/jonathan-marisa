@@ -8,7 +8,7 @@
           <v-layout justify-center wrap>
             <v-flex xs12 md7>
               <v-img height="450"
-                            src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_320/dpr_2.0/Bella_Vista_Groves_Wedding_0036.jpg"></v-img>
+                     src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_320/dpr_2.0/Bella_Vista_Groves_Wedding_0036.jpg"></v-img>
             </v-flex>
             <v-flex xs12 md6 mt-3>
               <p class="text-xs-center">
@@ -26,13 +26,13 @@
         </v-flex>
         <v-flex xs12>
           <h3 class="display-header text-xs-center">Event Details</h3>
-          <v-layout align-center column>
-            <v-flex xs12 md6 mt-1>
-              <p>
-                Date: <br/> June 23, 2019<br/><br/>
-                <!--Time: 4:00 pm<br/>-->
-                Address: <br/>3117 W Telegraph Rd<br/>Fillmore, CA 93015
-              </p>
+          <v-layout justify-center class="mt-1">
+            <v-flex xs12 md3>
+              <h2 class="text-xs-center"><i class="far fa-calendar"></i> June 23, 2019</h2>
+              <h2 class="text-xs-center"><i class="far fa-clock"></i> 4:30 PM</h2>
+            </v-flex>
+            <v-flex xs12 md3>
+              <h2 class="text-xs-center"><i class="fas fa-map-marker-alt"></i> 3117 W Telegraph Rd<br/>  Fillmore, CA 93015 </h2>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -56,7 +56,7 @@
                 </v-flex>
                 <v-flex xs12 text-xs-center class="bridesmaid-label">
                   <v-img contain class="mt-2" height="25"
-                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower1.png'"></v-img>
+                         :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/flower1.png'"></v-img>
                   <p class="title mt-2 mb-2">{{bridesmaid.label.slice(0, bridesmaid.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{bridesmaid.label.slice(bridesmaid.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
@@ -84,11 +84,11 @@
               <v-layout wrap>
                 <v-flex xs12>
                   <v-img class="circle" height="290"
-                                :src="groomsman.image"></v-img>
+                         :src="groomsman.image"></v-img>
                 </v-flex>
                 <v-flex xs12 text-xs-center class="groomsman-label">
                   <v-img contain class="mt-2" height="20"
-                                :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf1.png'"></v-img>
+                         :src="(index+1)%2==0 ? 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf2.png' : 'https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/leaf1.png'"></v-img>
                   <p class="title mt-2 mb-2">{{groomsman.label.slice(0, groomsman.label.indexOf('|')).trim()}}</p>
                   <p class="caption">{{groomsman.label.slice(groomsman.label.indexOf('|')+1).trim()}}</p>
                 </v-flex>
@@ -113,7 +113,7 @@
         title: "The Wedding",
         background: {
           backgroundImage: 'url(https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_crop,h_1024,w_1067,y_200/MarandJonEngagedEdits-130.jpg)',
-          height: window.innerHeight -64 + 'px'
+          height: window.innerHeight - 64 + 'px'
         },
         bridesmaids: [
           {

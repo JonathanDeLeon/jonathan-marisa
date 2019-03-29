@@ -6,8 +6,10 @@
         <v-layout fill-height align-center>
           <v-flex xs12>
             <!--<v-toolbar-title class="text-xs-center" @click.stop="$router.push('/')">J&M</v-toolbar-title>-->
-            <v-img height="50" contain
-                   src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/logo_alpha.png"></v-img>
+            <router-link to="/">
+              <v-img height="50" contain
+                     src="https://res.cloudinary.com/jonathan-marisa/image/upload/f_auto/c_scale,h_25/dpr_2.0/logo_alpha.png"></v-img>
+            </router-link>
           </v-flex>
         </v-layout>
       </v-flex>

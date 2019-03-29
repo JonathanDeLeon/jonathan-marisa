@@ -4,9 +4,13 @@
                 :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_520,c_scale/dpr_2.0')"
                 v-if="$vuetify.breakpoint.mdAndUp">
       <v-container fill-height>
-        <v-layout align-center>
+        <v-layout align-center column>
           <v-flex text-xs-center>
             <countdown end="June 23, 2019"></countdown>
+          </v-flex>
+          <v-flex text-xs-center>
+            <v-btn large dark color="pink lighten-4" :ripple="false" to="/rsvp">RSVP</v-btn>
+            <v-btn large dark outline :ripple="false" to="/wedding">Wedding Details</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -15,9 +19,15 @@
                 :src="background.backgroundImage.replace(/v[0-9]*/,'f_auto/h_370,c_scale/dpr_2.0')"
                 v-else>
       <v-container fill-height>
-        <v-layout align-center>
+        <v-layout align-center column>
           <v-flex text-xs-center>
             <countdown end="June 23, 2019"></countdown>
+          </v-flex>
+          <v-flex text-xs-center>
+            <v-btn large dark color="pink lighten-4" :ripple="false" to="/rsvp">RSVP</v-btn>
+          </v-flex>
+          <v-flex text-xs-center>
+            <v-btn large dark outline :ripple="false" to="/wedding">Wedding Details</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
