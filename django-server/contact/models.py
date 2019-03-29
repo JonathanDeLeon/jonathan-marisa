@@ -18,6 +18,8 @@ class Event(models.Model):
     attending = models.BooleanField(verbose_name="If group is attending", default=True)
     attendees = models.ManyToManyField(Person, verbose_name="list of attendees")
     number_attending = models.PositiveSmallIntegerField(verbose_name="number of attendants", default=0)
+    meal = models.CharField(verbose_name="Meal", max_length=32, default='')
+    notes = models.CharField(verbose_name="Wishes and notes", max_length=512, default='')
 
     def __str__(self):
         return self.type + " " + str(self.attending) + " " + str(self.number_attending)

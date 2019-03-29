@@ -15,8 +15,8 @@
                   <v-card-title class="pb-1 mt-3">
                     <v-flex xs12 class="text-xs-center">
                       <h1 class="bombshell pink--text text--lighten-4">Will You Attend?</h1>
-                      <p class="caption mt-3 mb-0 "><em>Marisa's Bridal Shower - <span
-                          class="grey--text text--darken-1">March 24, 2019</span></em>
+                      <p class="caption mt-3 mb-0 "><em>Jonathan & Marisa's Wedding - <span
+                          class="grey--text text--darken-1">June 23, 2019</span></em>
                       </p>
                     </v-flex>
                   </v-card-title>
@@ -27,28 +27,28 @@
                       <v-layout row wrap>
 
                         <v-flex xs12>
-                          <v-text-field label="Name" v-model="bridalShower.name"
+                          <v-text-field label="Name" v-model="wedding.name"
                                         color="pink lighten-3"
                                         counter maxlength="30"
-                                        :rules="[() => !!bridalShower.name || 'Name is required', v => v.length <= 30 || 'Max 30 characters']"></v-text-field>
+                                        :rules="[() => !!wedding.name || 'Name is required', v => v.length <= 30 || 'Max 30 characters']"></v-text-field>
                         </v-flex>
                         <v-flex xs12>
-                          <v-text-field label="Phone Number" v-model="bridalShower.phone" mask="(###) ###-####"
+                          <v-text-field label="Phone Number" v-model="wedding.phone" mask="(###) ###-####"
                                         color="pink lighten-3"
-                                        :rules="[() => !!bridalShower.phone || 'Phone number is required']"></v-text-field>
+                                        :rules="[() => !!wedding.phone || 'Phone number is required']"></v-text-field>
                         </v-flex>
                         <v-flex xs12>
                           <v-layout row wrap>
                             <v-flex xs8>
-                              <v-radio-group label="Will you attend?" v-model="bridalShower.attending">
+                              <v-radio-group label="Will you attend?" v-model="wedding.attending">
                                 <v-radio label="Yes" :value="true" color="pink lighten-3"></v-radio>
                                 <v-radio label="No" :value="false" color="pink lighten-3"></v-radio>
                               </v-radio-group>
                             </v-flex>
                             <v-flex xs4 class="pt-3">
                               <v-scale-transition>
-                                <v-select v-if="bridalShower.attending" color="pink lighten-3"
-                                          :items="[1,2,3,4,5,6,7]" v-model="bridalShower.number_attending"
+                                <v-select v-if="wedding.attending" color="pink lighten-3"
+                                          :items="[1,2,3,4,5,6,7]" v-model="wedding.number_attending"
                                           label="" hint="Total in your party" persistent-hint
                                           @change="changeGuestCount"
                                 ></v-select>
@@ -58,8 +58,8 @@
                         </v-flex>
 
                         <transition-group tag="div" name="fade-transition" class="flex xs12">
-                          <v-flex xs12 v-if="bridalShower.attending"
-                                  v-for="(attendee, index) in bridalShower.guests" :key="index+0">
+                          <v-flex xs12 v-if="wedding.attending"
+                                  v-for="(attendee, index) in wedding.guests" :key="index+0">
 
                             <v-text-field class="pl-3" label="Additional Guest Name" v-model="attendee.name"
                                           color="pink lighten-3"
@@ -68,9 +68,25 @@
                             </v-text-field>
                           </v-flex>
                         </transition-group>
+
+                        <v-scale-transition>
+                          <v-flex xs12 v-if="wedding.attending">
+                            <!--<v-textarea color="pink lighten-3" label="Meal Preferences"-->
+                            <!--hint="We will do our best to accommodate"-->
+                            <!--rows="3"></v-textarea>-->
+                            <v-select color="pink lighten-3"
+                                      :items="['beef/chicken', 'veggie']" v-model="wedding.meal"
+                                      label="Entrée Preference"
+                            ></v-select>
+                          </v-flex>
+                        </v-scale-transition>
+                        <v-flex xs12>
+                          <v-textarea color="pink lighten-3" label="Wishes & Notes" v-model="wedding.notes"
+                                      rows="3"></v-textarea>
+                        </v-flex>
                         <v-flex xs12 class="mt-3">
                           <v-btn block color="pink lighten-4" :loading="loading" :disabled="loading"
-                                 @click.stop="createBridalShowerEvent">Submit
+                                 @click.stop="createWeddingEvent">Submit
                           </v-btn>
                         </v-flex>
                       </v-layout>
@@ -84,8 +100,8 @@
                       <i class="fas fa-heart pink--text text--lighten-5"></i>
                     </div>
                     <div class="inner-zoom">
-                      <h2 v-if="bridalShower.attending">
-                        <em><span v-if="bridalShower.name">{{bridalShower.name.split(' ')[0] + ', '}}</span> Let's Shower the Bride!</em>
+                      <h2 v-if="wedding.attending">
+                        <em><span v-if="wedding.name">{{wedding.name.split(' ')[0] + ', '}}</span> see you at the wedding!</em>
                       </h2>
                       <h2 v-else>
                         <em>
@@ -99,34 +115,6 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <!--Wedding RSVP-->
-        <!--<v-flex xs12>-->
-        <!--<v-layout row xs12 justify-center>-->
-        <!--<v-flex xs12 sm6>-->
-        <!--<v-card>-->
-        <!--<v-card-title class="pb-1">-->
-        <!--<v-flex xs12>-->
-        <!--<h1 class="bombshell pink&#45;&#45;text text&#45;&#45;lighten-4">RSVP</h1>-->
-        <!--</v-flex>-->
-        <!--&lt;!&ndash;<p class="caption mt-3 mb-0"><em>* RSVP Code found on your wedding invitation</em></p>&ndash;&gt;-->
-        <!--<p class="caption mt-3 mb-0 red&#45;&#45;text"><em>* RSVP not available yet. Please call 323-695-6717</em></p>-->
-        <!--</v-card-title>-->
-        <!--<v-card-text>-->
-        <!--<v-form ref="form">-->
-        <!--&lt;!&ndash;Attending wedding (y/n); wishes and notes (text-area); choice of menu(meat and veggie); Contact number;&ndash;&gt;-->
-        <!--&lt;!&ndash;Number responding&ndash;&gt;-->
-        <!--<v-text-field disabled label="Name" required></v-text-field>-->
-        <!--<v-text-field disabled label="E-mail" required></v-text-field>-->
-        <!--<v-text-field disabled label="RSVP Code" required></v-text-field>-->
-        <!--<v-textarea disabled label="Meal Preferences" hint="We will do our best to accommodate"-->
-        <!--rows="3"></v-textarea>-->
-        <!--<v-btn disabled>Submit</v-btn>-->
-        <!--</v-form>-->
-        <!--</v-card-text>-->
-        <!--</v-card>-->
-        <!--</v-flex>-->
-        <!--</v-layout>-->
-        <!--</v-flex>-->
       </v-layout>
     </v-container>
   </div>
@@ -146,12 +134,14 @@
         errorMessage: '',
         loading: false,
         successfulSubmit: false,
-        bridalShower: {
+        wedding: {
           name: '',
           phone: '',
+          meal: '',
           attending: true,
           guests: [],
           number_attending: 1,
+          notes: ''
         },
         test: false
       }
@@ -161,18 +151,20 @@
       window.setTimeout(() => loadingUtil.hide(), 1500);
     },
     methods: {
-      createBridalShowerEvent() {
+      createWeddingEvent() {
         if (this.$refs.form.validate()) {
           this.loading = true;
           const eventData = {
-            type: 'Bridal Shower',
-            attending: this.bridalShower.attending,
-            number_attending: this.bridalShower.number_attending,
-            attendees: this.bridalShower.guests.slice(),
+            type: 'Wedding',
+            attending: this.wedding.attending,
+            number_attending: this.wedding.number_attending,
+            attendees: this.wedding.guests.slice(),
+            meal: this.wedding.meal,
+            notes: this.wedding.notes,
           };
           const primaryGuest = {
-            name: this.bridalShower.name,
-            phone: this.bridalShower.phone
+            name: this.wedding.name,
+            phone: this.wedding.phone
           };
           eventData.attendees.unshift(primaryGuest);
 
@@ -191,15 +183,15 @@
         }
       },
       changeGuestCount() {
-        let startDeleteIndex = this.bridalShower.number_attending - 1;
-        this.bridalShower.guests.splice(startDeleteIndex);
-        if (this.bridalShower.number_attending === 1) {
+        let startDeleteIndex = this.wedding.number_attending - 1;
+        this.wedding.guests.splice(startDeleteIndex);
+        if (this.wedding.number_attending === 1) {
           return;
         }
-        if (this.bridalShower.number_attending > this.bridalShower.guests.length) {
-          for (let i = this.bridalShower.guests.length; i < this.bridalShower.number_attending - 1; i++) {
+        if (this.wedding.number_attending > this.wedding.guests.length) {
+          for (let i = this.wedding.guests.length; i < this.wedding.number_attending - 1; i++) {
             let temp = {name: ''};
-            this.bridalShower.guests.push(temp);
+            this.wedding.guests.push(temp);
           }
         }
       }
