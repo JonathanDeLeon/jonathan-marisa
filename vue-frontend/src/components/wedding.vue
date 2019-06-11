@@ -28,11 +28,11 @@
           <h3 class="display-header text-xs-center">Event Details</h3>
           <v-layout justify-center class="mt-1">
             <v-flex xs12 md3>
-              <h2 class="text-xs-center"><i class="far fa-calendar"></i> June 23, 2019</h2>
-              <h2 class="text-xs-center"><i class="far fa-clock"></i> 4:30 PM</h2>
+              <h3 class="text-xs-center"><i class="far fa-calendar"></i> June 23, 2019</h3>
+              <h3 class="text-xs-center"><i class="far fa-clock"></i> 4:30 PM</h3>
             </v-flex>
             <v-flex xs12 md3>
-              <h2 class="text-xs-center"><i class="fas fa-map-marker-alt"></i> 3117 W Telegraph Rd<br/>  Fillmore, CA 93015 </h2>
+              <h3 class="text-xs-center"><i class="fas fa-map-marker-alt"></i> 3117 W Telegraph Rd<br/>  Fillmore, CA 93015 </h3>
             </v-flex>
           </v-layout>
         </v-flex>

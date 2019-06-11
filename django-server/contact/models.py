@@ -6,7 +6,7 @@ from django.db import models
 
 # Create your models here.
 class Person(models.Model):
-    name = models.CharField(verbose_name="Name of person", max_length=30)
+    name = models.CharField(verbose_name="Name of person", max_length=512)
     phone = models.CharField(verbose_name="Phone number", max_length=10, blank=True, null=True)
 
     def __str__(self):
@@ -19,7 +19,7 @@ class Event(models.Model):
     attendees = models.ManyToManyField(Person, verbose_name="list of attendees")
     number_attending = models.PositiveSmallIntegerField(verbose_name="number of attendants", default=0)
     meal = models.CharField(verbose_name="Meal", max_length=32, default='')
-    notes = models.CharField(verbose_name="Wishes and notes", max_length=512, default='')
+    notes = models.CharField(verbose_name="Wishes and notes", max_length=512, default='', blank=True, null=True)
 
     def __str__(self):
         return self.type + " " + str(self.attending) + " " + str(self.number_attending)

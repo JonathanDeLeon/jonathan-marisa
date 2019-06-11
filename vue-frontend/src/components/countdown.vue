@@ -357,7 +357,7 @@
   }
 
   #countdown-wrapper {
-    margin-top: 7em;
+    margin-top: 3em;
   }
 
   .all-title span span {

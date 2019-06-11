@@ -8,7 +8,7 @@
           </v-flex>
           <v-flex xs4>
             <a href="https://www.macys.com/wgl/registry/guest/7009675" target="_blank">
-              <v-img contain height="100"
+              <v-img contain height="100" alt="Macy's Registry"
                   src="https://content-az.equisolve.net/_47db57411b1afcd222335d939c1e9a81/macysinc/db/476/4495/file/macys-logo-on-white_high.jpg"
               >
               </v-img>
@@ -16,15 +16,15 @@
           </v-flex>
           <v-flex xs4>
             <a href="https://www.bedbathandbeyond.com/store/giftregistry/viewregistryguest/546940939?eventType=Wedding" target="_blank">
-              <v-img contain height="100"
-                  src="https://www.crossironmills.com/media/stores/logos/BedBathBeyond-bedding-towels-kitchen-electronics-cookware-logo_7nTdiI7.svg"
+              <v-img contain height="100" alt="Bed Bath & Beyond Registry"
+                  src="https://mediaro.info/wp-content/uploads/2018/12/bed-bath-beyond-logo-bed-bath-beyond-logo-ideas.png"
               >
               </v-img>
             </a>
           </v-flex>
           <v-flex xs4>
             <a href="http://tgt.gifts/9f50f206008e4ca7a6284040875ccae4" target="_blank">
-              <v-img contain height="100"
+              <v-img contain height="100" alt="Target Registry"
                   src="https://www.makeitmsp.org/site/wp-content/uploads/2017/03/target-logo.png"
               >
               </v-img>

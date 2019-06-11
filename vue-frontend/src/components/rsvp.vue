@@ -9,9 +9,6 @@
             <v-flex xs12 sm8 lg6>
               <div class="card-container">
                 <v-card class="pa-5">
-                  <v-alert :value="errorMessage" type="error" transition="scale-transition" dismissible>
-                    {{errorMessage}}
-                  </v-alert>
                   <v-card-title class="pb-1 mt-3">
                     <v-flex xs12 class="text-xs-center">
                       <h1 class="bombshell pink--text text--lighten-4">Will You Attend?</h1>
@@ -57,17 +54,19 @@
                           </v-layout>
                         </v-flex>
 
-                        <transition-group tag="div" name="fade-transition" class="flex xs12">
-                          <v-flex xs12 v-if="wedding.attending"
-                                  v-for="(attendee, index) in wedding.guests" :key="index+0">
+                        <!--<transition-group tag="div" name="fade-transition" class="flex xs12">-->
+                        <v-fade-transition>
+                          <v-flex xs12 v-if="wedding.attending && wedding.guests.length > 0">
+                            <!--v-for="(attendee, index) in wedding.guests" :key="index+0">-->
 
-                            <v-text-field class="pl-3" label="Additional Guest Name" v-model="attendee.name"
-                                          color="pink lighten-3"
-                                          counter maxlength="30"
-                                          :rules="[() => !!attendee.name || 'Guest name is required', v => v.length <= 30 || 'Max 30 characters']">
+                            <v-text-field class="pl-3" label="Additional Name(s) on Invitation"
+                                          v-model="wedding.guests[0].name"
+                                          color="pink lighten-3" maxlength="255"
+                                          :rules="[() => !!wedding.guests[0].name || 'Additional name(s) is required']">
                             </v-text-field>
                           </v-flex>
-                        </transition-group>
+                        </v-fade-transition>
+                        <!--</transition-group>-->
 
                         <v-scale-transition>
                           <v-flex xs12 v-if="wedding.attending">
@@ -75,16 +74,24 @@
                             <!--hint="We will do our best to accommodate"-->
                             <!--rows="3"></v-textarea>-->
                             <v-select color="pink lighten-3"
-                                      :items="['beef/chicken', 'veggie']" v-model="wedding.meal"
+                                      :items="['chicken', 'veggie']" v-model="wedding.meal"
                                       label="Entrée Preference"
                             ></v-select>
                           </v-flex>
                         </v-scale-transition>
                         <v-flex xs12>
                           <v-textarea color="pink lighten-3" label="Wishes & Notes" v-model="wedding.notes"
-                                      rows="3"></v-textarea>
+                                      rows="2"></v-textarea>
+                        </v-flex>
+                        <v-flex xs12>
+                          <p class="grey--text text--darken-1 caption mt-3 mb-0 font-italic">*Please restrict the
+                            attendees in your party to those listed on your invitation*
+                          </p>
                         </v-flex>
                         <v-flex xs12 class="mt-3">
+                          <v-alert :value="errorMessage" type="error" transition="scale-transition" dismissible>
+                            {{errorMessage}}
+                          </v-alert>
                           <v-btn block color="pink lighten-4" :loading="loading" :disabled="loading"
                                  @click.stop="createWeddingEvent">Submit
                           </v-btn>
@@ -101,7 +108,8 @@
                     </div>
                     <div class="inner-zoom">
                       <h2 v-if="wedding.attending">
-                        <em><span v-if="wedding.name">{{wedding.name.split(' ')[0] + ', '}}</span> see you at the wedding!</em>
+                        <em><span v-if="wedding.name">{{wedding.name.split(' ')[0] + ', '}}</span> see you at the
+                          wedding!</em>
                       </h2>
                       <h2 v-else>
                         <em>
@@ -158,7 +166,7 @@
             type: 'Wedding',
             attending: this.wedding.attending,
             number_attending: this.wedding.number_attending,
-            attendees: this.wedding.guests.slice(),
+            attendees: this.wedding.attending ? this.wedding.guests.slice() : [],
             meal: this.wedding.meal,
             notes: this.wedding.notes,
           };
@@ -184,15 +192,13 @@
       },
       changeGuestCount() {
         let startDeleteIndex = this.wedding.number_attending - 1;
-        this.wedding.guests.splice(startDeleteIndex);
-        if (this.wedding.number_attending === 1) {
-          return;
+        if (startDeleteIndex > 1) {
+          startDeleteIndex = 1;
         }
-        if (this.wedding.number_attending > this.wedding.guests.length) {
-          for (let i = this.wedding.guests.length; i < this.wedding.number_attending - 1; i++) {
-            let temp = {name: ''};
-            this.wedding.guests.push(temp);
-          }
+        this.wedding.guests.splice(startDeleteIndex);
+        if (this.wedding.number_attending > 1 && this.wedding.guests.length === 0) {
+          let temp = {name: ''};
+          this.wedding.guests.push(temp);
         }
       }
     }
